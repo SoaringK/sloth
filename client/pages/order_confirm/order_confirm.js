@@ -26,6 +26,7 @@ Page({
     i:0,
     j:0,
     k:0,
+    m:0,
   },
 
   /**
@@ -71,16 +72,23 @@ Page({
                 console.log("default_addr_id")
                 console.log(res.data.data[j].addr_id)
               }
-
             }
-
-            
+            for (var j = 0; j < res.data.data.length; j++) {
+              if (res.data.data[j].cust_id ==  that.data.userId){
+                that.setData({
+                  m:1
+                });
+              }
+            }
+            console.log( that.data.userId);
+            console.log(that.data.m);
             that.setData({
               customer: res.data.data
             });
+            console.log(that.data.customer);
           }
         });
-      },
+      },     
     });
     wx.getStorage({
       key: 'list',

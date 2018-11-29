@@ -32,9 +32,9 @@
               <view class="cart_item_name">{{item.name}}</view>
               <!-- 用total键是为了防止直接price*num出现浮点数运算小数点后很多位 -->
               <view class="cart_item_total">¥{{item.total||0}}</view>
-              <view class="reduce" bind:tap="tapReduceCart" data-class="{{typeIndex}}" data-index="{{index}}">-</view>
+              <view class="reduce" bind:tap="tapReduceCart" data-class="{{typeIndex}}" data-index="{{index}}"><image src='reduce.png' class="reduce_icon"></image></view>
               <text class="num">{{item.numb}}</text>
-              <view class="add" bind:tap="tapAddCart" data-class="{{typeIndex}}" data-index="{{index}}">+</view>
+              <view class="add" bind:tap="tapAddCart" data-class="{{typeIndex}}" data-index="{{index}}"><image src='add.png' class="add_icon"></image></view>
             </view>
           </block>
         </view>
