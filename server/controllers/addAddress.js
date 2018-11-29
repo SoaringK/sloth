@@ -1,26 +1,10 @@
 const { mysql } = require('../qcloud')
 
 module.exports = async ctx => {
-  var building_arr= [
-    "C1",
-    "C2",
-    "C3",
-    "C4",
-    "C5",
-    "C6",
-    "C7",
-    "C8",
-    "C9",
-    "C10",
-    "c11",
-    "c12",
-    "c13",
-    "c14",
-    "c15"]
   var name = ctx.request.query.cust_name
   var phone = ctx.request.query.cust_phone
   var cust_wechat = ctx.request.query.cust_wechat
-  var cust_addr_building = building_arr[ctx.request.query.cust_addr_building]
+  var cust_addr_building = ctx.request.query.cust_addr_building
   var cust_addr_room = ctx.request.query.cust_addr_room
   
   var open_id = ctx.request.query.user_id

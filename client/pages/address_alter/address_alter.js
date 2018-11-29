@@ -40,7 +40,7 @@ Page({
     that.setData({
       cust_id: options.cust_id,
       // cust_addr: options.cust_addr_room,//这里后台要改下返回的属性名，原本是cust_addr，改成cust_addr_room
-      cust_addr_room: options.cust_addr,
+      cust_addr_room: options.cust_addr_room,
       cust_name: options.cust_name,
       cust_phone: options.cust_phone,
       addr_index:options.addr_index,
@@ -131,7 +131,7 @@ Page({
         "&prename=" + that.data.cust_name + 
         "&prephone=" + that.data.cust_phone + 
         "&preaddr_room=" + that.data.cust_addr_room + 
-        "preaddr_building" + that.data.cust_addr_building,
+        "&preaddr_building=" + that.data.cust_addr_building,
         header: {
           "content-type": "application/x-www-form-urlencoded"
         },
