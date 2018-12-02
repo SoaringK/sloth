@@ -18,7 +18,7 @@
       </view>
       <view class="text_each_row" style="border-bottom: 1px solid #f3f3f3;">
         <view class="text">微信号</view>
-        <input name="wechatarea" placeholder="微信号" class="addrinput" value="{{cust_wechat}}" />
+        <input name="wechatarea" placeholder="微信号" class="addrinput" value="{{cust_Wechat}}" />
       </view>
       <view class='button_new_address'>
         <button formType='submit'>修改地址</button>

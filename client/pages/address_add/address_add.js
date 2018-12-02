@@ -59,7 +59,9 @@ Page({
           cust_id: that.data.userId,
           cust_name: e.detail.value.namearea,
           cust_phone: e.detail.value.phonearea,
-          cust_addr: e.detail.value.addressarea,
+          cust_addr_room: e.detail.value.addressarea,
+          cust_Wechat: e.detail.value.wechatarea,
+          cust_addr_building:that.data.dormitory_index,
           default_id:0,
           addr_id:0//稍后修改
         };
@@ -69,7 +71,8 @@ Page({
         var customer = prevPage.data.customer;
         customer.push(address);
         prevPage.setData({
-          customer:customer
+          customer:customer,
+          m: 1
         });
         wx.showToast({
           title: '新增地址成功',

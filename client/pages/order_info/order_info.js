@@ -32,13 +32,13 @@ Page({
       },
     });
     wx.request({
-      url: config.service.order_infoUrl+"?food_order_id="+options.food_order_id,
+      url: config.service.order_infoUrl+"?order_id="+options.order_id,
       method:"GET",
       header: {
         "content-type": "application/json"
       },
       success: function (res) {
-        console.log(options.food_order_id)
+        console.log(options.order_id)
         console.log(res)
         that.setData({
           menu: res.data.data.menu,

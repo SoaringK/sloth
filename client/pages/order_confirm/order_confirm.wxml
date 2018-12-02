@@ -5,7 +5,7 @@
         <image class='addr_icon' src='./maps-and-flags.png'></image>
         <view class='contact_info' style="flex-direction:column;">
           <view class="cust_addr">
-            {{customer[selected].cust_addr_building}}
+            {{building[customer[selected].cust_addr_building]}}
             {{customer[selected].cust_addr_room}}
           </view>
           <view class="cust_name_tel">
@@ -80,14 +80,14 @@
                 <view wx:for="{{customer}}" wx:key="addr_id">
                   <view class='each_row' style="flex-direction:row;">
                     <view  bindtap="addrchange" data-id="{{item.addr_id}}"  class="label" style="flex-direction:column;">
-                      <view class="decom">{{item.cust_addr_building}}  {{item.cust_addr_room}}</view>
+                      <view class="decom">{{building[item.cust_addr_building]}}  {{item.cust_addr_room}}</view>
                       <view class="personal_info" style="flex-direction:row;">
                         <view class="name">{{item.cust_name}} </view>
                         <view class="phone"> {{item.cust_phone}}</view>
                       </view>
                     </view>
                     <view>
-                      <navigator url='../address_alter/address_alter?cust_id={{item.cust_id}}&cust_addr={{item.cust_addr}}&cust_name={{item.cust_name}}&cust_phone={{item.cust_phone}}&addr_index={{index}}'>
+                      <navigator url='../address_alter/address_alter?cust_id={{item.cust_id}}&cust_Wechat={{item.cust_Wechat}}&cust_addr_room={{item.cust_addr_room}}&cust_addr_building={{item.cust_addr_building}}&cust_name={{item.cust_name}}&cust_phone={{item.cust_phone}}&addr_index={{index}}'>
                         <image class='icon_change' src='./writing.png'></image>
                       </navigator>
                     </view>
