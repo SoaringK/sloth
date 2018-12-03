@@ -130,10 +130,16 @@ Page({
       })
     }
   },
-
-    delSubmit: function (e) {
+  dormitory_change: function (e) {
+    // console.log(e.detail.value);
     var that = this;
-      wx.request({
+    that.setData({
+      dormitory_index: e.detail.value
+    });
+  },
+  delSubmit: function (e) {
+    var that = this;
+    wx.request({
         url: config.service.delAddressUrl + 
         "?user_id=" + that.data.cust_id + 
         "&prename=" + that.data.cust_name + 
@@ -175,4 +181,5 @@ Page({
         }
       })
     }
-})
+}
+)
