@@ -53,18 +53,30 @@ Page({
     }],
     sortingList: [{
       key: 1,
-      value: "华工二饭三楼肠粉"
+      value: "穗石村小早餐饮"
     }, {
       key: 2,
-      value: "华工二饭三楼包子"
+      value: "二饭一楼各类特色餐点"
     }, {
       key: 3,
-      value: "华工二饭三楼酸辣粉"
+      value: "二饭特色炒粉和和包点"
     }, {
       key: 4,
-      value: "华工一饭一楼"
+      value: "二饭三楼重庆小面各类汤粉"
     }, {
       key: 5,
+      value: "广式拉肠"
+    }, {
+      key: 6,
+      value: "各类鲜肉云吞面"
+    }, {
+      key: 7,
+      value: "粤式早点应有尽有"
+    }, {
+      key: 8,
+      value: "煎饼"
+    }, {
+      key: 9,
       value: "全部"
     }],
     chioceDistrict: false,
@@ -74,7 +86,9 @@ Page({
     scrollTop: 0,
     scrollIntoView: 0,
     activeSortingIndex: -1,
-    activeSortingName: "购买店铺"
+    activeSortingName: "购买店铺",
+    district_all:false,
+    sorting_all:false
   },
   onLoad: function (options) {
     var that = this;
@@ -202,11 +216,19 @@ Page({
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
+      district_all:(this.data.districtList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
-      isLoading: true
+      isLoading: true,
+      
     })
+    console.log( this.data.district_all);
+    console.log(this.data.activeDistrictName);
+    console.log(this.data.activeDistrictName != '全部');
+    console.log(this.data.order);
+    console.log(this.data.activeDistrictIndex);
+    console.log()
     //this.getProductList();
   },
   //综合排序
@@ -216,6 +238,7 @@ Page({
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
+      sorting_all:( this.data.sortingList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
