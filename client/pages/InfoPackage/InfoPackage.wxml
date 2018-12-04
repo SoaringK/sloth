@@ -4,57 +4,57 @@
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='box.png'></image>
       <view class='text_title'>取货地点:</view>
-      <view class='text_content'>{{orderInfoDetail.get_pack_addr}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].get_pack_addr}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='stamp.png'></image>
       <view class='text_title'>取货码:</view>
-      <view class='text_content'>{{orderInfoDetail.package_num}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].package_num}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_address'>
       <image class='row_icon' src='address.png'></image>
       <view class='text_title'>送达地址:</view>
-      <view class='text_content'>{{orderInfoDetail.shipping_address}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].shipping_address}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='time.png'></image>
       <view class='text_title'>完成时间:</view>
-      <view class='text_content'>{{orderInfoDetail.complete_time}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].complete_time}}</view>
     </view>
   </view>
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='customer.png'></image>
       <view class='text_title'>联系人:</view>
-      <view class='text_content'>{{orderInfoDetail.contact_name}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_name}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='phone.png'></image>
       <view class='text_title'>联系电话:</view>
-      <view class='text_content'>{{orderInfoDetail.contact_tel}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_tel}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
       <image class='row_icon' src='wechat.png'></image>
       <view class='text_title'>微信号:</view>
-      <view class='text_content'>{{orderInfoDetail.contact_wechat}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_wechat}}</view>
     </view>
   </view>
   <view class='customer_info'>
     <view class='content_each_row' id='deli_time'>
       <image class='row_icon' src='money.png'></image>
       <view class='text_title'>出价:</view>
-      <view class='text_content'> {{orderInfoDetail.profit}}</view>
+      <view class='text_content'> {{orderInfoDetail[0].profit}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='deli_time'>
       <image class='row_icon' src='scale.png'></image>
       <view class='text_title'>重量:</view>
-      <view class='text_content'> {{orderInfoDetail.weight}}</view>
+      <view class='text_content'> {{orderInfoDetail[0].weight}}</view>
     </view>
   </view>
   <view class='order_active'>进行中</view>
