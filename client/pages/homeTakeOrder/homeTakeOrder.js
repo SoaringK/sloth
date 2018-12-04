@@ -64,10 +64,7 @@ Page({
       "c14",
       "c15",
     ],
-    order1: [],
-    order2: [],
-    order3: [],
-    order4: []
+    order: []
   },
   onLoad: function(options) {
     var that = this;
@@ -80,11 +77,11 @@ Page({
         success: function(res) {
           console.log(res)
           that.setData({
-            order1: res.data.data.data1,
-            order2: res.data.data.data3,
-            order3: res.data.data.data2,
-            order4: res.data.data.data4
-
+            // order1: res.data.data.data1,
+            // order2: res.data.data.data3,
+            // order3: res.data.data.data2,
+            // order4: res.data.data.data4
+            order: res.data.data.data,
           });
         }
       }),
@@ -139,15 +136,15 @@ Page({
                 order: data
               }),
               wx.request({
-                url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId,
+                url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
                 method: "GET",
                 header: {
                   "content-type": "application/json"
                 },
                 success: function(res) {
-                  console.log(item[0].food_order_id)
+                  console.log(item[0].order_id)
                   wx.reLaunch({
-                    url: '../home/home',
+                    url: "../order_info/order_info?order_id=" + item[0].order_id
                   })
                 }
               })

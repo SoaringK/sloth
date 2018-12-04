@@ -46,7 +46,7 @@ Page({
       cust_name: options.cust_name,
       cust_phone: options.cust_phone,
       cust_Wechat: options.cust_Wechat,
-      // addr_index:options.addr_index,
+      addr_index:options.addr_index,
       dormitory_index:options.cust_addr_building|0,
       // 保存之前的dormitory_index
       cust_addr_building:options.cust_addr_building|0
@@ -103,7 +103,9 @@ Page({
           var prevPage = pages[pages.length-2];
           // console.log(prevPage);
           var customer = prevPage.data.customer;
-          customer[that.data.addr_index].cust_addr = e.detail.value.addressarea;
+          customer[that.data.addr_index].cust_addr_building = that.data.dormitory_index;
+          customer[that.data.addr_index].cust_Wechat = e.detail.value.wechatarea;
+          customer[that.data.addr_index].cust_addr_room = e.detail.value.addressarea;
           customer[that.data.addr_index].cust_name = e.detail.value.namearea;
           customer[that.data.addr_index].cust_phone = e.detail.value.phonearea;
           prevPage.setData({
