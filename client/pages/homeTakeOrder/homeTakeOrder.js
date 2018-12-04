@@ -143,8 +143,8 @@ Page({
                 },
                 success: function(res) {
                   console.log(item[0].order_id)
-                  wx.reLaunch({
-                    url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id
+                  wx.navigateTo({
+                    url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id,
                   })
                 }
               })
@@ -199,7 +199,7 @@ Page({
                 },
                 success: function (res) {
                   console.log(item[0].order_id)
-                  wx.reLaunch({
+                  wx.navigateTo({
                     url: "../InfoPackage/InfoPackage?order_id=" + item[0].order_id
                   })
                 }
@@ -255,7 +255,7 @@ Page({
                 },
                 success: function (res) {
                   console.log(item[0].order_id)
-                  wx.reLaunch({
+                  wx.navigateTo({
                     url: "../InfoLegwork/InfoLegwork?order_id=" + item[0].order_id
                   })
                 }
@@ -311,7 +311,7 @@ Page({
                 },
                 success: function (res) {
                   console.log(item[0].order_id)
-                  wx.reLaunch({
+                  wx.navigateTo({
                     url: "../InfoSubstitute/InfoSubstitute?order_id=" + item[0].order_id
                   })
                 }

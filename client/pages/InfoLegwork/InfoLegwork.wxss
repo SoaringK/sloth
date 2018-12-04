@@ -1,6 +1,7 @@
 /* pages/order_info/order_info.wxss */
 page{
   background: #F3F3F3;
+  padding-bottom: 5%;
 
 }
 .container{
@@ -65,7 +66,7 @@ page{
 .row_icon{
   width: 48rpx;
   height: 50rpx;
-  margin-top: 3rpx;
+  margin-top: 1rpx;
 }
 
 .text_title{

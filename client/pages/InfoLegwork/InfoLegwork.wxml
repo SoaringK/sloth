@@ -15,7 +15,7 @@
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='time.png'></image>
+      <image class='row_icon' src='clock.png'></image>
       <view class='text_title'>跑腿时间:</view>
       <view class='text_content'>{{orderInfoDetail[0].complete_time}}</view>
     </view>
@@ -28,7 +28,7 @@
   </view>
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='profile.png'></image>
       <view class='text_title'>联系人:</view>
       <view class='text_content'>{{orderInfoDetail[0].contact_name}}</view>
     </view>

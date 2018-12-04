@@ -102,7 +102,7 @@ Page({
       }),
       setTimeout(function () {
         wx.switchTab({
-          url: '../home/home',
+          url: '../homeOrder/homeOrder',
         })
       }, 1200)
 

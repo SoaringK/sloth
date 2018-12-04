@@ -29,12 +29,30 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "代课详情",
-					"pathName": "pages/InfoSubstitute/InfoSubstitute"
+					"pathName": "pages/InfoSubstitute/InfoSubstitute",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "接单首页",
+					"pathName": "pages/homeTakeOrder/homeTakeOrder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "跑腿详情",
+					"pathName": "pages/InfoLegwork/InfoLegwork",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "快递详情",
+					"pathName": "pages/InfoPackage/InfoPackage"
 				}
 			]
 		}
