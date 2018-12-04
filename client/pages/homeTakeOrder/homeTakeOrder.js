@@ -38,7 +38,7 @@ Page({
       {
         "name": "兼职",
         "src": "../../images/5.png",
-        "url": "../pt_info/pt_info"
+        "url": "../partTimeList/partTimeList"
       },
       {
         "name": "其他下单",

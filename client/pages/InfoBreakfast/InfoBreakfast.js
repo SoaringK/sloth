@@ -27,7 +27,7 @@ Page({
       },
     });
     wx.request({
-      url: config.service.order_infoUrl+"?order_id="+options.order_id,
+      url: config.service.order_info_breakfastUrl+"?order_id="+options.order_id,
       method:"GET",
       header: {
         "content-type": "application/json"
