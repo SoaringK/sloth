@@ -1,6 +1,6 @@
 <view class='title'>还在开发ing</view>
 <view>
-  <navigator open-type='switchTab' url='../home/home'>
+  <navigator open-type='switchTab' url='../homeOrder/homeOrder'>
     <button>返回首页</button>
   </navigator>
 </view>
