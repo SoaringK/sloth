@@ -42,7 +42,7 @@
         <view class='content_each_row' style="flex-direction:row;">
           <image class='content_icon' src='address.png'></image>
           <view class='row_text_title'>配送至：</view>
-          <view class='row_text_content'> {{item.order_address}}</view>
+          <view class='row_text_content'> {{dormitory[item.order_address_building]}} {{item.order_address_room}}</view>
         </view>
         <view class='content_each_row' style="flex-direction:row;">
           <image class='content_icon' src='time.png'></image>

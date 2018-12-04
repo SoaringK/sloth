@@ -46,6 +46,24 @@ Page({
         "url": "../otherOrder/otherOrder"
       }
     ],
+    //dormitory映射楼栋信息
+    dormitory:[
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6",
+      "C7",
+      "C8",
+      "C9",
+      "C10",
+      "c11",
+      "c12",
+      "c13",
+      "c14",
+      "c15",
+    ],
     order1: [],
     order2: [],
     order3: [],
