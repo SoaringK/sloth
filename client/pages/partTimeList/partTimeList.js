@@ -18,12 +18,17 @@ Page({
     }, {
       key: 3,
       value: "校企合作"
+    }, {
+      key: 4,
+      value: "全部"
     }],
     chioceDistrict: false,
     activeDistrictIndex: -1,
     activeDistrictName: "兼职类型",
     scrollTop: 0,
     scrollIntoView: 0,
+    district_all:false,
+    sorting_all:false
   },
   onLoad: function (options) {
     var that = this;
@@ -92,6 +97,7 @@ Page({
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
+      district_all:(this.data.districtList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,

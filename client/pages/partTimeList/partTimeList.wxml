@@ -15,7 +15,7 @@
   </view>
 </view>
 <view class='content'>
-  <view class="each_item" wx:for="{{pt_info}}">
+  <view class="each_item" wx:for="{{pt_info}}" hidden="{{(district_all) && item.job_tag1 != activeDistrictName }}">
     <view class='left_part'>
       <view class='title'>
         <view class='job_name'>{{item.job_name}}</view>

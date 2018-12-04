@@ -78,7 +78,7 @@ Page({
         that.setData({
           order: res.data.data.data
         });
-         console.log(res.data)
+        console.log(res.data);
       }
     })
   },
@@ -168,12 +168,9 @@ Page({
       }
     })
   },
-
-
   districtSorting: function(e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
-      
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
@@ -198,6 +195,12 @@ Page({
       loadOver: false,
       isLoading: true
     })
+    console.log(this.data.sorting_all);
+    console.log(this.data.activeSortingName);
+    console.log(this.data.activeSortingName != '全部');
+    console.log(this.data.order);
+    console.log(this.data.activeSortingName);
+    console.log()
     //this.getProductList();
   },
   submit_take: function (e) {
