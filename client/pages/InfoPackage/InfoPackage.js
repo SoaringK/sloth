@@ -22,7 +22,7 @@ Page({
       },
     });
     wx.request({
-      url: config.service.order_infoUrl + "?order_id=" + options.order_id,
+      url: config.service.order_info_packageUrl + "?order_id=" + options.order_id,
       method: "GET",
       header: {
         "content-type": "application/json"
@@ -31,8 +31,8 @@ Page({
         console.log(options.order_id)
         console.log(res)
         that.setData({
-          orderInfoDetail: res.data.data.orderInfoDetail,
-          status: res.data.data.status
+          orderInfoDetail: res.data.data,
+          status: res.data.data[0].order_state
         });
       }
     })

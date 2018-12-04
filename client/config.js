@@ -88,7 +88,11 @@ var config = {
     take_ptjobUrl: `${host}/weapp/take_ptjob`,
 
     //早餐订单详情
-    order_info_breakfastUrl: `${host}/weapp/order_infobreakfast`,
+    order_info_breakfastUrl: `${host}/weapp/order_info_breakfast`,
+
+    //快递订单详情
+    order_info_packageUrl: `${host}/weapp/order_info_package`,
+
   }
 };
 
