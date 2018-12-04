@@ -64,6 +64,24 @@ module.exports = async ctx => {
       }
       else
         continue
+      var dormitory = [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+      ]
+      order_address_building = dormitory[order_address_building]
       var order_address = order_address_building + " " + order_address_room
       var res5
       var res6 = await mysql("foodOrder").where({
