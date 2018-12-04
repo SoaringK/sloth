@@ -1,0 +1,77 @@
+<view class='container'>
+
+  <view class='customer_info1'>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='box.png'></image>
+      <view class='text_title'>取货地点:</view>
+      <!-- {{orderInfoDetail.get_pack_addr}} -->
+      <view class='text_content'>京东</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='stamp.png'></image>
+      <view class='text_title'>取货码:</view>
+      <!-- {{orderInfoDetail.package_num}} -->
+      <view class='text_content'>GB231255</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_address'>
+      <image class='row_icon' src='address.png'></image>
+      <view class='text_title'>送达地址:</view>
+      <!-- {{orderInfoDetail.shipping_address}} -->
+      <view class='text_content'>C10 送楼下</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='time.png'></image>
+      <view class='text_title'>完成时间:</view>
+      <!-- {{orderInfoDetail.complete_time}} -->
+      <view class='text_content'>周一 10:00 前</view>
+    </view>
+  </view>
+  <view class='customer_info'>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='customer.png'></image>
+      <view class='text_title'>联系人:</view>
+      <!-- {{orderInfoDetail.contact_name}} -->
+      <view class='text_content'>唐镇溢</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='phone.png'></image>
+      <view class='text_title'>联系电话:</view>
+      <!-- {{orderInfoDetail.contact_tel}} -->
+      <view class='text_content'>15521050226</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_phone'>
+      <image class='row_icon' src='wechat.png'></image>
+      <view class='text_title'>微信号:</view>
+      <!-- {{orderInfoDetail.contact_wechat}} -->
+      <view class='text_content'>304208078</view>
+    </view>
+  </view>
+  <view class='customer_info'>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='money.png'></image>
+      <view class='text_title'>出价:</view>
+      <!-- {{orderInfoDetail.profit}} -->
+      <view class='text_content'>¥20</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='scale.png'></image>
+      <view class='text_title'>重量:</view>
+      <!-- {{orderInfoDetail.weight}} -->
+      <view class='text_content'>1-2KG</view>
+    </view>
+  </view>
+  <view class='order_active'>进行中</view>
+  <!-- 按钮 -->
+  <!-- <view class='order_active' wx:if="{{status==true}}">
+    <text>进行中</text>
+  </view>
+  <view class='order_finished' wx:else>
+    <text>已完成</text>
+  </view> -->
+</view>

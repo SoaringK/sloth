@@ -296,7 +296,7 @@ Page({
       },
       success:function(res){
         wx.navigateTo({
-          url:"../order_info/order_info?order_id="+item.order_id
+          url:"../InfoLegwork/InfoLegwork?order_id="+item.order_id
         })
       }
     })

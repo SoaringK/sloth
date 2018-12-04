@@ -1,4 +1,4 @@
-var app = getApp();
+const app = getApp();
 var config = require('../../config');
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var util = require('../../utils/util.js')
@@ -270,9 +270,7 @@ Page({
       title: '确认订单',
       content: '点击确定接受订单',
       success: function (res) {
-        if (res.confirm) { //这里是点击了确定以后
-          // console.log('用户点击确定')
-          // console.log(e.currentTarget.dataset.index)
+        if (res.confirm) { 
           var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
           var data = that.data.order;
           // console.log("item")
@@ -289,7 +287,7 @@ Page({
               success: function (res) {
                 console.log(res)
                 wx.navigateTo({
-                  url: "../order_info/order_info?order_id=" + item[0].order_id
+                  url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id
                 })
               }
             })

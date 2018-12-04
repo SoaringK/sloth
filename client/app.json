@@ -24,7 +24,10 @@
     "pages/takeSubstituteClassOrder/takeSubstituteClassOrder",
     "pages/takeBreakfastOrder/takeBreakfastOrder",
 
-    "pages/order_info/order_info",
+    "pages/InfoBreakfast/InfoBreakfast",
+    "pages/InfoPackage/InfoPackage",
+    "pages/InfoLegwork/InfoLegwork",
+    "pages/InfoSubstitute/InfoSubstitute",
 
     "pages/myInfo/myInfo",
     "pages/myOrder/myOrder",

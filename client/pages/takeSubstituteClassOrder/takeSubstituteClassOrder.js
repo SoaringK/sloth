@@ -224,7 +224,7 @@ Page({
               },
               success: function (res) {
                 wx.navigateTo({
-                  url: "../order_info/order_info?food_order_id=" + item[0].order_id
+                  url: "../InfoSubstitute/InfoSubstitute?order_id=" + item[0].order_id
                 })
               }
             })

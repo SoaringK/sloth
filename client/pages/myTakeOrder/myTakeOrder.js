@@ -272,7 +272,7 @@ Page({
       },
       success:function(res){
         wx.navigateTo({
-          url:"../order_info/order_info?order_id="+item.order_id
+          url:"../InfoBreakfast/InfoBreakfast?order_id="+item.order_id
         })
       }
     })

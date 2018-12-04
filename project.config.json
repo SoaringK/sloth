@@ -29,67 +29,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,
-					"name": "确认订单",
-					"pathName": "pages/order_confirm/order_confirm",
-					"query": ""
-				},
-				{
-					"id": 1,
-					"name": "购物车",
-					"pathName": "pages/breakfastTrolley/breakfastTrolley",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "接单home",
-					"pathName": "pages/take_order_home/take_order_home",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "接单-早餐",
-					"pathName": "pages/takeBreakfastOrder/takeBreakfastOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "提交成功",
-					"pathName": "pages/order_list/order_list",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "我的接单",
-					"pathName": "pages/my_take_order/my_take_order",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "我的下单",
-					"pathName": "pages/my_order/my_order",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "早餐list",
-					"pathName": "pages/takeBreakfastOrder/takeBreakfastOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "早餐list",
-					"pathName": "pages/takeBreakfastOrder/takeBreakfastOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "气泡页面",
-					"pathName": "pages/order_info/order_info",
-					"query": ""
+					"name": "代课详情",
+					"pathName": "pages/InfoSubstitute/InfoSubstitute"
 				}
 			]
 		}

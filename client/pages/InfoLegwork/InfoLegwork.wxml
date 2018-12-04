@@ -1,0 +1,85 @@
+<view class='container'>
+
+  <view class='customer_info1'>
+
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='start.png'></image>
+      <view class='text_title'>起点:</view>
+      <!-- {{orderInfoDetail.start_point}} -->
+      <view class='text_content'>华工南校</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_address'>
+      <image class='row_icon' src='placeholder.png'></image>
+      <view class='text_title'>目的地:</view>
+      <!-- {{orderInfoDetail.destination}} -->
+      <view class='text_content'>华工北校一号楼</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='time.png'></image>
+      <view class='text_title'>跑腿时间:</view>
+      <!-- {{orderInfoDetail.complete_time}} -->
+      <view class='text_content'>2018-11-17</view>
+    </view>
+        <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='list.png'></image>
+      <view class='text_title'>其他要求:</view>
+      <!-- {{orderInfoDetail.other_require}} -->
+      <view class='text_content'>五点前一定要到</view>
+    </view>
+  </view>
+  <view class='customer_info'>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='customer.png'></image>
+      <view class='text_title'>联系人:</view>
+      <!-- {{orderInfoDetail.contact_name}} -->
+      <view class='text_content'>唐镇溢</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='phone.png'></image>
+      <view class='text_title'>联系电话:</view>
+      <!-- {{orderInfoDetail.contact_tel}} -->
+      <view class='text_content'>15521050226</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_phone'>
+      <image class='row_icon' src='wechat.png'></image>
+      <view class='text_title'>微信号:</view>
+      <!-- {{orderInfoDetail.contact_wechat}} -->
+      <view class='text_content'>304208078</view>
+    </view>
+  </view>
+  <view class='customer_info'>
+      <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='run.png'></image>
+      <view class='text_title'>跑腿类型:</view>
+      <!-- {{orderInfoDetail.legorder_type}} -->
+      <view class='text_content'>校内跑腿</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='money.png'></image>
+      <view class='text_title'>跑腿费:</view>
+      <!-- {{orderInfoDetail.profit}} -->
+      <view class='text_content'>¥20</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='box.png'></image>
+      <view class='text_title'>物品类型:</view>
+      <!-- {{orderInfoDetail.good_type}} -->
+      <view class='text_content'>文件</view>
+    </view>
+  </view>
+  <view class='order_active'>进行中</view>
+  <!-- 按钮 -->
+  <!-- <view class='order_active' wx:if="{{status==true}}">
+    <text>进行中</text>
+  </view>
+  <view class='order_finished' wx:else>
+    <text>已完成</text>
+  </view> -->
+</view>

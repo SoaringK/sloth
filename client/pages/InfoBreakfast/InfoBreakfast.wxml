@@ -1,0 +1,75 @@
+<!--pages/order_info/order_info.wxml-->
+<view class='container'>
+  <!-- 商品列表 -->
+  <view class='menu_info'>
+    <view class='customer_icon'>
+      <!-- {{customer.img}} -->
+      <image src="./customer.jpg"></image>
+    </view>
+    <!-- 气泡对话框 -->
+    <view class='bubble'>
+      <view class='Ineed'>我需要：</view>
+      <scroll-view class="item_info" scroll-y>
+        <view class='shop_name'>
+          <!-- {{menu.name}} -->
+          华工二饭三楼肠粉
+        </view>
+        <view class='line'></view>
+        <!-- <block wx:for="{{menu.order}}"> -->
+        <view class='breakfast_item'>
+          <!-- {{item.name}} -->
+          <view class='food_name'>番茄蛋汤</view>
+          <!-- {{item.numb}} -->
+          <view class='food_numb'>X1</view>
+        </view>
+        <!-- </block> -->
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class='customer_info'>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='customer.png'></image>
+      <view class='text_title'>下单人:</view>
+      <!-- {{customer.name}} -->
+      <view class='text_content'>唐镇溢</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_phone'>
+      <image class='row_icon' src='customer.png'></image>
+      <view class='text_title'>联系电话:</view>
+      <!-- {{customer.phone}} -->
+      <view class='text_content'>15521050226</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_address'>
+      <image class='row_icon' src='address.png'></image>
+      <view class='text_title'>配送地址:</view>
+      <!-- {{customer.address}} -->
+      <view class='text_content'>学生公寓C10-621</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='time.png'></image>
+      <view class='text_title'>配送时间:</view>
+      <view class='text_content'>明早7:30-8:00</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='content.png'></image>
+      <view class='text_title'>备注:</view>
+      <!-- {{customer.remark}} -->
+      <view class='text_content'>无</view>
+    </view>
+  </view>
+
+  <view class='order_active' >进行中</view>
+
+  <!-- 按钮 -->
+  <!-- <view class='order_active' wx:if="{{status==true}}">
+    <text>进行中</text>
+  </view>
+  <view class='order_finished' wx:else>
+    <text>已完成</text>
+  </view> -->
+</view>

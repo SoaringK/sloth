@@ -280,7 +280,7 @@ Page({
               success: function (res) {
                 console.log(res)
                 wx.navigateTo({
-                  url: "../order_info/order_info?order_id=" + item[0].order_id
+                  url: "../InfoPackage/InfoPackage?order_id=" + item[0].order_id
                 })
               }
             })

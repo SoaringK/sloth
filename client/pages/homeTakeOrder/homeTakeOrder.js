@@ -103,7 +103,7 @@ Page({
   },
 
 
-  submit_take: function(e) {
+  submit_take0: function(e) {
     var that = this;
     if (!that.data.logged) {
       wx.showModal({
@@ -113,7 +113,7 @@ Page({
         success: function(res) {
           if (res.confirm) {
             wx.switchTab({
-              url: '../My/My',
+              url: '../homeMy/homeMy',
             })
           }
 
@@ -144,7 +144,175 @@ Page({
                 success: function(res) {
                   console.log(item[0].order_id)
                   wx.reLaunch({
-                    url: "../order_info/order_info?order_id=" + item[0].order_id
+                    url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id
+                  })
+                }
+              })
+
+          } else { //这里是点击了取消以后
+            console.log('用户点击取消')
+
+          }
+        }
+      })
+
+    }
+
+  },
+  submit_take1: function (e) {
+    var that = this;
+    if (!that.data.logged) {
+      wx.showModal({
+        title: '您未登录！',
+        content: '登录体验更多功能',
+        confirmText: '去登录',
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../homeMy/homeMy',
+            })
+          }
+
+        }
+      })
+
+    } else {
+      wx.showModal({
+        title: '确认订单',
+        content: '点击确定接受订单',
+        success: function (res) {
+          if (res.confirm) { //这里是点击了确定以后
+            console.log('用户点击确定')
+            console.log(e.currentTarget.dataset.index);
+            var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
+            var data = that.data.order;
+            console.log("item")
+            console.log(item)
+            that.setData({
+              order: data
+            }),
+              wx.request({
+                url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
+                method: "GET",
+                header: {
+                  "content-type": "application/json"
+                },
+                success: function (res) {
+                  console.log(item[0].order_id)
+                  wx.reLaunch({
+                    url: "../InfoPackage/InfoPackage?order_id=" + item[0].order_id
+                  })
+                }
+              })
+
+          } else { //这里是点击了取消以后
+            console.log('用户点击取消')
+
+          }
+        }
+      })
+
+    }
+
+  },
+  submit_take2: function (e) {
+    var that = this;
+    if (!that.data.logged) {
+      wx.showModal({
+        title: '您未登录！',
+        content: '登录体验更多功能',
+        confirmText: '去登录',
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../homeMy/homeMy',
+            })
+          }
+
+        }
+      })
+
+    } else {
+      wx.showModal({
+        title: '确认订单',
+        content: '点击确定接受订单',
+        success: function (res) {
+          if (res.confirm) { //这里是点击了确定以后
+            console.log('用户点击确定')
+            console.log(e.currentTarget.dataset.index);
+            var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
+            var data = that.data.order;
+            console.log("item")
+            console.log(item)
+            that.setData({
+              order: data
+            }),
+              wx.request({
+                url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
+                method: "GET",
+                header: {
+                  "content-type": "application/json"
+                },
+                success: function (res) {
+                  console.log(item[0].order_id)
+                  wx.reLaunch({
+                    url: "../InfoLegwork/InfoLegwork?order_id=" + item[0].order_id
+                  })
+                }
+              })
+
+          } else { //这里是点击了取消以后
+            console.log('用户点击取消')
+
+          }
+        }
+      })
+
+    }
+
+  },
+  submit_take3: function (e) {
+    var that = this;
+    if (!that.data.logged) {
+      wx.showModal({
+        title: '您未登录！',
+        content: '登录体验更多功能',
+        confirmText: '去登录',
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../homeMy/homeMy',
+            })
+          }
+
+        }
+      })
+
+    } else {
+      wx.showModal({
+        title: '确认订单',
+        content: '点击确定接受订单',
+        success: function (res) {
+          if (res.confirm) { //这里是点击了确定以后
+            console.log('用户点击确定')
+            console.log(e.currentTarget.dataset.index);
+            var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
+            var data = that.data.order;
+            console.log("item")
+            console.log(item)
+            that.setData({
+              order: data
+            }),
+              wx.request({
+                url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
+                method: "GET",
+                header: {
+                  "content-type": "application/json"
+                },
+                success: function (res) {
+                  console.log(item[0].order_id)
+                  wx.reLaunch({
+                    url: "../InfoSubstitute/InfoSubstitute?order_id=" + item[0].order_id
                   })
                 }
               })
