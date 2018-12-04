@@ -66,6 +66,7 @@ module.exports = async ctx => {
       str += ",{"
     str += "\"order_type\":\"早餐\","
     str += "\"order_id\":\"" + order_id + "\","
+    str += "\"order_shop_address\":\"" + order_shop_address + "\","
     str += "\"order_address_building\":\"" + order_address_building + "\","
     str += "\"order_address_room\":\"" + order_address_room + "\","
     str += "\"order_deli_fee\": \"" + order_deli_fee + "\","
@@ -75,7 +76,6 @@ module.exports = async ctx => {
       str += "\"order_good_num\": \"" + order_good_num + "\","
     else
       str += "\"order_good_num\": \"" + order_good_num + "等\","
-    str += "\"order_address\": \"" + order_address + "\","
     str += "\"order_deli_time\": \"明早7: 00 - 8: 00送达\","
     str += "\"order_time\": \"" + order_time + "\","
     str += "\"order_sum\": \"" + order_sum + "\""
