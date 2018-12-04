@@ -54,7 +54,7 @@
     </view>
     <view>
       <button class='commit_btn' wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">去结算</button>
-      <navigator url="../order_confirm/order_confirm" wx:else bind:tap="submit">
+      <navigator url="../breakfastOrderConfirm/breakfastOrderConfirm" wx:else bind:tap="submit">
         <button class='commit_btn'>去结算</button>
       </navigator>
     </view>

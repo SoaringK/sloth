@@ -45,48 +45,6 @@
 				},
 				{
 					"id": -1,
-					"name": "home",
-					"pathName": "pages/home/home",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "选择商品",
-					"pathName": "pages/breakfastMenu/breakfastMemu",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "新增地址",
-					"pathName": "pages/address_add/address_add",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "店铺选择",
-					"pathName": "pages/canteen_select/canteen_select",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "选择地址",
-					"pathName": "pages/address_select/address_select",
-					"query": ""
-				},
-				{
-					"id": 7,
-					"name": "修改地址",
-					"pathName": "pages/address_modify/address_modify",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/My/My",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "接单home",
 					"pathName": "pages/take_order_home/take_order_home",
 					"query": ""
