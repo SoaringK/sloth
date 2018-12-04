@@ -93,6 +93,12 @@ var config = {
     //快递订单详情
     order_info_packageUrl: `${host}/weapp/order_info_package`,
 
+    //跑腿订单详情
+    order_info_legworkUrl: `${host}/weapp/order_info_legwork`,
+
+    //代课订单详情
+    order_info_substituteUrl: `${host}/weapp/order_info_substitute`,
+
   }
 };
 

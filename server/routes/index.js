@@ -62,5 +62,7 @@ router.get('/take_order_home_substituete', controllers.take_order_home_substitue
 router.get('/take_ptjob', controllers.take_ptjob)
 router.get('/order_info_breakfast', controllers.order_info_breakfast)
 router.get('/order_info_package', controllers.order_info_package)
+router.get('/order_info_legwork', controllers.order_info_legwork)
+router.get('/order_info_substitute', controllers.order_info_substitute)
 
 module.exports = router

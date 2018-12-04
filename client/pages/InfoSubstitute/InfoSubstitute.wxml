@@ -5,66 +5,57 @@
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='placeholder.png'></image>
       <view class='text_title'>代课地点:</view>
-      <!-- {{orderInfoDetail.class_address}} -->
-      <view class='text_content'>A4-203</view>
+      <view class='text_content'>{{orderInfoDetail[0].class_address}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='time.png'></image>
       <view class='text_title'>代课时间:</view>
-      <!-- {{orderInfoDetail.class_time}} -->
-      <view class='text_content'>2018-11-17</view>
+      <view class='text_content'>{{orderInfoDetail[0].class_time}}</view>
     </view>
         <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='list.png'></image>
       <view class='text_title'>课程名称:</view>
-      <!-- {{orderInfoDetail.class_name}} -->
-      <view class='text_content'>数据挖掘</view>
+      <view class='text_content'>{{orderInfoDetail[0].class_name}}</view>
     </view>
         <view class='hrzon'></view>
     <view class='content_each_row' id='customer_address'>
       <image class='row_icon' src='list.png'></image>
       <view class='text_title'>其他要求:</view>
-      <!-- {{orderInfoDetail.other_require}} -->
-      <view class='text_content'>要签到</view>
+      <view class='text_content'>{{orderInfoDetail[0].other_require}}</view>
     </view>
   </view>
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='customer.png'></image>
       <view class='text_title'>联系人:</view>
-      <!-- {{orderInfoDetail.contact_name}} -->
-      <view class='text_content'>唐镇溢</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_name}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='phone.png'></image>
       <view class='text_title'>联系电话:</view>
-      <!-- {{orderInfoDetail.contact_tel}} -->
-      <view class='text_content'>15521050226</view>
+      <view class='text_content'> {{orderInfoDetail[0].contact_tel}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
       <image class='row_icon' src='wechat.png'></image>
       <view class='text_title'>微信号:</view>
-      <!-- {{orderInfoDetail.contact_wechat}} -->
-      <view class='text_content'>304208078</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_wechat}}</view>
     </view>
   </view>
   <view class='customer_info'>
     <view class='content_each_row' id='deli_time'>
       <image class='row_icon' src='money.png'></image>
       <view class='text_title'>出价:</view>
-      <!-- {{orderInfoDetail.profit}} -->
-      <view class='text_content'>¥20</view>
+      <view class='text_content'>¥{{orderInfoDetail[0].profit}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='deli_time'>
       <image class='row_icon' src='box.png'></image>
       <view class='text_title'>指定性别:</view>
-      <!-- {{orderInfoDetail.sex_require}} -->
-      <view class='text_content'>男</view>
+      <view class='text_content'>{{orderInfoDetail[0].sex_require}}</view>
     </view>
   </view>
   <view class='order_active'>进行中</view>
