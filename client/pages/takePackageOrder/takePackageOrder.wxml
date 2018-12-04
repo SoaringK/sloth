@@ -25,7 +25,7 @@
   <view bindtap="hideAllChioce" class="mask" hidden="{{!chioceDistrict&&!chioceSorting}}">
   </view>
   <view class='order_recommand'>
-    <view class='order_recommand_each_item' wx:for="{{order}}" wx:key="order_id">
+    <view class='order_recommand_each_item' wx:for="{{order}}" wx:key="order_id" hidden="{{(district_all) && item.get_pack_addr != activeDistrictName || sorting_all}}">
       <view class='row_1' style="flex-direction:row;">
         <view class='order_type'>{{item.order_type}}</view>
         <view class='get_pack_addr'>{{item.get_pack_addr}}</view>
