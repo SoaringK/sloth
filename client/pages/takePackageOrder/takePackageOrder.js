@@ -91,7 +91,10 @@ Page({
     activeSortingIndex: -1,
     activeSortingName: "送货地址",
     district_all:false,
-    sorting_all:false
+    sorting_all:false,
+    activesorting1:'',
+    activesorting2:'',
+    activesorting3:''
   },
   onLoad: function (options) {
     var that = this;
@@ -235,6 +238,9 @@ Page({
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
+      activesorting1: this.data.sortingList[index].value+" 送楼下",
+      activesorting2: this.data.sortingList[index].value+" 送上楼",
+      activesorting3: this.data.sortingList[index].value+" 代保管",
       sorting_all:( this.data.sortingList[index].value != '全部'),
       productList: [],
       pageIndex: 1,

@@ -26,7 +26,7 @@
   </view>
   <view class='order_recommand'>
     <view  wx:for="{{order}}" wx:key="order_id" >
-      <view class='order_recommand_each_item' hidden="{{(district_all)||sorting_all && item.order_shop_address != activeSortingName}}">
+      <view class='order_recommand_each_item' hidden="{{(district_all) && dormitory[item.order_address_building] != activeDistrictName ||sorting_all && item.order_shop_address != activeSortingName}}">
         <view class='row_1' style="flex-direction:row;">
           <view class='order_type'>{{item.order_type}}</view>
           <view class='shop_address'>{{item.order_shop_address}}</view>
