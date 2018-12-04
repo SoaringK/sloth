@@ -44,7 +44,6 @@ module.exports = async ctx => {
     }
     else
       continue
-    var order_address = order_address_building + " " + order_address_room
     var res5
     if (res[i].order_time != undefined)
       res5 = res[i].order_time
@@ -67,7 +66,8 @@ module.exports = async ctx => {
       str += ",{"
     str += "\"order_type\":\"早餐\","
     str += "\"order_id\":\"" + order_id + "\","
-    str += "\"order_shop_address\":\"" + order_shop_address + "\","
+    str += "\"order_address_building\":\"" + order_address_building + "\","
+    str += "\"order_address_room\":\"" + order_address_room + "\","
     str += "\"order_deli_fee\": \"" + order_deli_fee + "\","
     str += "\"order_total_item\": \"" + order_total_item + "\","
     str += "\"order_good_name\": \"" + order_good_name + "\","
