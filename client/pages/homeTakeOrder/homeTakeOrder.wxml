@@ -22,16 +22,16 @@
     </view>
 
     <!-- 详情，条件渲染 -->
-    <!-- order_type:
+    <!-- order_type_:
     0:早餐
     1：快递
     2：跑腿
     3：代课 -->
     <view class='order_recommand_each_item' wx:for="{{order}}" wx:key="order_id">
-      <block wx:if="{{item.order_type==0}}">
+      <block wx:if="{{item.order_type_==0}}">
         <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">
-            <view class='order_type'>早餐</view>
+            <view class='order_type'>{{item.order_type}}</view>
             <view class='shop_address'>{{item.order_shop_address}}</view>
             <view class='profit'>￥{{item.order_deli_fee}}</view>
           </view>
@@ -63,10 +63,10 @@
           </view>
         </view>
       </block>
-      <block wx:elif="{{item.order_type==1}}">
+      <block wx:elif="{{item.order_type_==1}}">
         <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">
-            <view class='order_type'>快递</view>
+            <view class='order_type'>{{item.order_type}}</view>
             <view class='shop_address'>{{item.get_pack_addr}}</view>
             <view class='profit'>￥{{item.profit}}</view>
           </view>
@@ -94,10 +94,10 @@
           </view>
         </view>
       </block>
-      <block wx:elif="{{item.order_type==2}}">
+      <block wx:elif="{{item.order_type_==2}}">
         <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">
-            <view class='order_type'>跑腿</view>
+            <view class='order_type'>{{item.order_type}}</view>
             <view class='shop_address'>{{item.legorder_type}}</view>
             <view class='profit'>￥{{item.profit}}</view>
           </view>
@@ -125,10 +125,10 @@
           </view>
         </view>
       </block>
-      <block wx:elif="{{item.order_type==3}}">
+      <block wx:elif="{{item.order_type_==3}}">
         <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">
-            <view class='order_type'>代课</view>
+            <view class='order_type'>{{item.order_type}}</view>
             <view class='shop_address'>{{item.class_time}}节课</view>
             <view class='profit'>￥{{item.profit}}</view>
           </view>
