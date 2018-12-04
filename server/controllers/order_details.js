@@ -2,7 +2,7 @@ const { mysql } = require('../qcloud')
 
 module.exports = async ctx => {
   var order_id = ctx.request.query.order_id
-  var res1 = await mysql("foodOrder").where({ food_order_id })
+  var res1 = await mysql("foodOrder").where({ order_id })
   /*if(res1.length == 0)
     continue*/
   var user_id = res1[0].user_id
@@ -16,7 +16,7 @@ module.exports = async ctx => {
   var res3 = await mysql("contactInfo").where({ user_id, address_id })
   /*if (res3.length == 0)
     continue*/
-  var res4 = await mysql("foodOrderDetail").where({ food_order_id })
+  var res4 = await mysql("foodOrderDetail").where({ order_id })
   /*if (res4.length == 0)
     continue*/
   var shop_id = (res4[0].good_id).substr(1, 1)
