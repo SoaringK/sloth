@@ -17,22 +17,28 @@ Page({
     }, {
       key: 2,
       value: "女"
+    }, {
+      key: 3,
+      value: "全部"
     }],
     sortingList: [{
       key: 1,
       value: "A1"
     }, {
       key: 2,
-        value: "A2"
+      value: "A2"
     }, {
       key: 3,
-        value: "A3"
+      value: "A3"
     }, {
       key: 4,
-        value: "A4"
+      value: "A4"
     }, {
       key: 5,
       value: "A5"
+    }, {
+      key: 6,
+      value: "全部"
     }],
     chioceDistrict: false,
     chioceSorting: false,
@@ -41,7 +47,9 @@ Page({
     scrollTop: 0,
     scrollIntoView: 0,
     activeSortingIndex: -1,
-    activeSortingName: "代课地点"
+    activeSortingName: "代课地点",
+    district_all:false,
+    sorting_all:false
   },
   onLoad: function (options) {
     var that = this;
@@ -169,6 +177,7 @@ Page({
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
+      district_all:(this.data.districtList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
@@ -183,6 +192,7 @@ Page({
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
+      sorting_all:( this.data.sortingList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,

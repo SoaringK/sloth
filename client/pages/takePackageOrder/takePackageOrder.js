@@ -13,25 +13,25 @@ Page({
     order: [],
     districtList: [{
       key: 1,
-      value: "C1"
+      value: "京东"
     }, {
       key: 2,
-      value: "C2"
+      value: "邮局"
     }, {
       key: 3,
-      value: "C3"
+      value: "一饭"
     }, {
       key: 4,
-      value: "C4"
+      value: "二饭"
     }, {
       key: 5,
-      value: "C5"
+      value: "一饭蜂巢"
     }, {
       key: 6,
-      value: "C6"
+      value: "二饭蜂巢"
     }, {
       key: 7,
-      value: "C7"
+      value: "全部"
     }],
     sortingList: [{
       key: 1,
@@ -47,7 +47,40 @@ Page({
         value: "C4"
     }, {
       key: 5,
-      value: "C1"
+      value: "C5"
+    }, {
+      key: 6,
+      value: "C6"
+    }, {
+      key: 7,
+      value: "C7"
+    }, {
+      key: 8,
+      value: "C8东"
+    }, {
+      key: 9,
+      value: "C8西"
+    }, {
+      key: 10,
+      value: "C9"
+    }, {
+      key: 11,
+      value: "C10"
+    }, {
+      key: 12,
+      value: "C11"
+    }, {
+      key: 13,
+      value: "C12"
+    }, {
+      key: 14,
+      value: "C13"
+    }, {
+      key: 15,
+      value: "C14"
+    }, {
+      key: 16,
+      value: "全部"
     }],
     chioceDistrict: false,
     chioceSorting: false,
@@ -56,7 +89,9 @@ Page({
     scrollTop: 0,
     scrollIntoView: 0,
     activeSortingIndex: -1,
-    activeSortingName: "送货地址"
+    activeSortingName: "送货地址",
+    district_all:false,
+    sorting_all:false
   },
   onLoad: function (options) {
     var that = this;
@@ -184,11 +219,13 @@ Page({
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
+      district_all:(this.data.districtList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
       isLoading: true
     })
+
     //this.getProductList();
   },
   //综合排序
@@ -198,11 +235,18 @@ Page({
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
+      sorting_all:( this.data.sortingList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
       isLoading: true
     })
+    console.log(this.data.sorting_all);
+    console.log(this.data.activeSortingName);
+    console.log(this.data.activeSortingName != '全部');
+    console.log(this.data.order);
+    console.log(this.data.activeSortingName);
+    console.log()
     //this.getProductList();
   },
   submit_take: function (e) {

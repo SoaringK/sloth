@@ -12,26 +12,46 @@ Page({
     order: [],
     districtList: [{
       key: 1,
-      value: "南校"
+      value: "校内跑腿"
     }, {
       key: 2,
-      value: "北校"
-    }],
+      value: "代购"
+    }, {
+      key: 3,
+      value: "全部"
+    }, ],
     sortingList: [{
       key: 1,
-      value: "南校"
+      value: "文件"
     }, {
       key: 2,
-      value: "北校"
-    }],
+      value: "钥匙"
+    },{
+      key: 3,
+      value: "充电宝"
+    },{
+      key: 4,
+      value: "手机"
+    },{
+      key: 5,
+      value: "鲜花"
+    },{
+      key: 6,
+      value: "其他"
+    },{
+      key: 7,
+      value: "全部"
+    },],
     chioceDistrict: false,
     chioceSorting: false,
     activeDistrictIndex: -1,
-    activeDistrictName: "起点",
+    activeDistrictName: "跑腿类型",
     scrollTop: 0,
     scrollIntoView: 0,
     activeSortingIndex: -1,
-    activeSortingName: "目的地"
+    activeSortingName: "物品类型",
+    district_all:false,
+    sorting_all:false
   },
   onLoad: function (options) {
     var that = this;
@@ -159,6 +179,7 @@ Page({
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
+      district_all:(this.data.districtList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
@@ -173,11 +194,18 @@ Page({
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
+      sorting_all:( this.data.sortingList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
       isLoading: true
     })
+    console.log(this.data.sorting_all);
+    console.log(this.data.activeSortingName);
+    console.log(this.data.activeSortingName != '全部');
+    console.log(this.data.order);
+    console.log(this.data.activeSortingName);
+    console.log()
     //this.getProductList();
   },
   submit_take: function (e) {
