@@ -53,7 +53,7 @@
       <view class="total">￥{{cost}}</view>
     </view>
     <view>
-      <button class='commit_btn' wx:if="{{!logged || !infoComformed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">去结算</button>
+      <button class='commit_btn' wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">去结算</button>
       <navigator url="../breakfastOrderConfirm/breakfastOrderConfirm" wx:else bind:tap="submit">
         <button class='commit_btn'>去结算</button>
       </navigator>
