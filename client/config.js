@@ -99,6 +99,11 @@ var config = {
     //代课订单详情
     order_info_substituteUrl: `${host}/weapp/order_info_substitute`,
 
+    //更改用户信息
+    changeUserInfoUrl:`${host}/weapp/changeUserInfo`,
+
+    //获取用户信息
+    getUserInfoUrl:`${host}/weapp/getUserInfo`,
   }
 };
 

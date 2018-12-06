@@ -5,6 +5,7 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
+    infoComfirmed:false,
     logged:false,
     userinfo:[],
     typeID: 0,
@@ -98,21 +99,6 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    wx.getStorage({
-      key: 'userinfo',
-      success: function (res) {
-        // console.log("读入userinfo")
-        // console.log(res)
-        that.setData({
-          logged:true,
-          userinfo:res.data,
-          userId: res.data.openId
-        })
-      },
-      fail:function(res){
-        console.log("还没有登录")
-      }
-    });
     wx.request({
       url: config.service.take_order_home_packageUrl,
       method: "GET",
@@ -293,7 +279,14 @@ Page({
     })
   },
   bindGetUserInfo: function () {
-    if (this.data.logged) return
+    var that = this
+    if (this.data.logged) {
+      if (!this.data.infoComfirmed) {
+        that.showinfowarning()
+        return
+      }
+    }
+
     util.showBusy('正在登录')
 
     const session = qcloud.Session.get()
@@ -304,7 +297,12 @@ Page({
       // 可使用本函数更新登录态
       qcloud.loginWithCode({
         success: res => {
-          this.setData({ userInfo: res, logged: true })
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
           util.showSuccess('登录成功')
         },
         fail: err => {
@@ -316,7 +314,12 @@ Page({
       // 首次登录
       qcloud.login({
         success: res => {
-          this.setData({ userInfo: res, logged: true })
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
           util.showSuccess('登录成功')
         },
         fail: err => {
@@ -325,6 +328,78 @@ Page({
         }
       })
     }
+  },
+  checklogin: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          userId: res.data.openId,
+          userinfo: res.data,
+          logged: true
+        })
+        wx.getStorage({
+          key: 'user_myinfo',
+          success: function (res) {
+            console.log("从缓存读取信息： " + res.data)
+            if (res.data.user_name != 0) {
+              that.setData({
+                infoComfirmed: true
+              })
+              console.log("已完善信息")
+            } else {
+              that.showinfowarning()
+            }
+          },
+          fail: function () {
+            wx.request({
+              url: config.service.getUserInfoUrl + '?user_id=' + that.data.userinfo.openId,
+              header: {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              method: "GET",
+              success(res) {
+                console.log("从数据库读取: " + res.data.data.data)
+                if (res.data.data.data.user_name != 0) {
+                  that.setData({
+                    infoComfirmed: true
+                  })
+                  wx.setStorage({
+                    key: 'user_myinfo',
+                    data: res.data.data.data,
+                  })
+                  console.log("已完善信息")
+                } else {
+                  that.showinfowarning()
+                }
+              },
+            })
+          }
+        })
+      }
+    })
+
+  },
+
+  onShow: function () {
+    this.checklogin()
+  },
+
+  showinfowarning: function () {
+    wx.showModal({
+      title: '您的信息未完善!',
+      content: '请先完善信息',
+      confirmText: '去完善',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../myInfo/myInfo',
+          })
+        }
+      }
+    })
   }
 
 })

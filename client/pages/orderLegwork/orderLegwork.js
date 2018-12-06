@@ -5,6 +5,7 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
+    infoComfirmed:false,
     logged:false,
     userinfo:[],
     index: 0,
@@ -23,26 +24,89 @@ Page({
     ],
     multiIndex: [0, 0, 0],
   },
-  onLoad: function (options) {
-    
+
+  checklogin: function () {
     var that = this;
-    // 从缓存中得到订单信息
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
+        console.log(res.data)
         that.setData({
-          logged:true,
-          userinfo:res.data,
-          userId: res.data.openId
+          userinfo: res.data,
+          logged: true
         })
-      },
-      fail:function(res){
-        console.log("是没有登录的")
+        wx.getStorage({
+          key: 'user_myinfo',
+          success: function (res) {
+            console.log("从缓存读取信息： " + res.data)
+            if (res.data.user_name != 0) {
+              that.setData({
+                infoComfirmed: true
+              })
+              console.log("已完善信息")
+            } else {
+              wx.showModal({
+                title: '您的信息未完善!',
+                content: '请先完善信息',
+                confirmText: '去完善',
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../myInfo/myInfo',
+                    })
+                  }
+                }
+              })
+              // console.log("还未完善信息！")
+            }
+          },
+          fail: function () {
+            wx.request({
+              url: config.service.getUserInfoUrl + '?user_id=' + that.data.userinfo.openId,
+              header: {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              method: "GET",
+              success(res) {
+                console.log("从数据库读取: " + res.data.data.data)
+                if (res.data.data.data.user_name != 0) {
+                  that.setData({
+                    infoComfirmed: true
+                  })
+                  wx.setStorage({
+                    key: 'user_myinfo',
+                    data: res.data.data.data,
+                  })
+                  console.log("已完善信息")
+                } else {
+                  wx.showModal({
+                    title: '您的信息未完善!',
+                    content: '请先完善信息',
+                    confirmText: '去完善',
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.navigateTo({
+                          url: '../myInfo/myInfo',
+                        })
+                      }
+                    }
+                  })
+                }
+              },
+            })
+          }
+        })
       }
-    });
+    })
   },
+
+
+  onShow:function()
+  {
+    this.checklogin()
+  },
+
+  onLoad:function(){},
 
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -102,7 +166,25 @@ Page({
 
   },
   bindGetUserInfo: function () {
-    if (this.data.logged) return
+    var that = this
+    if (this.data.logged) {
+      if (!this.data.infoComfirmed) {
+        wx.showModal({
+          title: '您的信息未完善!',
+          content: '请先完善信息',
+          confirmText: '去完善',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../myInfo/myInfo',
+              })
+            }
+          }
+        })
+        return
+      }
+    }
+
     util.showBusy('正在登录')
 
     const session = qcloud.Session.get()
@@ -113,7 +195,12 @@ Page({
       // 可使用本函数更新登录态
       qcloud.loginWithCode({
         success: res => {
-          this.setData({ userInfo: res, logged: true })
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
           util.showSuccess('登录成功')
         },
         fail: err => {
@@ -125,7 +212,12 @@ Page({
       // 首次登录
       qcloud.login({
         success: res => {
-          this.setData({ userInfo: res, logged: true })
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
           util.showSuccess('登录成功')
         },
         fail: err => {
@@ -134,6 +226,7 @@ Page({
         }
       })
     }
+
   },
 
 })

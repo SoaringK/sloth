@@ -5,8 +5,9 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    logged:false,
-    userinfo:[],
+    logged: false,
+    userinfo: [],
+    infoComfirmed: false,
     index: 0,
     index1: 0,
     index2: 0,
@@ -29,58 +30,120 @@ Page({
     multiIndex1: [0, 0, 0],
 
   },
-  onLoad: function (options) {
-    // 试着用easy-mock测试
+
+  checkLogin:function(){
     var that = this;
-    // 从缓存中得到订单信息
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
+        console.log(res.data)
         that.setData({
-          logged:true,
-          userinfo:res.data,
-          userId: res.data.openId
+          userinfo: res.data,
+          logged: true
         })
-      },
-      fail:function(res){
-        console.log("还没有登录")
+        wx.getStorage({
+          key: 'user_myinfo',
+          success: function (res) {
+            console.log("从缓存读取信息： " + res.data)
+            if (res.data.user_name != 0) {
+              that.setData({
+                infoComfirmed: true
+              })
+              console.log("已完善信息")
+            } else {
+              wx.showModal({
+                title: '您的信息未完善!',
+                content: '请先完善信息',
+                confirmText: '去完善',
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../myInfo/myInfo',
+                    })
+                  }
+                }
+              })
+              // console.log("还未完善信息！")
+            }
+          },
+          fail: function () {
+            wx.request({
+              url: config.service.getUserInfoUrl + '?user_id=' + that.data.userinfo.openId,
+              header: {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              method: "GET",
+              success(res) {
+                console.log("从数据库读取: " + res.data.data.data)
+                if (res.data.data.data.user_name != 0) {
+                  that.setData({
+                    infoComfirmed: true
+                  })
+                  wx.setStorage({
+                    key: 'user_myinfo',
+                    data: res.data.data.data,
+                  })
+                  console.log("已完善信息")
+                } else {
+                  wx.showModal({
+                    title: '您的信息未完善!',
+                    content: '请先完善信息',
+                    confirmText: '去完善',
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.navigateTo({
+                          url: '../myInfo/myInfo',
+                        })
+                      }
+                    }
+                  })
+                }
+              },
+            })
+          }
+        })
       }
-    });
+    })
   },
 
-  bindPickerChange: function (e) {
+  onLoad: function(options) {
+    
+  },
+
+  onShow:function(){
+    this.checkLogin()
+  },
+  bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
-  bindPickerChange1: function (e) {
+  bindPickerChange1: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index1: e.detail.value
     })
   },
-  bindPickerChange2: function (e) {
+  bindPickerChange2: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index2: e.detail.value
     })
   },
-  bindPickerChange3: function (e) {
+  bindPickerChange3: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index3: e.detail.value
     })
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
-  bindMultiPickerColumnChange: function (e) {
+  bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
@@ -89,13 +152,13 @@ Page({
     data.multiIndex[e.detail.column] = e.detail.value;
     this.setData(data);
   },
-  bindMultiPickerChange1: function (e) {
+  bindMultiPickerChange1: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex1: e.detail.value
     })
   },
-  bindMultiPickerColumnChange1: function (e) {
+  bindMultiPickerColumnChange1: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray1: this.data.multiArray1,
@@ -104,37 +167,52 @@ Page({
     data.multiIndex1[e.detail.column] = e.detail.value;
     this.setData(data);
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     var that = this;
     console.log('form发生了submit事件，携带数据为：', JSON.stringify(that.data.info))
     wx.request({
-      url: config.service.order_packageUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userId,
-      method: "GET",
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-        console.log(e.detail.value)
-        console.log(res)
-      }
-    }),
-    wx.showToast({
-      title: '下单成功',
-      icon: 'success',
-      duration: 1000
-    }),
-      setTimeout(function () {
-      wx.switchTab({
-        url: '../homeOrder/homeOrder',
-      })
+        url: config.service.order_packageUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userId,
+        method: "GET",
+        header: {
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        success: function(res) {
+          console.log(e.detail.value)
+          console.log(res)
+        }
+      }),
+      wx.showToast({
+        title: '下单成功',
+        icon: 'success',
+        duration: 1000
+      }),
+      setTimeout(function() {
+        wx.switchTab({
+          url: '../homeOrder/homeOrder',
+        })
       }, 1200)
- 
+
   },
 
-  bindGetUserInfo: function () {
-    console.log("hi")
-    //if (this.data.logged) return
-
+  bindGetUserInfo: function() {
+    var that = this
+    if (this.data.logged){
+      if(!this.data.infoComfirmed){
+        wx.showModal({
+          title: '您的信息未完善!',
+          content: '请先完善信息',
+          confirmText: '去完善',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../myInfo/myInfo',
+              })
+            }
+          }
+        })
+        return
+      }
+    }
 
     util.showBusy('正在登录')
 
@@ -146,7 +224,12 @@ Page({
       // 可使用本函数更新登录态
       qcloud.loginWithCode({
         success: res => {
-          this.setData({ userInfo: res, logged: true })
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
           util.showSuccess('登录成功')
         },
         fail: err => {
@@ -158,7 +241,12 @@ Page({
       // 首次登录
       qcloud.login({
         success: res => {
-          this.setData({ userInfo: res, logged: true })
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
           util.showSuccess('登录成功')
         },
         fail: err => {
@@ -167,6 +255,7 @@ Page({
         }
       })
     }
+
   },
 
 })

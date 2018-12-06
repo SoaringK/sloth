@@ -8,16 +8,19 @@ Page({
     user_phone: [],
   },
   onLoad: function (options) {
-    console.log("The cust_id is: ", options.cust_id);
     var that = this;
-    var flag = false;
-    flag = options.flag;
-    that.user_id = options.user_id;
-    that.setData({
-      user_id: options.user_id,
-      user_name: options.user_name,
-      user_phone: options.user_phone,
-      user_wechat: options.user_wechat,
+    wx.getStorage({
+      key: 'user_myinfo',
+      success: function(res) {
+        that.setData({
+          user_id:res.data.user_id,
+          user_name:res.data.user_name,
+          user_phone:res.data.user_tel,
+          user_wechat:res.data.user_wechat
+        })
+      },
+      fail: function(res) {},
+      complete: function(res) {},
     })
   },
 
@@ -34,37 +37,25 @@ Page({
       warn = "请输入您的微信号！";
     } else {
       flag = true
+    }
 
       wx.request({
         // 请后台修改下面config.service.changeAddressUrl这个位置变为changeUserInfoUrl
-        url: config.service.changeAddressUrl + "?user_id=" + this.data.user_id + "&prename=" + this.data.user_name + "&prephone=" + this.data.user_phone + "&prewechat=" + this.data.user_wechat + "&name=" + e.detail.value.namearea + "&phone=" + e.detail.value.phonearea + "&wechat=" + e.detail.value.wechatarea,
+        url: config.service.changeUserInfoUrl + "?user_id=" + this.data.user_id + "&name=" + this.data.user_name + "&phone=" + this.data.user_phone + "&wechat=" + this.data.user_wechat,
         header: {
           "content-type": "application/x-www-form-urlencoded"
         },
         method: "GET",
-        /*
-                data: {
-                    user_name: e.detail.value.namearea,
-                    user_phone: e.detail.value.phonearea,
-                    user_wechat: e.detail.value.wechatarea
-                },*/
         success(res) {
           console.log("debug")
           console.log(res)
           wx.showToast({
-            title: '修改地址成功',
+            title: '修改信息成功',
             icon: 'success',
             duration: 2000
           })
-          setTimeout(function (e) {
-            wx.navigateTo({
-              url: '../order_confirm/order_confirm'
-            })
-          }, 2000)
         }
       })
-    }
-
     if (flag == false) {
       wx.showModal({
         title: '提示',

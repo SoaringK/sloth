@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    infoComfirmed:false,
     logged:false,
     userInfo:{},
     shop: [],
@@ -206,64 +207,13 @@ Page({
     });
   },
 
-  bindGetUserInfo: function () {
-    console.log("hi")
-    //if (this.data.logged) return
-    
-
-    util.showBusy('正在登录')
-
-    const session = qcloud.Session.get()
-
-    if (session) {
-      // 第二次登录
-      // 或者本地已经有登录态
-      // 可使用本函数更新登录态
-      qcloud.loginWithCode({
-        success: res => {
-          this.setData({ userInfo: res, logged: true })
-          util.showSuccess('登录成功')
-        },
-        fail: err => {
-          console.error(err)
-          util.showModel('登录错误', err.message)
-        }
-      })
-    } else {
-      // 首次登录
-      qcloud.login({
-        success: res => {
-          this.setData({ userInfo: res, logged: true })
-          util.showSuccess('登录成功')
-        },
-        fail: err => {
-          console.error(err)
-          util.showModel('登录错误', err.message)
-        }
-      })
-    }
-  },
-
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     
     var that = this;
-
-    wx.getStorage({
-      key: 'userinfo',
-      success: function(res) {
-        console.log("是已经登陆的")
-        that.setData({
-          logged: true,
-          userInfo: res.data
-        })
-      },
-      fail:function(res){
-        console.log("还没有登陆")
-      }
-    })
 
     // 用店铺id去get数据
     wx.request({
@@ -284,6 +234,149 @@ Page({
     })
   },
 
+  checkLogin: function () {
+    var that = this;
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          userinfo: res.data,
+          logged: true
+        })
+        wx.getStorage({
+          key: 'user_myinfo',
+          success: function (res) {
+            console.log("从缓存读取信息： " + res.data)
+            if (res.data.user_name != 0) {
+              that.setData({
+                infoComfirmed: true
+              })
+              console.log("已完善信息")
+            } else {
+              wx.showModal({
+                title: '您的信息未完善!',
+                content: '请先完善信息',
+                confirmText: '去完善',
+                success: function (res) {
+                  if (res.confirm) {
+                    wx.navigateTo({
+                      url: '../myInfo/myInfo',
+                    })
+                  }
+                }
+              })
+              // console.log("还未完善信息！")
+            }
+          },
+          fail: function () {
+            wx.request({
+              url: config.service.getUserInfoUrl + '?user_id=' + that.data.userinfo.openId,
+              header: {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              method: "GET",
+              success(res) {
+                console.log("从数据库读取: " + res.data.data.data)
+                if (res.data.data.data.user_name != 0) {
+                  that.setData({
+                    infoComfirmed: true
+                  })
+                  wx.setStorage({
+                    key: 'user_myinfo',
+                    data: res.data.data.data,
+                  })
+                  console.log("已完善信息")
+                } else {
+                  wx.showModal({
+                    title: '您的信息未完善!',
+                    content: '请先完善信息',
+                    confirmText: '去完善',
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx.navigateTo({
+                          url: '../myInfo/myInfo',
+                        })
+                      }
+                    }
+                  })
+                }
+              },
+            })
+          }
+        })
+      }
+    })
+  },
+
+  onShow: function () {
+    this.checkLogin()
+  },
+
+  bindGetUserInfo: function () {
+    var that = this
+    if (this.data.logged) {
+      if (!this.data.infoComfirmed) {
+        wx.showModal({
+          title: '您的信息未完善!',
+          content: '请先完善信息',
+          confirmText: '去完善',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../myInfo/myInfo',
+              })
+            }
+          }
+        })
+        return
+      }
+    }
+
+    util.showBusy('正在登录')
+
+    const session = qcloud.Session.get()
+
+    if (session) {
+      // 第二次登录
+      // 或者本地已经有登录态
+      // 可使用本函数更新登录态
+      qcloud.loginWithCode({
+        success: res => {
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
+          util.showSuccess('登录成功')
+        },
+        fail: err => {
+          console.error(err)
+          util.showModel('登录错误', err.message)
+        }
+      })
+    } else {
+      // 首次登录
+      qcloud.login({
+        success: res => {
+          this.setData({
+            userinfo: res,
+            logged: true
+          }, function () {
+            that.onShow()
+          })
+          util.showSuccess('登录成功')
+        },
+        fail: err => {
+          console.error(err)
+          util.showModel('登录错误', err.message)
+        }
+      })
+    }
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -294,9 +387,6 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

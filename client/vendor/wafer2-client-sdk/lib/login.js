@@ -64,7 +64,6 @@ function login (opts) {
         if (err) {
             return opts.fail(err)
         }
-
         // 构造请求头，包含 code、encryptedData 和 iv
         const header = {
             [constants.WX_HEADER_CODE]: loginResult.code,
@@ -100,7 +99,6 @@ function login (opts) {
                       fail: function(res) {},
                       complete: function(res) {},
                     })
-                console.log("会经过这里吗")
                 
             },
             fail (err) {
@@ -151,7 +149,7 @@ function loginWithCode (opts) {
                     wx.setStorage({
                       key: 'userinfo',
                       data:data.data.userinfo,
-                      success: function(res) {console.log("set ok")},
+                      success: function(res) {console.log("set 2ok")},
                       fail: function(res) {},
                       complete: function(res) {},
                     })

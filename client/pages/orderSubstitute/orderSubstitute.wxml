@@ -82,7 +82,7 @@
     </scroll-view>
 
     <view class='submit_btn'>
-      <button wx:if="{{!logged}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击下单</button>
+      <button wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击下单</button>
       <button formType="submit" wx:else>点击下单</button>
     </view>
 
