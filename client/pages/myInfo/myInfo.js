@@ -1,3 +1,6 @@
+var app = getApp();
+var config = require('../../config');
+
 Page({
   data: {
     height: 20,
@@ -25,15 +28,17 @@ Page({
   },
 
   formSubmit: function (e) {
+
     var warn = "";
     var that = this;
     var flag = false
+    console.log(e)
 
     if (e.detail.value.namearea == "") {
       warn = "请填写您的姓名！";
     } else if (e.detail.value.phonearea == "") {
       warn = "请填写您的手机号！";
-    } else if (e.detail.value.addressarea == "") {
+    } else if (e.detail.value.wechatarea == "") {
       warn = "请输入您的微信号！";
     } else {
       flag = true
@@ -41,12 +46,24 @@ Page({
 
       wx.request({
         // 请后台修改下面config.service.changeAddressUrl这个位置变为changeUserInfoUrl
-        url: config.service.changeUserInfoUrl + "?user_id=" + this.data.user_id + "&name=" + this.data.user_name + "&phone=" + this.data.user_phone + "&wechat=" + this.data.user_wechat,
+        url: config.service.changeUserInfoUrl + "?user_id=" + that.data.user_id + "&name=" + e.detail.value.namearea + "&phone=" + e.detail.value.phonearea + "&wechat=" + e.detail.value.wechatarea,
         header: {
           "content-type": "application/x-www-form-urlencoded"
         },
         method: "GET",
         success(res) {
+          wx.setStorage({
+            key: 'user_myinfo',
+            data: {
+              user_id:that.data.user_id,
+              user_name: e.detail.value.namearea,
+              user_tel: e.detail.value.phonearea,
+              user_wechat: e.detail.value.wechatarea
+            },
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
+          })
           console.log("debug")
           console.log(res)
           wx.showToast({
