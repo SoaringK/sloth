@@ -143,7 +143,7 @@ Page({
     var that = this
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     wx.request({
-      url: config.service.legsworkOrderUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userId,
+      url: config.service.legsworkOrderUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userinfo.openId,
       method: "GET",
       header: {
         "content-type": "application/x-www-form-urlencoded"

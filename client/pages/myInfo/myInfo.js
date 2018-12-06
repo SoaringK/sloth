@@ -15,7 +15,7 @@ Page({
     wx.getStorage({
       key: 'user_myinfo',
       success: function(res) {
-        that.setData({
+        that.setData({  
           user_id:res.data.user_id,
           user_name:res.data.user_name,
           user_phone:res.data.user_tel,

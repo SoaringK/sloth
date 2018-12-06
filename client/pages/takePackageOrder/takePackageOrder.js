@@ -258,7 +258,7 @@ Page({
             order: data
           }),
             wx.request({
-            url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=2",
+            url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userinfo.openId + "&order_type=2",
               method: "GET",
               header: {
                 "content-type": "application/json"
@@ -336,7 +336,6 @@ Page({
       success: function (res) {
         console.log(res.data)
         that.setData({
-          userId: res.data.openId,
           userinfo: res.data,
           logged: true
         })

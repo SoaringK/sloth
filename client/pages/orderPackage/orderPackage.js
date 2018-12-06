@@ -12,7 +12,6 @@ Page({
     index1: 0,
     index2: 0,
     index3: 0,
-    userId: 0,
     array: ['京东', '邮局', '一饭', '二饭', '一饭蜂巢', '二饭蜂巢'],
     money: ['1', '2', '3', '4', '5', '6'],
     order_weight: ['<1KG', '1-2KG', '2-3KG', '3-5KG', '5KG以上'],
@@ -171,7 +170,7 @@ Page({
     var that = this;
     console.log('form发生了submit事件，携带数据为：', JSON.stringify(that.data.info))
     wx.request({
-        url: config.service.order_packageUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userId,
+        url: config.service.order_packageUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userinfo.openId,
         method: "GET",
         header: {
           "content-type": "application/x-www-form-urlencoded"

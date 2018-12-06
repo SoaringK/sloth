@@ -11,7 +11,7 @@ Page({
   data: {
     infoComfirmed:false,
     logged:false,
-    userInfo:{},
+    userinfo:{},
     shop: [],
     menu: [],
     selected: 0,
