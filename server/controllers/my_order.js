@@ -123,7 +123,7 @@ module.exports = async ctx => {
           order_good_num = 1
           order_good_name = res12[0].good_type
           order_address = res12[0].destination
-          order_deli_time = res11[0].complete_time
+          order_deli_time = res12[0].complete_time
           order_time = res12[0].order_time
           order_state = res12[0].order_state
           order_sum = 0
