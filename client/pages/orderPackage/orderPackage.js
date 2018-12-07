@@ -27,7 +27,10 @@ Page({
     ],
     multiIndex: [0, 0, 0],
     multiIndex1: [0, 0, 0],
-
+    packagenum:'',
+    contactname:'',
+    contacttel:'',
+    contactwechat:'',
   },
 
   checkLogin:function(){
@@ -109,6 +112,7 @@ Page({
     
   },
 
+
   onShow:function(){
     this.checkLogin()
   },
@@ -166,6 +170,79 @@ Page({
     data.multiIndex1[e.detail.column] = e.detail.value;
     this.setData(data);
   },
+
+  packageNum: function(e){
+    this.setData({
+      packagenum: e.detail.value,
+    })
+  },
+
+  emptypackageNum: function(){
+    wx.showModal({
+      title: '您还未输入取件码!',
+      content: '请先输入您的取件码',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  contactName: function(e){
+    this.setData({
+      contactname: e.detail.value,
+    })
+  },
+
+  emptycontactName: function(){
+    wx.showModal({
+      title: '您还未输入联系人!',
+      content: '请先输入联系人',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  contactTel: function(e){
+    this.setData({
+      contacttel: e.detail.value,
+    })
+  },
+
+  emptycontactTel: function(){
+    wx.showModal({
+      title: '您还未输入联系人电话!',
+      content: '请先输入联系人电话',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  contactWechat: function(e){
+    this.setData({
+      contactwechat: e.detail.value,
+    })
+  },
+
+  emptycontactWechat: function(){
+    wx.showModal({
+      title: '您还未输入联系人微信!',
+      content: '请先输入联系人微信',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
   formSubmit: function(e) {
     var that = this;
     console.log('form发生了submit事件，携带数据为：', JSON.stringify(that.data.info))

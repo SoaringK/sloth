@@ -20,7 +20,7 @@
     <view class='div_hr'></view>
     <view class='package_num'>
       <view class='sub_title'>取货码</view>
-      <input name="package_num" class='input_area' placeholder="点击输入取货码" />
+      <input name="package_num" class='input_area' placeholder="点击输入取货码" bindinput="packageNum"/>
     </view>
     <view class='div_hr'></view>
     <view class='complete_time'>
@@ -88,17 +88,17 @@
   <view class='contact_info'>
     <view class='name'>
       <view class='sub_title'>联系人</view>
-      <input name="contact_name" class='input_area' placeholder="点击输入联系人姓名" />
+      <input name="contact_name" class='input_area' placeholder="点击输入联系人姓名" bindinput="contactName"/>
     </view>
     <view class='div_hr'></view>
     <view class='tel'>
       <view class='sub_title'>联系电话</view>
-      <input name="contact_tel" class="input_area" type="number" placeholder="点击输入联系人电话" />
+      <input name="contact_tel" class="input_area" type="number" placeholder="点击输入联系人电话" bindinput="contactTel"/>
     </view>
     <view class='div_hr'></view>
     <view class='wechat_id'>
       <view class='sub_title'>微信号</view>
-      <input name="contact_wechat" class='input_area' placeholder="点击输入联系人微信号" />
+      <input name="contact_wechat" class='input_area' placeholder="点击输入联系人微信号" bindinput="contactWechat"/>
     </view>
   </view>
 
@@ -106,9 +106,11 @@
 </scroll-view>
   <view class='submit_btn'>
     <button wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击下单</button>
+    <button wx:elif="{{!packagenum}}" bindtap="emptypackageNum">点击下单</button>
+    <button wx:elif="{{!contactname}}" bindtap="emptycontactName">点击下单</button>
+    <button wx:elif="{{!contacttel}}" bindtap="emptycontactTel">点击下单</button>
+    <button wx:elif="{{!contactwechat}}" bindtap="emptycontactWechat">点击下单</button>
     <button formType="submit" wx:else>点击下单</button>
   </view>
-
 </form>
-
 </view>

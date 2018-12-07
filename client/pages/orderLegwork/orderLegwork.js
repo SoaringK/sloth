@@ -23,6 +23,13 @@ Page({
       ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
     ],
     multiIndex: [0, 0, 0],
+    startpoint:'',
+    endpoint:'',
+    profit:'',
+    otherrequire:'',
+    contactname:'',
+    contacttel:'',
+    contactwechat:'',
   },
 
   checklogin: function () {
@@ -139,6 +146,130 @@ Page({
     })
   },
 
+  startPoint: function(e){
+    this.setData({
+      startpoint: e.detail.value,
+    })
+  },
+
+  emptystartPoint: function(){
+    wx.showModal({
+      title: '您还未输入起点!',
+      content: '请先输入起点',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  endPoint: function(e){
+    this.setData({
+      endpoint: e.detail.value,
+    })
+  },
+
+  emptyendPoint: function(){
+    wx.showModal({
+      title: '您还未输入目的地!',
+      content: '请先输入目的地',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  Profit: function(e){
+    this.setData({
+      profit: e.detail.value,
+    })
+  },
+
+  emptyProfit: function(){
+    wx.showModal({
+      title: '您还未输入费用!',
+      content: '请先输入费用',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+  otherRequire: function(e){
+    this.setData({
+      otherrequire: e.detail.value,
+    })
+  },
+
+  emptyotherRequire: function(){
+    wx.showModal({
+      title: '您还未输入其他要求!',
+      content: '若没有要求请填“无”',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  contactName: function(e){
+    this.setData({
+      contactname: e.detail.value,
+    })
+  },
+
+  emptycontactName: function(){
+    wx.showModal({
+      title: '您还未输入联系人!',
+      content: '请先输入联系人',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  contactTel: function(e){
+    this.setData({
+      contacttel: e.detail.value,
+    })
+  },
+
+  emptycontactTel: function(){
+    wx.showModal({
+      title: '您还未输入联系人电话!',
+      content: '请先输入联系人电话',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
+
+  contactWechat: function(e){
+    this.setData({
+      contactwechat: e.detail.value,
+    })
+  },
+
+  emptycontactWechat: function(){
+    wx.showModal({
+      title: '您还未输入联系人微信!',
+      content: '请先输入联系人微信',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
   formSubmit: function (e) {
     var that = this
     console.log('form发生了submit事件，携带数据为：', e.detail.value)

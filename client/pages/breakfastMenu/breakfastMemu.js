@@ -377,6 +377,17 @@ Page({
 
   },
 
+  emptyOrder: function(){
+    wx.showModal({
+      title: '您还未购买任何商品!',
+      content: '请先选择您想购买的商品',
+      confirmText: '确定',
+      success: function (res) {
+        if (res.confirm) {
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
