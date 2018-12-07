@@ -26,7 +26,7 @@ Page({
         "src": "../../images/2.png",
         "url": "../takePackageOrder/takePackageOrder"
       },
-      {
+      { 
         "name": "跑腿",
         "src": "../../images/3.png",
         "url": "../takeLegsworkOrder/takeLegsworkOrder"

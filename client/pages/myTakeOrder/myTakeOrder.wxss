@@ -308,6 +308,7 @@ page {
   padding: 3rpx 12rpx;
   margin-top: -15rpx;
   border-radius: 5rpx;
+  text-align: center;
 }
 
 .order-state2 {
@@ -317,6 +318,7 @@ page {
   padding: 3rpx 12rpx;
   margin-top: -15rpx;
   border-radius: 5rpx;
+  text-align: center;
 }
 
 .default-content {
@@ -324,4 +326,11 @@ page {
    text-align: center;
    align-items: center;
    justify-content: center;
+}
+
+.profit {
+  font-size: 40rpx;
+  color: #fd645f;
+  font-weight: 700;
+  padding-right: 10rpx;
 }

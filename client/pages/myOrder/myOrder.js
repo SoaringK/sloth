@@ -9,7 +9,7 @@ Page({
     current: 0,//当前选中的Tab项
     currentorder:[],
     runningorder: [],
-    finishedorder:[],
+    finishedorder:[], 
 
     typeID: 0,
     isLoading: true,
@@ -104,7 +104,7 @@ Page({
     var index=e.currentTarget.dataset.index
     //console.log(this.data.currentorder[index])
     var order_id=this.data.currentorder[index].order_id
-    var order_type=this.data.currentorder[index].order_type_
+    var order_type=this.data.currentorder[index].order_type+1
     //console.log(order_id)
     if(this.data.currentorder[index].order_state==1){
       wx.request({
@@ -284,6 +284,16 @@ Page({
     })
     //this.getProductList();
   },
+
+  checkinfo1: function (e) {
+    var that = this;
+    var item = that.data.currentorder[e.currentTarget.dataset.index];
+    //console.log(order_id)
+    wx.navigateTo({
+      url: '../infoPackage/infoPackage?order_id=' + item.order_id + '&infotype=1',
+    })
+  },
+  /*
   check_order: function(e){
     // console.log(e);
     var that = this;
@@ -301,6 +311,7 @@ Page({
       }
     })
   }
+  */
 })
 
 

@@ -6,7 +6,7 @@ Page({
   data: {
     status: true,
     orderInfoDetail: {},
-    userId: 0
+    userId: 0,
   },
   onLoad: function (options) {
     var that = this;
@@ -21,6 +21,10 @@ Page({
         })
       },
     });
+    /*infotype
+        0:联系人信息
+        1:接单人信息
+    */
     wx.request({
       url: config.service.order_info_packageUrl + "?order_id=" + options.order_id,
       method: "GET",

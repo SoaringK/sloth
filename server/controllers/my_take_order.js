@@ -1,177 +1,152 @@
-const {
-  mysql
-} = require('../qcloud')
+const { mysql } = require('../qcloud')
 
 module.exports = async ctx => {
   var open_id = ctx.request.query.user_id
-  var order_type_
-  var order_type
-  var order_id, order_shop_address, order_deli_fee, order_total_item, order_good_name, order_good_num, order_address, order_time, order_state, order_sum, order_deli_time
-  var res = await mysql("orderinfo").where({ open_id })
-  //ctx.state.data=res
-  var count = 0
-  var num = res.length
+  var rett = await mysql("orderinfo").where({ open_id })
+  var length = rett.length
   var str = "{\"data\":["
-  for (var i = 0; i < num; i++) {
-    if (res[i].order_id != undefined)
-      order_id = res[i].order_id
-    else
-      continue
-    var res10 = await mysql("orderList").where({
-      order_id
-    })
-    order_type_=res10[0].order_type;
-    if (order_type_ == 1) {
-      order_deli_time="明早7: 00 - 8: 00"    
-      order_type='早餐'
-      var res1 = await mysql("foodOrderDetail").where({
-        order_id
-      })
-      order_total_item = res1.length
-      if (res1.length != 0)
-        good_id = res1[0].good_id
-      else
+  var count = 0
+
+  for (var i = 0; i < length; i++) {
+    var order_id = rett[i].order_id
+    var ret=await mysql('orderList').where({ order_id })
+    var order_type = ret[0].order_type
+    if (order_type == 1) {
+      var res = await mysql("foodOrder").where({ order_id })
+      var order_state = res[0].order_state
+      var res1 = await mysql("foodOrderDetail").where({ order_id })
+      var order_total_item = res1.length
+      var good_id = res1[0].good_id
+      var res4 = await mysql("foodMenu").where({ good_id })
+      var order_good_name = res4[0].good_name
+      var shop_id = good_id.substr(1, 1)
+      var res2 = await mysql("foodShop").where({ shop_id })
+
+      var order_shop_address = res2[0].shop_intro
+      var order_deli_fee = res2[0].shipping_fee
+
+
+      var order_good_num = res1[0].good_order_num
+      var open_id = res[0].open_id
+      var res3 = await mysql("foodContactInfo").where({ open_id })
+
+      var order_address_building = res3[0].user_address_building
+      var order_address_room = res3[0].user_address_room
+      var res5 = res[0].order_time
+
+      order_time = res5.substr(5)
+      var order_sum = res[0].total_cost
+
+      if (res1.length == 0 || res2.length == 0 || res3.length == 0 || res4.length == 0 || res5.length == 0)
         continue
-      var res4 = await mysql("foodMenu").where({
-        good_id
-      })
-      order_good_name
-      if (res4.length != 0)
-        order_good_name = res4[0].good_name
-      else
-        order_good_name = "不知道吃什么"
-      shop_id = good_id.substr(1, 1)
-      var res2 = await mysql("foodShop").where({
-        shop_id
-      })
 
-      order_shop_address
-      if (res2.length != 0)
-        order_shop_address = res2[0].shop_intro
+      if (count == 0)
+        str += "{"
       else
-        order_shop_address = "不知道哪里的店"
-      order_deli_fee = res2[0].shipping_fee
-
-      order_good_num = res1[0].good_order_num
-      var res3 = await mysql("foodContactInfo").where({
-        open_id
-      })
-      //ctx.state.data=res3
-      var order_address_building, order_address_room
-      if (res3.length != 0) {
-        order_address_building = res3[0].user_address_building
-        order_address_room = res3[0].user_address_room
-      }
+        str += ",{"
+      str += "\"order_type\":\"0\","
+      str += "\"order_id\":\"" + order_id + "\","
+      str += "\"order_state\":\"" + order_state + "\","
+      str += "\"order_shop_address\":\"" + order_shop_address + "\","
+      str += "\"order_address_building\":\"" + order_address_building + "\","
+      str += "\"order_address_room\":\"" + order_address_room + "\","
+      str += "\"order_deli_fee\": \"" + order_deli_fee + "\","
+      str += "\"order_total_item\": \"" + order_total_item + "\","
+      str += "\"order_good_name\": \"" + order_good_name + "\","
+      if (order_total_item <= 1)
+        str += "\"order_good_num\": \"" + order_good_num + "\","
       else
-        continue
-      var dormitory = [
-        "C1",
-        "C2",
-        "C3",
-        "C4",
-        "C5",
-        "C6",
-        "C7",
-        "C8",
-        "C9",
-        "C10",
-        "c11",
-        "c12",
-        "c13",
-        "c14",
-        "c15",
-      ]
-      order_address_building = dormitory[order_address_building]
-      var order_address = order_address_building + " " + order_address_room
-      var res5
-      var res6 = await mysql("foodOrder").where({
-        order_id
-      })
-      if (res6[0].length != 0) {
-        res5 = res6[0].order_time
-        order_time = res5.substr(5)
-      } else
-        order_time = "不知道什么时候送到"
-        
-      order_sum
-      if (res6[0].length != 0)
-        order_sum = res6[0].total_cost
-      else
-        order_sum = "不知道多少钱"
-        
-      order_state = res[i].order_state
-
-    }else{
-      if(order_type_==2){
-        order_type='快递'
-        var res11=await mysql("packageOrder").where({ order_id })
-        order_shop_address=res11[0].get_pack_addr
-        order_deli_fee=res11[0].profit
-        order_total_item=1
-        order_good_num=1
-        order_good_name='快递'
-        order_address=res11[0].shipping_address
-        order_deli_time=res11[0].complete_time
-        order_time=res11[0].order_time
-        order_state=res11[0].order_state
-        order_sum=0
-      }else{
-        if(order_type_==3){
-          order_type='跑腿'
-          var res12=await mysql('legsworkOrder').where({ order_id })
-          order_shop_address=res12[0].start_point
-          order_deli_fee = res12[0].profit
-          order_total_item = 1
-          order_good_num = 1
-          order_good_name = res12[0].good_type
-          order_address = res12[0].destination
-          order_deli_time = res12[0].complete_time
-          order_time = res12[0].order_time
-          order_state = res12[0].order_state
-          order_sum = 0
-        }else{
-          if(order_type_==4){
-            order_type='代课'
-            var res13=await mysql('substituteOrder').where({ order_id })
-            order_shop_address = res13[0].class_address
-            order_deli_fee = res13[0].profit
-            order_total_item = 1
-            order_good_num = 1
-            order_good_name = res13[0].class_name
-            order_address = res13[0].other_require
-            order_deli_time = res13[0].class_time
-            order_time = res13[0].order_time
-            order_state = res13[0].order_state
-            order_sum = 0
-
-          }
-        }
-      }
+        str += "\"order_good_num\": \"" + order_good_num + "等\","
+      str += "\"order_deli_time\": \"明早7: 00 - 8: 00送达\","
+      str += "\"order_time\": \"" + order_time + "\","
+      str += "\"order_sum\": \"" + order_sum + "\""
+      str += "}"
+      count += 1
     }
-    if (count == 0)
-      str += "{"
+
     else
-      str += ",{"
-    str += "\"order_type_\":\"" + order_type_ + "\","
-    str += "\"order_type\":\""+order_type+"\","
-    str += "\"order_id\":\"" + order_id + "\","
-    str += "\"order_shop_address\":\"" + order_shop_address + "\","
-    str += "\"order_deli_fee\": \"" + order_deli_fee + "\","
-    str += "\"order_total_item\": \"" + order_total_item + "\","
-    str += "\"order_good_name\": \"" + order_good_name + "\","
-    if (order_total_item <= 1)
-      str += "\"order_good_num\": \"" + order_good_num + "\","
-    else
-      str += "\"order_good_num\": \"" + order_good_num + "等\","
-    str += "\"order_address\": \"" + order_address + "\","
-    str += "\"order_deli_time\": \""+ order_deli_time + "\","
-    str += "\"order_time\": \"" + order_time + "\","
-    str += "\"order_state\": \"" + order_state + "\","
-    str += "\"order_sum\": \"" + order_sum + "\""
-    str += "}"
-    count += 1
+      if (order_type == 2) {
+        var res = await mysql("packageOrder").where({ order_id })
+        var order_state = res[0].order_state
+        var get_pack_addr = res[0].get_pack_addr
+        var profit = res[0].profit
+        var sex_require = res[0].sex_require
+        var shipping_address = res[0].shipping_address
+        var complete_time = res[0].complete_time
+        var order_time = res[0].order_time
+
+        if (count == 0)
+          str += "{"
+        else
+          str += ",{"
+        str += "\"order_type\":\"1\","
+        str += "\"order_id\":\"" + order_id + "\","
+        str += "\"order_state\":\"" + order_state + "\","
+        str += "\"get_pack_addr\":\"" + get_pack_addr + "\","
+        str += "\"profit\": \"" + profit + "\","
+        str += "\"sex_require\": \"" + sex_require + "\","
+        str += "\"shipping_address\": \"" + shipping_address + "\","
+        str += "\"complete_time\": \"" + complete_time + "\","
+        str += "\"order_time\": \"" + order_time + "\""
+        str += "}"
+        count += 1
+      }
+      else
+        if (order_type == 3) {
+          var res = await mysql("legsworkOrder").where({ order_id })
+          var order_state = res[0].order_state
+          var legorder_type = res[0].legswork_type
+          var profit = res[0].profit
+          var start_point = res[0].start_point
+          var destination = res[0].destination
+          var complete_time = res[0].complete_time
+          var order_time = res[0].order_time
+
+          if (count == 0)
+            str += "{"
+          else
+            str += ",{"
+          str += "\"order_type\":\"2\","
+          str += "\"order_state\":\"" + order_state + "\","
+          str += "\"order_id\":\"" + order_id + "\","
+          str += "\"legorder_type\":\"" + legorder_type + "\","
+          str += "\"profit\": \"" + profit + "\","
+          str += "\"complete_time\": \"" + complete_time + "\","
+          str += "\"start_point\": \"" + start_point + "\","
+          str += "\"destination\": \"" + destination + "\","
+          str += "\"order_time\": \"" + order_time + "\""
+          str += "}"
+          count += 1
+        }
+        else
+          if (order_type == 4) {
+            var res = await mysql("substituteOrder").where({ order_id })
+            var order_state = res[0].order_state
+            var class_time = res[0].class_time
+            var profit = res[0].profit
+            var sex_require = res[0].sex_require
+            var class_address = res[0].class_address
+            var class_name = res[0].class_name
+            var order_time = res[0].order_time
+
+            if (count == 0)
+              str += "{"
+            else
+              str += ",{"
+            str += "\"order_type\":\"3\","
+            str += "\"order_state\":\"" + order_state + "\","
+            str += "\"order_id\":\"" + order_id + "\","
+            str += "\"class_time\":\"" + class_time + "\","
+            str += "\"profit\": \"" + profit + "\","
+            str += "\"sex_require\": \"" + sex_require + "\","
+            str += "\"class_address\": \"" + class_address + "\","
+            str += "\"class_name\": \"" + class_name + "\","
+            str += "\"order_time\": \"" + order_time + "\""
+            str += "}"
+            count += 1
+          }
   }
+
   str += "]}"
   ctx.state.data = JSON.parse(str)
-
 }

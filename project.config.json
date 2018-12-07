@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -52,7 +52,13 @@
 				{
 					"id": -1,
 					"name": "快递详情",
-					"pathName": "pages/InfoPackage/InfoPackage"
+					"pathName": "pages/InfoPackage/InfoPackage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "跑腿详情",
+					"pathName": "pages/InfoLegwork/InfoLegwork"
 				}
 			]
 		}

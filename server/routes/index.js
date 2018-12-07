@@ -66,5 +66,6 @@ router.get('/order_info_legwork', controllers.order_info_legwork)
 router.get('/order_info_substitute', controllers.order_info_substitute)
 router.get('/changeUserInfo',controllers.changeUserInfo)
 router.get('/getUserInfo',controllers.getUserInfo)
+router.get('/getTakeorder_user_info',controllers.getTakeorder_user_info)
 
 module.exports = router

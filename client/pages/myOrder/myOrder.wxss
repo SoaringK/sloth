@@ -307,6 +307,7 @@ page {
   background-color: #fd6460;
   font-size: 10pt;
   padding: 4pt;
+  text-align: center;
   margin-right: 5pt;
   margin-top: -15rpx;
   border-radius: 5rpx;
@@ -321,6 +322,7 @@ page {
   margin-right: 5pt;
   margin-top: -15rpx;
   border-radius: 5rpx;
+  text-align: center;
 }
 
 
@@ -329,4 +331,11 @@ page {
    text-align: center;
    align-items: center;
    justify-content: center;
+}
+
+.profit {
+  font-size: 40rpx;
+  color: #fd645f;
+  font-weight: 700;
+  padding-right: 10rpx;
 }
