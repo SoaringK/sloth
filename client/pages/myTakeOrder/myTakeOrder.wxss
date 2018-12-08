@@ -313,9 +313,11 @@ page {
 
 .order-state2 {
   color: white;
+  width: 44pt;
   background-color:gray;
-  font-size: 32rpx;
-  padding: 3rpx 12rpx;
+  font-size: 10pt;
+  padding: 4pt;
+  margin-right: 5pt;
   margin-top: -15rpx;
   border-radius: 5rpx;
   text-align: center;

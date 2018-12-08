@@ -99,9 +99,9 @@ Page({
     }
   },
 
-  onLoad: function (options) {
-    var that = this;
-    //读入USERID
+  onShow:function(){
+    var that=this
+
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
@@ -110,7 +110,6 @@ Page({
         that.setData({
           userId: res.data.openId
         })
-
         wx.request({
           url: config.service.my_take_orderUrl + "?user_id=" + that.data.userId,
           method: "GET",
@@ -140,9 +139,14 @@ Page({
 
           }
         })
-
       }
     })
+  },
+
+  onLoad: function (options) {
+    var that = this;
+    //读入USERID
+
   },
   onPullDownRefresh: function () {
     this.setData({
@@ -275,7 +279,7 @@ Page({
       }
     }
     wx.navigateTo({
-      url: des + item.order_id + '&infotype=1',
+      url: des + item.order_id ,
     })
   }
 

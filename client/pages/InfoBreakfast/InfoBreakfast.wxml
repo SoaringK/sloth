@@ -28,15 +28,23 @@
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='customer.png'></image>
-      <view class='text_title'>下单人:</view>
-      
-      <view class='text_content'>{{customer.name}}</view>
+      <view wx:if='{{infotype==1}}'>
+       <view class='text_title'>下单人:</view>
+        <view class='text_content'>{{customer.name}}</view>
+      </view>
+      <view wx:else>
+       <view class='text_title'>接单人:</view>
+        <view class='text_content'>{{take_order_user[0].user_name}}</view>
+      </view>
+     
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
       <image class='row_icon' src='customer.png'></image>
       <view class='text_title'>联系电话:</view>
-      <view class='text_content'> {{customer.phone}}</view>
+      <view class='text_content' wx:if='{{infotype==1}}'> {{customer.phone}}</view>
+      <view class='text_content' wx:else> {{take_order_user[0].user_tel}}</view>
+
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_address'>
@@ -62,7 +70,7 @@
   <view class='order_finished' wx:if="{{status==2}}">
     <text>已完成</text>
   </view>
-  <view class='order_active' wx:else>
+  <view class='order_active' wx:else bindtap='arrive_confirm'>
    <text wx:if='{{status==1}}'>进行中</text>
    <text wx:else>未接单</text>
   </view> 

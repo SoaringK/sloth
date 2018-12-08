@@ -5,5 +5,5 @@ module.exports = async ctx => {
   var res = await mysql("orderinfo").where({ order_id })
   var open_id=res[0].open_id
   var res1=await mysql("userInfo").where({ open_id })
-  ctx.state.data = res1
+  ctx.state.data = res1 
 }

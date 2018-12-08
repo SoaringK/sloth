@@ -75,7 +75,7 @@
               <view class='row_text_content4'>订单金额:</view>
               <view class='row_text_content3'>￥{{item.order_sum}}</view>
             </view>
-            <view class='order-state1' data-index="{{index}}" bindtap='arrive_confirm' wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
+            <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
         <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
@@ -107,7 +107,7 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-           <view class='order-state1' data-index="{{index}}" bindtap='arrive_confirm' wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
+           <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
         <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
@@ -139,7 +139,7 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-            <view class='order-state1' data-index="{{index}}" bindtap='arrive_confirm' wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
+            <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
         <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
@@ -171,7 +171,7 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-           <view class='order-state1' data-index="{{index}}" bindtap='arrive_confirm' wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
+           <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
         <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
