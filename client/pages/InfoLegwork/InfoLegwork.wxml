@@ -64,12 +64,12 @@
       <view class='text_content'>{{orderInfoDetail[0].good_type}}</view>
     </view>
   </view>
-  <view class='order_active'>进行中</view>
-  <!-- 按钮 -->
-  <!-- <view class='order_active' wx:if="{{status==true}}">
-    <text>进行中</text>
-  </view>
-  <view class='order_finished' wx:else>
+ <!-- 按钮 -->
+  <view class='order_finished' wx:if="{{status==2}}">
     <text>已完成</text>
-  </view> -->
+  </view>
+  <view class='order_active' wx:else>
+   <text wx:if='{{status==1}}'>进行中</text>
+   <text wx:else>未接单</text>
+  </view> 
 </view>

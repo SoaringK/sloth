@@ -264,17 +264,19 @@ Page({
     // console.log(e);
     var that = this;
     var item = that.data.currentorder[e.currentTarget.dataset.index];
-    wx.request({
-      url: config.service.take_orderUrl+"?order_id="+item.order_id+"&user_id="+that.data.userId,
-      method: "GET",
-      header:{
-        "content-type":"application/json"
-      },
-      success:function(res){
-        wx.navigateTo({
-          url:"../InfoBreakfast/InfoBreakfast?order_id="+item.order_id
-        })
+
+    var des
+    if (item.order_type == 0) des = '../InfoBreakfast/InfoBreakfast?order_id='
+    else {
+      if (item.order_type == 1) des = '../InfoPackage/InfoPackage?order_id='
+      else {
+        if (item.order_type == 2) des = '../InfoLegwork/InfoLegwork?order_id='
+        else des = '../InfoSubstitute/InfoSubstitute?order_id='
       }
+    }
+    wx.navigateTo({
+      url: des + item.order_id + '&infotype=1',
     })
   }
+
 })

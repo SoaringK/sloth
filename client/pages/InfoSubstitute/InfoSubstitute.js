@@ -4,7 +4,7 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    status: true,
+    status: -1,
     orderInfoDetail: {},
     userId: 0
   },
@@ -33,7 +33,7 @@ Page({
         console.log(res)
         that.setData({
           orderInfoDetail: res.data.data,
-          status: res.data.data[0].order_state
+          status: res.data.data[0].order_state 
         });
       }
     })
