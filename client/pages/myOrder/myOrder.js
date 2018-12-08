@@ -98,7 +98,7 @@ Page({
       })
     }
   },
-
+  /*
   arrive_confirm:function(e)
   {
     var index=e.currentTarget.dataset.index
@@ -121,11 +121,11 @@ Page({
       })
     }
 
-  },
+  },*/
 
-  onLoad: function (options) {
-    var that = this;
-    //读入USERID
+  onShow:function(){
+    var that=this
+
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
@@ -134,7 +134,6 @@ Page({
         that.setData({
           userId: res.data.openId
         })
-
         wx.request({
           url: config.service.my_orderUrl + "?user_id=" + that.data.userId,
           method: "GET",
@@ -146,25 +145,24 @@ Page({
               currentorder: res.data.data.data
             });
             console.log(res.data.data)
-            var tmp_run=[],tmp_fis=[]
+            console.log("hi")
+            var tmp_run = [], tmp_fis = []
             var item
-            for(item in res.data.data.data){
-             // console.log(item)
-              if(that.data.currentorder[item].order_state==2){
+            for (item in res.data.data.data) {
+              // console.log(item)
+              if (that.data.currentorder[item].order_state == 2) {
                 tmp_fis.push(that.data.currentorder[item])
-              }else{
+              } else {
                 tmp_run.push(that.data.currentorder[item])
               }
             }
             that.setData({
-              runningorder:tmp_run,
-              finishedorder:tmp_fis,
-              currentorder:tmp_run
+              runningorder: tmp_run,
+              finishedorder: tmp_fis,
+              currentorder: tmp_run
             })
-
           }
         })
-
       }
     })
   },
@@ -309,7 +307,7 @@ Page({
       }
     }
     wx.navigateTo({
-      url: des + item.order_id + '&infotype=1',
+      url: des + item.order_id + '&infotype=0',
     })
   }
   

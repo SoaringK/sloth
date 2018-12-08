@@ -104,6 +104,9 @@ var config = {
 
     //获取用户信息
     getUserInfoUrl:`${host}/weapp/getUserInfo`,
+
+    //获取接单人信息
+    getTakeorder_user_info:`${host}/weapp/getTakeorder_user_info`
   }
 };
 

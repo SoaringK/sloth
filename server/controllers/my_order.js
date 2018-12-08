@@ -6,7 +6,6 @@ module.exports = async ctx => {
   var length = ret.length
   var str = "{\"data\":["
   var count = 0
-
   for (var i = 0; i < length; i++) {
     var order_id = ret[i].order_id
     var order_type = ret[i].order_type

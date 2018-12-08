@@ -4,9 +4,11 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    status: true,
+    status: -1,
     orderInfoDetail: {},
-    userId: 0
+    userId: 0,
+    infotype: 0,
+    take_order_user: {}
   },
   onLoad: function (options) {
     var that = this;
@@ -21,6 +23,9 @@ Page({
         })
       },
     });
+    that.setData({
+      infotype: options.infotype == 0 ? 0 : 1
+    })
     wx.request({
       url: config.service.order_info_legworkUrl + "?order_id=" + options.order_id,
       method: "GET",
@@ -36,6 +41,42 @@ Page({
         });
       }
     })
-  }
+    if (that.data.infotype == 0) {
+      wx.request({
+        url: config.service.getTakeorder_user_info + "?order_id=" + options.order_id,
+        success: function (res) {
+          that.setData({
+            take_order_user: res.data.data,
+          })
+
+        }
+      })
+    }
+  },
+  arrive_confirm: function (e) {
+    var that = this
+    if (this.data.status == 1) {
+      wx.showModal({
+        title: '确认送达',
+        content: '若已送达请点击确定',
+        success: function () {
+          wx.request({
+            url: config.service.state_changeUrl + '?order_id=' + options.order_id + '&order_type=2',
+            method: 'GET',
+            header: {
+              "content-type": "application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+              console.log("已完成")
+              that.setData({
+                status: 2,
+              })
+            }
+          })
+        }
+      })
+    }
+
+  },
 
 })
