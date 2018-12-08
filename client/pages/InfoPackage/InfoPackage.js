@@ -59,7 +59,7 @@ Page({
       })
     }
   },
-  arrive_confirm: function (options) {
+  arrive_confirm: function (e) {
     var that=this
     if (this.data.status==1) {
       wx.showModal({
@@ -67,7 +67,7 @@ Page({
         content: '若已送达请点击确定',
         success:function(){
           wx.request({
-            url: config.service.state_changeUrl + '?order_id=' + options.order_id + '&order_type=3',
+            url: config.service.state_changeUrl + '?order_id=' + that.data.orderInfoDetail[0].order_id + '&order_type=3',
             method: 'GET',
             header: {
               "content-type": "application/x-www-form-urlencoded"

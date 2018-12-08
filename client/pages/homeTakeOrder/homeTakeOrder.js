@@ -169,7 +169,7 @@ Page({
                 order: data
               }),
                 wx.request({
-                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
+                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=0",
                   method: "GET",
                   header: {
                     "content-type": "application/json"
@@ -258,7 +258,7 @@ Page({
                 order: data
               }),
                 wx.request({
-                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
+                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=2",
                   method: "GET",
                   header: {
                     "content-type": "application/json"
@@ -304,7 +304,7 @@ Page({
                 order: data
               }),
                 wx.request({
-                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=1",
+                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=3",
                   method: "GET",
                   header: {
                     "content-type": "application/json"

@@ -67,8 +67,8 @@ Page({
         content: '若已送达请点击确定',
         success: function () {
           wx.request({
-            url: config.service.state_changeUrl + '?order_id=' + options.order_id + '&order_type=1',
-            method: 'GET',
+            url: config.service.state_changeUrl + '?order_id=' + that.data.orderInfoDetail[0].order_id + '&order_type=1',
+            method: 'GET',    
             header: {
               "content-type": "application/x-www-form-urlencoded"
             },
