@@ -1,4 +1,4 @@
-const { mysql } = require('../qcloud')
+var foodContact = require('../api/foodContact.js')
 
 module.exports = async ctx => {
   var name = ctx.request.query.name
@@ -10,6 +10,6 @@ module.exports = async ctx => {
   var preaddr_building = ctx.request.query.preaddr_building
   var preaddr_room = ctx.request.query.preaddr_room
   var open_id = ctx.request.query.user_id
-  var res = await mysql("foodContactInfo").where({ open_id: open_id, user_name: prename, user_tel: prephone, user_address_building: preaddr_building, user_address_room: preaddr_room }).update({ user_name: name, user_tel: phone, user_address_building: addr_building, user_address_room: addr_room})
+  var res = await foodContact.update_FoodContact_Info(open_id,prename,prephone,preaddr_building,preaddr_room,name,phone,addr_building,addr_room)
   ctx.state.data = res
 }

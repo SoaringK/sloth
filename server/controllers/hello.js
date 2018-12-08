@@ -1,3 +1,4 @@
+var test = require('../app/test.js')
 module.exports = async ctx => {
-  ctx.state.data = "Hello2 2w!"
+  ctx.state.data = test.test("hellotest")
 }

@@ -1,7 +1,7 @@
-const { mysql } = require('../qcloud')
+var ptJob = require('../api/ptJob.js')
 
 module.exports = async ctx => {
-  var res = await mysql("partTimeList")
+  var res = await ptJob.get_ptJob_List()
   var num = res.length
   var str = "{\"data\":["
   var count = 0
