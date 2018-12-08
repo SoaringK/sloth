@@ -28,7 +28,8 @@ module.exports = async ctx => {
 
       var order_good_num = res1[0].good_order_num
       var open_id = res[0].open_id
-      var res3 = await mysql("foodContactInfo").where({ open_id })
+      var address_id = res[0].address_id;
+      var res3 = await mysql("foodContactInfo").where({ open_id: open_id, address_id: address_id })
 
       var order_address_building = res3[0].user_address_building
       var order_address_room = res3[0].user_address_room
