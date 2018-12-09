@@ -17,7 +17,7 @@
       </view>
       <view class="text_each_row" style="border-bottom: 1px solid #f3f3f3;">
         <view class="text">房间号</view>
-        <input name="addressarea" placeholder="宿舍号(234)" class="addrinput" maxlength="3" type="number" />
+        <input name="addressarea" placeholder="宿舍号(234)" value="{{cust_addr_room}}" class="addrinput" maxlength="3" type="number" />
       </view>
       <view class="text_each_row" style="border-bottom: 1px solid #f3f3f3;">
         <view class="text">微信号</view>
