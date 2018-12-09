@@ -16,68 +16,38 @@ Page({
     loadOver: false,
     districtList: [{
       key: 1,
-      value: "C1"
+      value: "早餐"
     }, {
       key: 2,
-      value: "C2"
+      value: "快递"
     }, {
       key: 3,
-      value: "C3"
+      value: "跑腿"
     }, {
       key: 4,
-      value: "C4"
+      value: "代课"
     }, {
       key: 5,
-      value: "C5"
-    }, {
-      key: 6,
-      value: "C6"
-    }, {
-      key: 7,
-      value: "C7"
-    }, {
-      key: 8,
-      value: "C8"
-    }, {
-      key: 9,
-      value: "C9"
-    }, {
-      key: 10,
-      value: "C10"
-    }, {
-      key: 11,
-      value: "C11"
-    }, {
-      key: 12,
-      value: "C12"
-    }, {
-      key: 13,
       value: "全部"
     }],
     sortingList: [{
       key: 1,
-      value: "华工二饭三楼肠粉"
+      value: "未接单"
     }, {
       key: 2,
-      value: "华工二饭三楼包子"
+      value: "已接单"
     }, {
       key: 3,
-      value: "华工二饭三楼酸辣粉"
-    }, {
-      key: 4,
-      value: "华工一饭一楼"
-    }, {
-      key: 5,
       value: "全部"
     }],
     chioceDistrict: false,
     chioceSorting: false,
     activeDistrictIndex: -1,
-    activeDistrictName: "楼栋",
+    activeDistrictName: "订单类型",
     scrollTop: 0,
     scrollIntoView: 0,
     activeSortingIndex: -1,
-    activeSortingName: "购买店铺"
+    activeSortingName: "订单状态"
   },
 
   /**

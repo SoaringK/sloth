@@ -78,7 +78,12 @@ Page({
             title: '修改信息成功',
             icon: 'success',
             duration: 2000
-          })
+          }),
+          setTimeout(function () {
+            wx.switchTab({
+              url: '../homeMy/homeMy',
+            })
+          }, 1200)
         }
       })
     if (flag == false) {

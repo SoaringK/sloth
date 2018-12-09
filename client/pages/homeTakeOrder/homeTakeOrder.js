@@ -324,6 +324,12 @@ Page({
       }
     }
   },
+
+  onPullDownRefresh: function () {
+    // 显示顶部刷新图标
+    wx.showNavigationBarLoading();
+},
+
   showinfowarning:function(){
     wx.showModal({
       title: '您的信息未完善!',

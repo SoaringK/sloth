@@ -30,7 +30,7 @@ page {
 .select-tab {
   display: flex;
   height: 20pt;
-  font-size: 8pt;
+  font-size: 10pt;
   background-color: #fff;
 }
 
@@ -80,17 +80,17 @@ page {
 }
 
 .chioce-list-show {
-  top: 110rpx;
+  top: 155rpx;
   animation: slide 1000ms;
 }
 
 @keyframes slide {
   0% {
-    top: 110rpx;
+    top: 155rpx;
   }
 
   100% {
-    top: 110rpx;
+    top: 155rpx;
   }
 }
 
