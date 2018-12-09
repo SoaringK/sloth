@@ -60,3 +60,7 @@ button{
     margin-bottom: 4%;
     padding: 1% 0; 
 }
+
+.dorm_picker{
+  margin-left:15rpx;
+}

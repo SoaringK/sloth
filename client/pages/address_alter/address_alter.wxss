@@ -63,3 +63,7 @@ button{
 .del_btn{
   background-color:white;
 }
+
+.dorm_picker{
+  margin-left:15rpx;
+}

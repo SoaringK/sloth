@@ -10,7 +10,6 @@
     "pages/breakfastOrderConfirm/breakfastOrderConfirm",
     "pages/breakfastOrderComplete/breakfastOrderComplete",
     "pages/address_add/address_add",
-    "pages/address_modify/address_modify",
     "pages/address_alter/address_alter",
     "pages/orderPackage/orderPackage",
     "pages/orderLegwork/orderLegwork",

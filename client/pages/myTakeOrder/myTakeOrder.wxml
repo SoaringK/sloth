@@ -1,7 +1,6 @@
 <view class='tablist'>
-  <button wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
-    <text>{{item}}</text>
-  </button>
+  <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>{{item}}
+  </view>
 </view>
 
 <view class='select-tab'>
@@ -25,11 +24,7 @@
   </view>
 </view>
 
-<view calss='default-content' wx:if='{{!currentorder.length}}'>
-  <text>
-这儿什么也没有~
-  </text>
-</view>
+<view class='ifNoOrder' wx:if='{{!currentorder.length}}'>暂无订单</view>
 
 <view wx:else class='content'>
   <!-- 菜单列表 -->

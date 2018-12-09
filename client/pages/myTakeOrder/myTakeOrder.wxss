@@ -3,36 +3,25 @@ page {
   flex-direction: column;
   height: 100%;
 }
-
 .tablist {
   display: flex;
-  background: #fd6460;
-  height: 14pt;
+  height: 70rpx;
 }
 
-.tablist button {
-  height: 11pt;
-  width: 48.5pt;
-  font-size: 9pt;
-  line-height: 11pt;
-  background: #fd6460;
-  color: white;
+.tablist view {
+  width: 50%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .tablist .item::after {
-  border: none;
-}
+  /* border: none; */
+}       
 
 .tablist .item.select {
-  background-color: white;
-  color: black;
-}
-
-.tablist .item.select::after {
-  content: "";
-  width: 48.5pt;
-  display: block;
-  position: absolute;
+  color: #fd6460;
+  font-weight: 700;
 }
 
 .select-tab {
@@ -139,7 +128,7 @@ page {
 .content {
   height: 100%;
   position: absolute;
-  top: 125rpx;
+  top: 155rpx;
   width: 100%;
 }
 
@@ -335,4 +324,13 @@ page {
   color: #fd645f;
   font-weight: 700;
   padding-right: 10rpx;
+}
+
+.ifNoOrder{
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 50rpx;
 }

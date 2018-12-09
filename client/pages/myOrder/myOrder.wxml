@@ -1,7 +1,6 @@
 <view class='tablist'>
-  <button wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>
-    <text>{{item}}</text>
-  </button>
+  <view wx:for="{{tabList}}" class='item {{current==index?"select":""}}' data-pos='{{index}}' bindtap='tabItemClick'>{{item}}
+  </view>
 </view>
 
 <view class='select-tab'>
@@ -25,18 +24,14 @@
   </view>
 </view>
 
-<view calss='default-content' wx:if='{{!currentorder.length}}'>
-  <text>
-这儿什么也没有~
-  </text>
-</view>
+<view class='ifNoOrder' wx:if='{{!currentorder.length}}'>暂无订单</view>
 
 <view wx:else class='content'>
   <!-- 菜单列表 -->
   <view bindtap="hideAllChioce" class="mask" hidden="{{!chioceDistrict&&!chioceSorting}}">
   </view>
   <view class='order_recommand'>
-    
+
     <!-- 详情，条件渲染 -->
     <!-- order_type_:
     0:早餐
@@ -44,7 +39,7 @@
     2：跑腿
     3：代课 -->
     <view class='order_recommand_each_item1' wx:for="{{currentorder}}" wx:key="order_id" data-index='{{index}}' bindtap='check_order'>
-      <block wx:if="{{item.order_type==0}}" >
+      <block wx:if="{{item.order_type==0}}">
         <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">
             <view class='order_type'>早餐</view>
@@ -76,12 +71,12 @@
               <view class='row_text_content3'>￥{{item.order_sum}}</view>
             </view>
             <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
-        <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
+            <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
       </block>
       <block wx:elif="{{item.order_type==1}}">
-        <view class='order_recommand_each_item' >
+        <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">
             <view class='order_type'>快递</view>
             <view class='shop_address'>{{item.get_pack_addr}}</view>
@@ -107,8 +102,8 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-           <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
-        <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
+            <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
+            <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
       </block>
@@ -140,7 +135,7 @@
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
             <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
-        <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
+            <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
       </block>
@@ -171,8 +166,8 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-           <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
-        <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
+            <view class='order-state1' data-index="{{index}}" wx:if='{{current==0}}'>{{item.order_state==1?'确认送达':'未接单'}}</view>
+            <view class='order-state2' data-index="{{index}}" wx:else>订单完成</view>
           </view>
         </view>
       </block>

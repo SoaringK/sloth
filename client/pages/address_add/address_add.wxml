@@ -7,22 +7,25 @@
       </view>
       <view class="text_each_row">
         <view class="text">手机号码</view>
-        <input name="phonearea" placeholder="可以联系到你的号码" maxlength="11" class="phoneinput" type="number"/>
+        <input name="phonearea" placeholder="联系人手机号" maxlength="11" class="phoneinput" type="number" />
       </view>
       <view class="text_each_row" style="border-bottom: 1px solid #f3f3f3;">
-        <view class="text">地址</view>
-        <picker style="margin-top:29rpx;" mode="selector" range="{{dormitory}}" value="{{dormitory_index}}" bindchange="dormitory_change">
+        <view class="text">楼栋</view>
+        <picker style="margin-top:29rpx; margin-left:15rpx;" mode="selector" range="{{dormitory}}" value="{{dormitory_index}}" bindchange="dormitory_change">
           <view class="dorm_picker">{{dormitory[dormitory_index]}}</view>
         </picker>
-        <input name="addressarea" placeholder="宿舍号,如211" class="addrinput" maxlength="3" type="number" />
+      </view>
+      <view class="text_each_row" style="border-bottom: 1px solid #f3f3f3;">
+        <view class="text">房间号</view>
+        <input name="addressarea" placeholder="宿舍号(234)" class="addrinput" maxlength="3" type="number" />
       </view>
       <view class="text_each_row" style="border-bottom: 1px solid #f3f3f3;">
         <view class="text">微信号</view>
-        <input name="wechatarea" placeholder="微信号" class="addrinput" />
+        <input name="wechatarea" placeholder="微信号" class="addrinput" />      
       </view>
       <view class='button_new_address'>
         <button formType='submit'>新增地址</button>
-      </view>  
+      </view>
     </form>
   </view>
 </view>
