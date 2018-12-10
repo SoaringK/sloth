@@ -1,4 +1,3 @@
-const { mysql } = require('../qcloud')
 var foodOrder = require('../api/foodOrder.js')
 var legsworkOrder = require('../api/legsworkOrder.js')
 var packageOrder = require('../api/packageOrder.js')

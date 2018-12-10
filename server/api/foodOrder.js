@@ -49,12 +49,18 @@ async function get_FoodOrder_Detail(order_id){
   return res
 }
 
+async function update_FoodOrder(order_id,order_State) {
+  var res = await mysql("foodOrder").update({ order_state }).where({ order_id })
+  return res
+}
+
 
 
 module.exports = {
   add_FoodOrder,
   get_FoodOrder_Info_All,
   get_FoodOrder_Info,
-  get_FoodOrder_Detail
+  get_FoodOrder_Detail,
+  update_FoodOrder
 }
 

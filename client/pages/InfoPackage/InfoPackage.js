@@ -51,6 +51,8 @@ Page({
       wx.request({
         url: config.service.getTakeorder_user_info+"?order_id=" + options.order_id,
         success:function(res){
+          console.log('user')
+          console.log(res)
           that.setData({
             take_order_user:res.data.data,
           })

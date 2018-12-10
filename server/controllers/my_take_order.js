@@ -1,26 +1,33 @@
-const { mysql } = require('../qcloud')
+var foodOrder = require('../api/foodOrder.js')
+var legsworkOrder = require('../api/legsworkOrder.js')
+var packageOrder = require('../api/packageOrder.js')
+var substituteOrder = require('../api/substituteOrder.js')
+var foodContact = require('../api/foodContact.js')
+var foodMenu = require('../api/foodMenu.js')
+var foodShop = require('../api/foodShop.js')
+var order = require('../api/order.js')
 
 module.exports = async ctx => {
   var open_id = ctx.request.query.user_id
-  var rett = await mysql("orderinfo").where({ open_id })
+  var rett = await order.get_Order_List_By_User(open_id)
   var length = rett.length
   var str = "{\"data\":["
   var count = 0
 
   for (var i = 0; i < length; i++) {
     var order_id = rett[i].order_id
-    var ret=await mysql('orderList').where({ order_id })
+    var ret = await order.get_Order_Detail(order_id)
     var order_type = ret[0].order_type
     if (order_type == 1) {
-      var res = await mysql("foodOrder").where({ order_id })
+      var res = await foodOrder.get_FoodOrder_Info(order_id)
       var order_state = res[0].order_state
-      var res1 = await mysql("foodOrderDetail").where({ order_id })
+      var res1 = await foodOrder.get_FoodOrder_Detail(order_id)
       var order_total_item = res1.length
       var good_id = res1[0].good_id
-      var res4 = await mysql("foodMenu").where({ good_id })
+      var res4 = await foodMenu.get_Food_Content(good_id)
       var order_good_name = res4[0].good_name
       var shop_id = good_id.substr(1, 1)
-      var res2 = await mysql("foodShop").where({ shop_id })
+      var res2 = await foodShop.get_Foodshop_Info(shop_id)
 
       var order_shop_address = res2[0].shop_intro
       var order_deli_fee = res2[0].shipping_fee
@@ -29,8 +36,7 @@ module.exports = async ctx => {
       var order_good_num = res1[0].good_order_num
       var open_id = res[0].open_id
       var address_id = res[0].address_id;
-      var res3 = await mysql("foodContactInfo").where({ open_id: open_id, address_id: address_id })
-
+      var res3 = await foodContact.get_FoodContact_Info(open_id, address_id)
       var order_address_building = res3[0].user_address_building
       var order_address_room = res3[0].user_address_room
       var res5 = res[0].order_time
@@ -67,7 +73,7 @@ module.exports = async ctx => {
 
     else
       if (order_type == 2) {
-        var res = await mysql("packageOrder").where({ order_id })
+        var res = await packageOrder.get_packageOrder_Info(order_id)
         var order_state = res[0].order_state
         var get_pack_addr = res[0].get_pack_addr
         var profit = res[0].profit
@@ -94,7 +100,7 @@ module.exports = async ctx => {
       }
       else
         if (order_type == 3) {
-          var res = await mysql("legsworkOrder").where({ order_id })
+          var res = await legsworkOrder.get_legsworkOrder_Info(order_id)
           var order_state = res[0].order_state
           var legorder_type = res[0].legswork_type
           var profit = res[0].profit
@@ -121,7 +127,7 @@ module.exports = async ctx => {
         }
         else
           if (order_type == 4) {
-            var res = await mysql("substituteOrder").where({ order_id })
+            var res = await substituteOrder.get_substituteOrder_Info(order_id)
             var order_state = res[0].order_state
             var class_time = res[0].class_time
             var profit = res[0].profit

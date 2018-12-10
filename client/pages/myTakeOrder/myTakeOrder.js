@@ -87,10 +87,11 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
+            console.log(res)
             that.setData({
               currentorder: res.data.data.data
             });
-            console.log(res.data.data)
+            
             var tmp_run = [], tmp_fis = []
             var item
             for (item in res.data.data.data) {

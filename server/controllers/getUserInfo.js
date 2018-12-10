@@ -1,10 +1,8 @@
-const {
-  mysql
-} = require('../qcloud')
+var user = require('../api/user.js')
 
 module.exports = async ctx => {
   var open_id = ctx.request.query.user_id
-  var res=await mysql('userInfo').where({ open_Id:open_id })
+  var res = await user.get_User_Other_Info(open_id)
   if(res.length!=0){
     var name=res[0].user_name
     var tel=res[0].user_tel

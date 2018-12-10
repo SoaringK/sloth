@@ -39,9 +39,15 @@ async function get_substituteOrder_Info(order_id) {
   return res
 } 
 
+async function update_SubstituteOrder(order_id, order_State) {
+  var res = await mysql("substituteOrder").update({ order_state }).where({ order_id })
+  return res
+}
+
 module.exports = {
   get_substituteOrder_Info_All,
   add_substituteOrder,
-  get_substituteOrder_Info
+  get_substituteOrder_Info,
+  update_SubstituteOrder
 }
 

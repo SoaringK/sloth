@@ -41,11 +41,17 @@ async function get_legsworkOrder_Info(order_id) {
   return res
 }  
 
+async function update_LegsworkOrder(order_id, order_State) {
+  var res = await mysql("legsworkOrder").update({ order_state }).where({ order_id })
+  return res
+}
+
 
 
 module.exports = {
   get_legsworkOrder_Info_All,
   add_legsworkOrder,
-  get_legsworkOrder_Info
+  get_legsworkOrder_Info,
+  update_LegsworkOrder
 }
 
