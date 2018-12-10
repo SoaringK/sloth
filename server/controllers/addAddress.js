@@ -9,7 +9,7 @@ module.exports = async ctx => {
   
   var open_id = ctx.request.query.user_id
   var ret = await foodContact.get_FoodContact_Info(open_id)
-  var addr_id = (ret.length==0?0:parseInt(ret[ret.length-1].address_id)+1)
+  var addr_id = (ret.length == 0 ? 0 : parseInt(ret[ret.length - 1].addr_id)+1)
   var res = foodContact.add_FoodContact(open_id, name, phone, cust_addr_building, cust_addr_room, cust_wechat, addr_id)
   ctx.state.data = res
 }

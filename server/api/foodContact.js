@@ -16,7 +16,8 @@ async function add_FoodContact(open_id, user_name, user_tel, user_address_buildi
     address_id: address_id,
     default_address: 0
   }
-  return await mysql("foodContactInfo").insert(person)
+  var res = await mysql("foodContactInfo").insert(person)
+  return res
 }
 
 async function update_FoodContact_Info(open_id, prename, prephone, preaddr_building, preaddr_room, name, phone, addr_building, addr_room) {
@@ -29,9 +30,9 @@ async function del_FoodContact(open_id,prename,prephone,preaddr_building,preaddr
 }
 
 async function change_Default_Addr(open_id,addr_id){
-  await mysql("foodContactInfo").where({ open_id: open_id, default_address: 1 }).update({ default_address: 0 })
-  var res = await mysql("foodContactInfo").where({ open_id: open_id, address_id: addr_id }).update({ default_address: 1 })
-  return res
+  var res = await mysql("foodContactInfo").where({ open_id: open_id, default_address: 1 }).update({ default_address: 0 })
+  var res1 = await mysql("foodContactInfo").where({ open_id: open_id, address_id: addr_id }).update({ default_address: 1 })
+  return res1
 }
 
 module.exports = {

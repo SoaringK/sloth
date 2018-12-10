@@ -29,7 +29,7 @@ async function add_foodOrder(open_id, order_time, cost, addr_id, orders){
       good_id: good_id,
       good_order_num: orders[i].numb
     }
-    await mysql("foodOrderDetail").insert(foodOrderDetail)
+    var ret = await mysql("foodOrderDetail").insert(foodOrderDetail)
   }
   return res
 }
