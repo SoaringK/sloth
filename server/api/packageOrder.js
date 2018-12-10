@@ -31,8 +31,19 @@ async function add_packageOrder(open_id, order_time, get_pack_addr, package_num,
   return res2
 }
 
+async function get_packageOrder_Info_All() {
+  var res = await mysql("packageOrder")
+  return res
+} 
+
+async function get_packageOrder_Info(order_id) {
+  var res = await mysql("packageOrder").where({ order_id })
+  return res
+} 
 
 module.exports = {
-  add_packageOrder
+  get_packageOrder_Info_All,
+  add_packageOrder,
+  get_packageOrder_Info
 }
 

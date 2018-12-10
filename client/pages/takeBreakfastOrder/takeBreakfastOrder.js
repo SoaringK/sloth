@@ -118,10 +118,11 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
+        console.log(res)
         that.setData({
           order: res.data.data.data
         });
-         console.log(res.data)
+         
       }
     })
   },

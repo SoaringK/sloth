@@ -1,6 +1,6 @@
 const { mysql } = require('../qcloud');
 
-async function add_foodOrder(open_id, order_time, cost, addr_id, orders){
+async function add_FoodOrder(open_id, order_time, cost, addr_id, orders){
   var orders = JSON.parse(orders)
   var length = orders.length
   var order_type = 1
@@ -34,8 +34,27 @@ async function add_foodOrder(open_id, order_time, cost, addr_id, orders){
   return res
 }
 
+async function get_FoodOrder_Info_All(){
+  var res = await mysql("foodOrder")
+  return res
+}
+
+async function get_FoodOrder_Info(order_id) {
+  var res = await mysql("foodOrder").where({ order_id })
+  return res
+}
+
+async function get_FoodOrder_Detail(order_id){
+  var res = await mysql("foodOrderDetail").where({ order_id })
+  return res
+}
+
+
 
 module.exports = {
-  add_foodOrder
+  add_FoodOrder,
+  get_FoodOrder_Info_All,
+  get_FoodOrder_Info,
+  get_FoodOrder_Detail
 }
 

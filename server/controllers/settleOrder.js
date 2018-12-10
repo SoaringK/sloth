@@ -21,7 +21,7 @@ module.exports = async ctx => {
   var order_time = year + '年' + month + '月' + day + '日 ' + hour + ':' + minute 
   //修改默认地址
   var res = await foodContact.change_Default_Addr(open_id, addr_id)
-  var res1 = await foodOrder.add_foodOrder(open_id, order_time, cost, addr_id, JSON.stringify(orders)) 
+  var res1 = await foodOrder.add_FoodOrder(open_id, order_time, cost, addr_id, JSON.stringify(orders)) 
 
 
   ctx.state.data = res1

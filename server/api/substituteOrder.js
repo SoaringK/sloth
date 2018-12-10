@@ -29,8 +29,19 @@ async function add_substituteOrder(open_id, order_time, class_address, class_tim
   var res2 = await mysql("substituteOrder").insert(substituteOrder)
 }
 
+async function get_substituteOrder_Info_All() {
+  var res = await mysql("substituteOrder")
+  return res
+} 
+
+async function get_substituteOrder_Info(order_id) {
+  var res = await mysql("substituteOrder").where({ order_id })
+  return res
+} 
 
 module.exports = {
-  add_substituteOrder
+  get_substituteOrder_Info_All,
+  add_substituteOrder,
+  get_substituteOrder_Info
 }
 

@@ -1,28 +1,22 @@
-const { mysql } = require('../qcloud')
+var foodOrder = require('../api/foodOrder.js')
+var user = require('../api/user.js')
+var foodContact = require('../api/foodContact.js')
+var foodShop = require('../api/foodShop.js')
+var foodMenu = require('../api/foodMenu.js')
 
 module.exports = async ctx => {
   var order_id = ctx.request.query.order_id
-  var res1 = await mysql("foodOrder").where({ order_id })
-  /*if(res1.length == 0)
-    continue*/
+  var res1 = await foodOrder.get_FoodOrder_Info(order_id)
   var open_id = res1[0].open_id
-  var res2 = await mysql("cSessionInfo").where({ open_id })
-  /*if (res2.length == 0)
-    continue*/
+  var res2 = await user.get_User_Base_Info(open_id)
   var userinfo = res2[0].user_info
   var json = JSON.parse(userinfo)
   var img = json.avatarUrl
   var address_id = res1[0].address_id
-  var res3 = await mysql("foodContactInfo").where({ open_id, address_id })
-  /*if (res3.length == 0)
-    continue*/
-  var res4 = await mysql("foodOrderDetail").where({ order_id })
-  /*if (res4.length == 0)
-    continue*/
+  var res3 = await foodContact.get_FoodContact_Info(open_id,address_id)
+  var res4 = await foodOrder.get_FoodOrder_Detail(order_id)
   var shop_id = (res4[0].good_id).substr(1, 1)
-  var res5 = await mysql("foodShop").where({ shop_id })
-  /*if (res5.length == 0)
-    continue*/
+  var res5 = await foodShop.get_Foodshop_Info(shop_id)
   var shop_name = res5[0].shop_name
   var user_name = res3[0].user_name
   var phone = res3[0].user_tel
@@ -63,9 +57,7 @@ module.exports = async ctx => {
     else
       str += ",{"
     var good_id = res4[i].good_id
-    var res6 = await mysql("foodMenu").where({ good_id })
-    //if (res6.length == 0)
-    //continue
+    var res6 = await foodMenu.get_Food_Content(good_id)
     var good_name = res6[0].good_name
     var numb = res4[i].good_order_num
     str += "\"name\":\"" + good_name + "\","

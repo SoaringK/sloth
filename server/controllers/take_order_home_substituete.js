@@ -1,7 +1,8 @@
-const { mysql } = require('../qcloud')
+var substituteOrder = require('../api/substituteOrder.js')
+var order = require('../api/order.js')
 
 module.exports = async ctx => {
-  var res = await mysql("substituteOrder")
+  var res = await substituteOrder.get_substituteOrder_Info_All()
   var num = res.length
   var str = "{\"data\":["
   var count = 0
@@ -14,7 +15,7 @@ module.exports = async ctx => {
     var class_name = res[i].class_name
     var order_time = res[i].order_time
 
-    var res1 = await mysql("orderinfo").where({ order_id })
+    var res1 = await order.get_Order_Info(order_id)
     if (res1.length > 0)
       continue
 

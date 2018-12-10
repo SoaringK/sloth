@@ -1,7 +1,11 @@
-const { mysql } = require('../qcloud')
+var foodOrder = require('../api/foodOrder.js')
+var foodContact = require('../api/foodContact.js')
+var foodMenu = require('../api/foodMenu.js')
+var foodShop = require('../api/foodShop.js')
+var order = require('../api/order.js')
 
 module.exports = async ctx => {
-  var res = await mysql("foodOrder")
+  var res = await foodOrder.get_FoodOrder_Info_All()
   var num = res.length
   var str = "{\"data\":["
   var count = 0
@@ -11,22 +15,21 @@ module.exports = async ctx => {
       order_id = res[i].order_id
     else
       continue
-    var res1 = await mysql("foodOrderDetail").where({ order_id })
+    var res1 = await foodOrder.get_FoodOrder_Detail(order_id)
     var order_total_item = res1.length
     var good_id
     if (res1.length != 0)
       good_id = res1[0].good_id
     else
       continue
-    var res4 = await mysql("foodMenu").where({ good_id })
+    var res4 = await foodMenu.get_Food_Content(good_id)
     var order_good_name
     if (res4.length != 0)
       order_good_name = res4[0].good_name
     else
       continue
     var shop_id = good_id.substr(1, 1)
-    var res2 = await mysql("foodShop").where({ shop_id })
-
+    var res2 = await foodShop.get_Foodshop_Info(shop_id)
     var order_shop_address
     if (res2.length != 0)
       order_shop_address = res2[0].shop_intro
@@ -37,7 +40,7 @@ module.exports = async ctx => {
     var order_good_num = res1[0].good_order_num
     var open_id = res[i].open_id
     var address_id = res[i].address_id;
-    var res3 = await mysql("foodContactInfo").where({ open_id: open_id, address_id: address_id })
+    var res3 = await foodContact.get_FoodContact_Info(open_id,address_id)
     var order_address_building, order_address_room
     if (res3.length != 0) {
       order_address_building = res3[0].user_address_building
@@ -57,7 +60,7 @@ module.exports = async ctx => {
       order_sum = res[i].total_cost
     else
       continue
-    var res6 = await mysql("orderinfo").where({ order_id })
+    var res6 = await order.get_Order_Info(order_id)
     if (res6.length > 0)
       continue
 

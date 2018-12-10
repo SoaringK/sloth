@@ -31,8 +31,21 @@ async function add_legsworkOrder(open_id, order_time, legswork_type, complete_ti
   return res2
 }
 
+async function get_legsworkOrder_Info_All() {
+  var res = await mysql("legsworkOrder")
+  return res
+}
+
+async function get_legsworkOrder_Info(order_id) {
+  var res = await mysql("legsworkOrder").where({ order_id })
+  return res
+}  
+
+
 
 module.exports = {
-  add_legsworkOrder
+  get_legsworkOrder_Info_All,
+  add_legsworkOrder,
+  get_legsworkOrder_Info
 }
 

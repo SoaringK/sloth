@@ -1,7 +1,7 @@
-const { mysql } = require('../qcloud')
+var packageOrder = require('../api/packageOrder.js')
 
 module.exports = async ctx => {
   var order_id = ctx.request.query.order_id
-  var res = await mysql("packageOrder").where({ order_id })
-  ctx.state.data = res 
+  var res = await packageOrder.get_packageOrder_Info(order_id)
+  ctx.state.data = res
 }

@@ -1,7 +1,12 @@
 const { mysql } = require('../qcloud');
 
-async function get_FoodContact_Info(open_id) {
+async function get_FoodContact_Info_All(open_id) {
   var res = await mysql("foodContactInfo").where({ open_id }).select("open_id as cust_id", "user_name as cust_name", "user_tel as cust_phone", "user_address_room as cust_addr_room", "user_address_building as cust_addr_building", "user_Wechat as cust_Wechat", "address_id as addr_id", "default_address as default_id")
+  return res
+}
+
+async function get_FoodContact_Info(open_id,address_id){
+  var res = await mysql("foodContactInfo").where({ open_id: open_id, address_id: address_id })
   return res
 }
 
@@ -36,6 +41,7 @@ async function change_Default_Addr(open_id,addr_id){
 }
 
 module.exports = {
+  get_FoodContact_Info_All,
   get_FoodContact_Info,
   add_FoodContact,
   update_FoodContact_Info,

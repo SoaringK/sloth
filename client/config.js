@@ -37,7 +37,6 @@ var config = {
 
     //提交订单
     settleOrderUrl: `${host}/weapp/settleOrder`,
-    order_confirmUrl: `${host}/weapp/order_confirm`,
 
     //修改地址信息
     changeAddressUrl: `${host}/weapp/changeAddress`,
