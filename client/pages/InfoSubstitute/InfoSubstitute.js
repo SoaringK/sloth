@@ -46,6 +46,8 @@ Page({
       wx.request({
         url: config.service.getTakeorder_user_info + "?order_id=" + options.order_id,
         success: function (res) {
+          console.log('user')
+          console.log(res)
           that.setData({
             take_order_user: res.data.data,
           })
@@ -68,7 +70,7 @@ Page({
               "content-type": "application/x-www-form-urlencoded"
             },
             success: function (res) {
-              console.log("已完成")
+              console.log(res)
               that.setData({
                 status: 2,
               })

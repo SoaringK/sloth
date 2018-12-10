@@ -1,4 +1,9 @@
 const { mysql } = require('../qcloud');
+var foodOrder = require('./foodOrder.js')
+var legsworkOrder = require('./legsworkOrder.js')
+var packageOrder = require('./packageOrder.js')
+var substituteOrder = require('./substituteOrder.js')
+var foodOrder = require('./foodOrder.js')
 
 async function get_Order_List(order_state) {
   var res = await mysql("orderList").where({ order_state })
@@ -24,19 +29,15 @@ async function get_Order_Info(order_id){
 async function change_Order_State(order_id,order_type){
   var order_state = 2
   if (order_type == 1) {
-    var foodOrder = require('./foodOrder.js')
     var res1 = foodOrder.update_FoodOrder(order_id, order_state)
   } else {
     if (order_type == 2) {
-      var legsworkOrder = require('./legsworkOrder.js')
       var res1 = legsworkOrder.update_LegsworkOrder(order_id, order_state)
     } else {
       if (order_type == 3) {
-        var packageOrder = require('./packageOrder.js')
         var res1 = packageOrder.update_PackageOrder(order_id, order_state)
       } else {
         if (order_type == 4) {
-          var substituteOrder = require('./substituteOrder.js')
           var res1 = substituteOrder.update_SubstituteOrder(order_id, order_state)
 
         }
@@ -51,30 +52,26 @@ async function change_Order_State(order_id,order_type){
 async function set_Order(order_type, open_id,order_id, take_order_time){
   var order_state = 1
   if (order_type == 0){
-    var foodOrder = require('./foodOrder.js')
     var res = foodOrder.update_FoodOrder(order_id,order_state)
   }
   else
     if (order_type == 1){
-      var packageOrder = require('./packageOrder.js')
       var res = packageOrder.update_PackageOrder(order_id, order_state)
     }
     else
       if (order_type == 2){
-        var legsworkOrder = require('./legsworkOrder.js')
         var res = legsworkOrder.update_LegsworkOrder(order_id, order_state)
       }
       else
         if (order_type == 3){
-          var substituteOrder = require('./substituteOrder.js')
           var res = substituteOrder.update_SubstituteOrder(order_id, order_state)
         }
-  var res = await this.updata_Order(order_id)
+  var res = await this.update_Order(order_id)
   var res1 = await this.set_OrderInfo(open_id, order_id, take_order_time)
   return res1
 }
 
-async function updata_Order(order_id){
+async function update_Order(order_id){
   var res = await mysql("orderList").update({ order_state: 1 }).where({ order_id })
   return res
 }
@@ -96,6 +93,7 @@ module.exports = {
   get_Order_Detail,
   get_Order_Info, 
   set_Order,
-  updata_Order,
-  set_OrderInfo
+  update_Order,
+  set_OrderInfo,
+  change_Order_State
 }

@@ -39,7 +39,7 @@ async function get_substituteOrder_Info(order_id) {
   return res
 } 
 
-async function update_SubstituteOrder(order_id, order_State) {
+async function update_SubstituteOrder(order_id, order_state) {
   var res = await mysql("substituteOrder").update({ order_state }).where({ order_id })
   return res
 }

@@ -49,7 +49,7 @@ async function get_FoodOrder_Detail(order_id){
   return res
 }
 
-async function update_FoodOrder(order_id,order_State) {
+async function update_FoodOrder(order_id,order_state) {
   var res = await mysql("foodOrder").update({ order_state }).where({ order_id })
   return res
 }

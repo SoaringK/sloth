@@ -41,7 +41,7 @@ async function get_legsworkOrder_Info(order_id) {
   return res
 }  
 
-async function update_LegsworkOrder(order_id, order_State) {
+async function update_LegsworkOrder(order_id, order_state) {
   var res = await mysql("legsworkOrder").update({ order_state }).where({ order_id })
   return res
 }

@@ -6,7 +6,7 @@ async function get_User_Base_Info(open_id) {
 }
 
 async function get_User_Other_Info(open_id){
-  var res = await mysql('userInfo').where({ open_Id })
+  var res = await mysql('userInfo').where({ open_id })
   return res
 }
 
