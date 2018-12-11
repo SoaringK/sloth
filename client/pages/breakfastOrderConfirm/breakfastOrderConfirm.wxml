@@ -94,6 +94,6 @@
       </view>
   </view>
   <view class="non_new_addr" hidden="{{m}}">
-    <navigator  url='../address_add/address_add?userId={{userId}}' class="non_new_addr_btn">新增地址</navigator>
+    <navigator  url='../address_add/address_add?userId={{userId}}' class="non_new_addr_btn">点击新增地址</navigator>
   </view>
 </view>

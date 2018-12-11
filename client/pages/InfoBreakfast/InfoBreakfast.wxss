@@ -177,3 +177,8 @@
   text-align: center;
   margin-left: 10%;
 }
+
+.tempp{
+  flex-direction: row;
+  display: flex;
+}

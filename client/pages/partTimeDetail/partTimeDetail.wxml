@@ -1,8 +1,10 @@
 <view class="container1">
   <view class='block1'>
     <view class='title'>招导购人员高薪</view>
+    <!-- {{info.pt_name}} -->
     <view class='highlight'>
       <view class='salary'>25元/小时</view>
+      <!-- {{info.pt_salary}} -->
       <view class='div_string'></view>
       <view class='job_tag2'>日结</view>
     </view>
@@ -10,19 +12,23 @@
     <view class='row_text'>
       <view class='sub_title'>工作时间:</view>
       <view class='sub_content'>星期一、星期二、星期三</view>
+      <!-- {{info.work_time}} -->
     </view>
 
     <view class='row_text'>
       <view class='sub_title'>工作地点:</view>
       <view class='sub_content'>希望路1555号</view>
+      <!-- {{info.work_address}} -->
     </view>
     <view class='row_text'>
       <view class='sub_title'>工作要求:</view>
       <view class='sub_content'>本科生大二以上</view>
+      <!-- {{info.work_requirement}} -->
     </view>
         <view class='row_text'>
       <view class='sub_title'>有效期限:</view>
       <view class='sub_content'>长期招聘</view>
+      <!-- {{info.time_validity}} -->
     </view>
   </view>
 
@@ -30,6 +36,7 @@
     <view class='title2'>职位描述</view>
     <view class='div_hr'></view>
     <view class='job_info_detail'>工作认真细致，为人诚实可信，责任心强，具团队合作精神。</view>
+    <!-- {{info.job_description}} -->
   </view>
   <view class='block1'>
     <view class='title2'>公司信息</view>
@@ -37,14 +44,17 @@
     <view class='row_text'>
       <view class='sub_title'>联系人:</view>
       <view class='sub_content'>刘小姐</view>
+      <!-- {{info.contact_name}} -->
     </view>
     <view class='row_text'>
       <view class='sub_title'>联系电话:</view>
       <view class='sub_content'>12345678910</view>
+      <!-- {{info.cantact_tel}} -->
     </view>
     <view class='row_text'>
       <view class='sub_title'>简历投递邮箱:</view>
       <view class='sub_content'>123456789@gmail.com</view>
+      <!-- {{info.contact_email}} -->
     </view>
   </view>
 
