@@ -28,13 +28,12 @@
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='customer.png'></image>
-      <view wx:if='{{infotype==1}}'>
-       <view class='text_title'>下单人:</view>
+      <view wx:if='{{infotype==1}}' class='tempp'>
+        <view class='text_title'>下单人:</view>
         <view class='text_content'>{{customer.name}}</view>
       </view>
-      <view wx:else>
-       <view class='text_title'>接单人:</view>
-        <view class='text_content'>{{take_order_user[0].user_name}}</view>
+      <view wx:else class='tempp'>
+       <view class='text_title'>接单人:</view><view class='text_content'>{{take_order_user[0].user_name}}</view>
       </view>
      
     </view>

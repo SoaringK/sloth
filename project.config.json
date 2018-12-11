@@ -29,68 +29,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
-			"list": [
-				{
-					"id": -1,
-					"name": "代课详情",
-					"pathName": "pages/InfoSubstitute/InfoSubstitute",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "接单首页",
-					"pathName": "pages/homeTakeOrder/homeTakeOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "跑腿详情",
-					"pathName": "pages/InfoLegwork/InfoLegwork",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "快递详情",
-					"pathName": "pages/InfoPackage/InfoPackage",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "跑腿详情",
-					"pathName": "pages/InfoLegwork/InfoLegwork",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "早餐详情",
-					"pathName": "pages/InfoBreakfast/InfoBreakfast",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "新增地址",
-					"pathName": "pages/myOrder/myOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "新增地址",
-					"pathName": "pages/myOrder/myOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "2",
-					"pathName": "pages/myOrder/myOrder",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "324",
-					"pathName": "pages/breakfastOrderConfirm/breakfastOrderConfirm"
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
