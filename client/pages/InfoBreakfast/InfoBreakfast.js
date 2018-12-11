@@ -9,7 +9,8 @@ Page({
     menu:{},
     userId:0,
     infotype: 0,
-    take_order_user: {}
+    take_order_user: {},
+    order_id:0
   },
 
   /**
@@ -29,7 +30,8 @@ Page({
       },
     });
     that.setData({
-      infotype: options.infotype == 0 ? 0 : 1
+      infotype: options.infotype == 0 ? 0 : 1,
+      order_id:options.order_id
     })
     wx.request({
       url: config.service.order_info_breakfastUrl+"?order_id="+options.order_id,
@@ -67,7 +69,7 @@ Page({
         content: '若已送达请点击确定',
         success: function () {
           wx.request({
-            url: config.service.state_changeUrl + '?order_id=' + that.data.orderInfoDetail[0].order_id + '&order_type=1',
+            url: config.service.state_changeUrl + '?order_id=' + that.data.order_id + '&order_type=1',
             method: 'GET',    
             header: {
               "content-type": "application/x-www-form-urlencoded"

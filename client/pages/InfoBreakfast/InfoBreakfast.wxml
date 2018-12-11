@@ -67,11 +67,21 @@
   </view>
 
  <!-- 按钮 -->
-  <view class='order_finished' wx:if="{{status==2}}">
-    <text>已完成</text>
+  <view wx:if="{{infotype==1}}">
+    <view class='order_finished' wx:if="{{status==2}}">
+      <text>已完成</text>
+    </view>
+    <view class='order_finished' wx:else>
+      <text>进行中</text>
+    </view>
   </view>
-  <view class='order_active' wx:else bindtap='arrive_confirm'>
-   <text wx:if='{{status==1}}'>进行中</text>
-   <text wx:else>未接单</text>
-  </view> 
+  <view wx:else>
+    <view class='order_finished' wx:if="{{status==2}}">
+      <text>已完成</text>
+    </view>
+    <view class='order_active' wx:else bindtap='arrive_confirm'>
+      <text wx:if='{{status==1}}'>确认送达</text>
+      <text wx:else>未接单</text>
+    </view>
+  </view>
 </view>
