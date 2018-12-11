@@ -70,22 +70,22 @@ Page({
   onLoad: function(options) {
     var that = this;
     wx.request({
-        url: config.service.take_order_homeUrl,
-        method: "GET",
-        header: {
-          "content-type": "application/json"
-        },
-        success: function(res) {
-          console.log(res)
-          that.setData({
-            // order1: res.data.data.data1,
-            // order2: res.data.data.data3,
-            // order3: res.data.data.data2,
-            // order4: res.data.data.data4
-            order: res.data.data.data,
-          });
-        }
-      })
+      url: config.service.take_order_homeUrl,
+      method: "GET",
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          // order1: res.data.data.data1,
+          // order2: res.data.data.data3,
+          // order3: res.data.data.data2,
+          // order4: res.data.data.data4
+          order: res.data.data.data,
+        });
+      }
+    })
   },
 
   checklogin: function () {
@@ -326,8 +326,26 @@ Page({
   },
 
   onPullDownRefresh: function () {
-    // 显示顶部刷新图标
     wx.showNavigationBarLoading();
+    var that = this;
+    wx.request({
+      url: config.service.take_order_homeUrl,
+      method: "GET",
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          // order1: res.data.data.data1,
+          // order2: res.data.data.data3,
+          // order3: res.data.data.data2,
+          // order4: res.data.data.data4
+          order: res.data.data.data,
+        });
+      }
+    })
+    wx.stopPullDownRefresh();
 },
 
   showinfowarning:function(){

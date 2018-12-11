@@ -71,11 +71,26 @@ Page({
     })
   },
   onPullDownRefresh: function() {
+    wx.showNavigationBarLoading();
     this.setData({
       productList: [],
       pageIndex: 1,
       loadOver: false,
       isLoading: true
+    })
+    var that = this;
+    wx.request({
+      url: config.service.take_order_home_legsworkUrl,
+      method: "GET",
+      header: {
+        "content-type": "application/json"
+      },
+      success: function(res) {
+        that.setData({
+          order: res.data.data.data
+        });
+        console.log(res.data)
+      }
     })
     //this.getProductList();
     wx.stopPullDownRefresh()

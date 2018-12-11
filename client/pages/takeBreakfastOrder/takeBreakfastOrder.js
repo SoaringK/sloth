@@ -121,17 +121,31 @@ Page({
         console.log(res)
         that.setData({
           order: res.data.data.data
-        });
-         
+        });  
       }
     })
   },
   onPullDownRefresh: function() {
+    wx.showNavigationBarLoading();
     this.setData({
       productList: [],
       pageIndex: 1,
       loadOver: false,
       isLoading: true
+    })
+    var that = this;
+    wx.request({
+      url: config.service.take_order_home_breakfastUrl,
+      method: "GET",
+      header: {
+        "content-type": "application/json"
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          order: res.data.data.data
+        });  
+      }
     })
     //this.getProductList();
     wx.stopPullDownRefresh()

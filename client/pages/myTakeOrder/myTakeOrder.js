@@ -126,7 +126,50 @@ Page({
       loadOver: false,
       isLoading: true
     })
+    var that=this
+
+    wx.getStorage({
+      key: 'userinfo',
+      success: function (res) {
+        console.log("读入userinfo")
+        console.log(res)
+        that.setData({
+          userId: res.data.openId
+        })
+        wx.request({
+          url: config.service.my_take_orderUrl + "?user_id=" + that.data.userId,
+          method: "GET",
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          success: function (res) {
+            console.log(res)
+            that.setData({
+              currentorder: res.data.data.data
+            });
+            
+            var tmp_run = [], tmp_fis = []
+            var item
+            for (item in res.data.data.data) {
+              // console.log(item)
+              if (that.data.currentorder[item].order_state == 2) {
+                tmp_fis.push(that.data.currentorder[item])
+              } else {
+                tmp_run.push(that.data.currentorder[item])
+              }
+            }
+            that.setData({
+              runningorder: tmp_run,
+              finishedorder: tmp_fis,
+              currentorder: tmp_run
+            })
+
+          }
+        })
+      }
+    })
     //this.getProductList();
+    
     wx.stopPullDownRefresh()
   },
   onReachBottom: function () {
