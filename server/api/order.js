@@ -21,6 +21,13 @@ async function get_Order_List_By_User(open_id) {
   return res
 }
 
+async function get_Order_info_By_User(open_id) {
+  var res = await mysql("orderinfo").where({ open_id })
+  return res
+}
+
+
+
 async function get_Order_Info(order_id){
   var res = await mysql("orderinfo").where({ order_id })
   return res
@@ -90,6 +97,7 @@ async function set_OrderInfo(open_id, order_id, take_order_time){
 module.exports = {
   get_Order_List,
   get_Order_List_By_User,
+  get_Order_info_By_User,
   get_Order_Detail,
   get_Order_Info, 
   set_Order,

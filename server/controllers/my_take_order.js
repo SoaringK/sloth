@@ -9,7 +9,7 @@ var order = require('../api/order.js')
 
 module.exports = async ctx => {
   var open_id = ctx.request.query.user_id
-  var rett = await order.get_Order_List_By_User(open_id)
+  var rett = await order.get_Order_info_By_User(open_id)
   var length = rett.length
   var str = "{\"data\":["
   var count = 0
