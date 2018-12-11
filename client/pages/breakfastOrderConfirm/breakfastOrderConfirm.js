@@ -10,7 +10,7 @@ Page({
   data: {
     customer: [],
     shop: {},
-    selected: 0,
+    selected: -1,
     orders: [],
     cost: 0,
     cartArr: [],
@@ -65,8 +65,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
         that.setData({
           userId: res.data.openId
         }),
@@ -78,15 +76,11 @@ Page({
           },
           // 读取用户信息
           success: function (res) {
-            console.log(res);
-            console.log(res.data.data);
             for (var j = 0; j < res.data.data.length; j++) {
               if (res.data.data[j].default_id == 1) {
                 that.setData({
                   selected: res.data.data[j].addr_id
                 });
-                console.log("default_addr_id")
-                console.log(res.data.data[j].addr_id)
               }
             }
             for (var j = 0; j < res.data.data.length; j++) {
@@ -96,16 +90,21 @@ Page({
                 });
               }
             }
-            console.log( that.data.userId);
-            console.log(that.data.m);
+            wx.setStorage({
+              key: "selected_addr",
+              data: that.data.selected,
+              success: function (res) {
+                console.log("selected_addr setStorage success");
+              }
+            });
             that.setData({
               customer: res.data.data
             });
-            console.log(that.data.customer);
           }
         });
       },     
     });
+
     wx.getStorage({
       key: 'list',
       success: function (res) {
@@ -114,6 +113,7 @@ Page({
         })
       },
     });
+
     wx.getStorage({
       key: 'cost',
       success: function (res) {
@@ -122,6 +122,7 @@ Page({
         })
       },
     });
+
     wx.getStorage({
       key: 'id',
       success: function (res) {
@@ -129,14 +130,9 @@ Page({
         console.log(res)
         that.setData({
           shop_id: res.data,
-          // remark:options.remark
         })
       },
     });
-    // that.setData({
-    //   remark:options.remark,
-    // });
-
   },
   
 
