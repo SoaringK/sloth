@@ -159,8 +159,7 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            console.log(that.data.addr_id)
-            console.log(res.data)
+            console.log(res)
           }
         })
       },
