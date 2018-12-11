@@ -141,7 +141,16 @@ Page({
       productList: [],
       pageIndex: 1,
       loadOver: false,
-      isLoading: true
+      isLoading: true,
+      chioceDistrict: false,
+      chioceSorting: false,
+      activeDistrictIndex: -1,
+      activeDistrictName: "订单类型",
+      scrollTop: 0,
+      scrollIntoView: 0,
+      activeSortingIndex: -1,
+      current: 0,
+      activeSortingName: "订单状态"
     })
     var that=this
 

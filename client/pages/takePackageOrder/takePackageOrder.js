@@ -119,7 +119,20 @@ Page({
       productList: [],
       pageIndex: 1,
       loadOver: false,
-      isLoading: true
+      isLoading: true,
+      chioceDistrict: false,
+      chioceSorting: false,
+      activeDistrictIndex: -1,
+      activeDistrictName: "取货点",
+      scrollTop: 0,
+      scrollIntoView: 0,
+      activeSortingIndex: -1,
+      activeSortingName: "送货地址",
+      district_all:false,
+      sorting_all:false,
+      activesorting1:'',
+      activesorting2:'',
+      activesorting3:''
     })
     var that = this;
     wx.request({

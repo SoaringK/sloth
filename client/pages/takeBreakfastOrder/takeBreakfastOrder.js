@@ -131,7 +131,17 @@ Page({
       productList: [],
       pageIndex: 1,
       loadOver: false,
-      isLoading: true
+      isLoading: true,
+      chioceDistrict: false,
+      chioceSorting: false,
+      activeDistrictIndex: -1,
+      activeDistrictName: "楼栋",
+      scrollTop: 0,
+      scrollIntoView: 0,
+      activeSortingIndex: -1,
+      activeSortingName: "购买店铺",
+      district_all:false,
+      sorting_all:false
     })
     var that = this;
     wx.request({
