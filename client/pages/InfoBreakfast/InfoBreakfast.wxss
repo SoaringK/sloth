@@ -12,15 +12,17 @@
   height: 30%;
   z-index: 1;
   margin-bottom: 3%;
+  flex-direction: row;
+  display: flex;
 }
 
 .customer_icon{
     height: 120rpx;
     width: 120rpx;
-    display: inline-block;
-    position: relative;
-    top: -45%;
-    right: 3.5%;
+    /* display: inline-block; */
+    /* position: relative; */
+    /* top: -45%; */
+    right: 3%;
     margin-right: 20rpx;
 }
 
@@ -33,7 +35,7 @@
 .bubble{
   background: white;
   height: 310rpx;
-  display: inline-block;
+  /* display: inline-block; */
   border-radius: 5%;
   width: 78%;
   z-index: 2;
