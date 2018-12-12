@@ -22,11 +22,7 @@
     </view>
 
     <!-- 详情，条件渲染 -->
-    <!-- order_type_:
-    0:早餐
-    1：快递
-    2：跑腿
-    3：代课 --> 
+    <!-- order_type_: 0:早餐 1：快递 2：跑腿 3：代课 --> 
     <view class='order_recommand_each_item1' wx:for="{{order}}" wx:key="order_id">
       <block wx:if="{{item.order_type==0}}">
         <view class='order_recommand_each_item'>
@@ -59,7 +55,7 @@
               <view class='row_text_content4'>订单金额:</view>
               <view class='row_text_content3'>￥{{item.order_sum}}</view>
             </view>
-            <view class='take_order_btn' bind:tap="submit_take0" data-index="{{index}}">接单</view>
+            <view class='take_order_btn' bind:tap="confirmTakeBreakfastOrder" data-index="{{index}}">接单</view>
           </view>
         </view>
       </block>
@@ -90,7 +86,7 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-            <view class='take_order_btn' bind:tap="submit_take1" data-index="{{index}}">接单</view>
+            <view class='take_order_btn' bind:tap="confirmTakePackageOrder" data-index="{{index}}">接单</view>
           </view>
         </view>
       </block>
@@ -121,7 +117,7 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-            <view class='take_order_btn' bind:tap="submit_take2" data-index="{{index}}">接单</view>
+            <view class='take_order_btn' bind:tap="confirmTakeLegworkOrder" data-index="{{index}}">接单</view>
           </view>
         </view>
       </block>
@@ -152,7 +148,7 @@
               <view class='row_text_content2'>发布时间:</view>
               <view class='row_text_content3'>{{item.order_time}}</view>
             </view>
-            <view class='take_order_btn' bind:tap="submit_take3" data-index="{{index}}">接单</view>
+            <view class='take_order_btn' bind:tap="confirmTakeSubOrder" data-index="{{index}}">接单</view>
           </view>
         </view>
       </block>

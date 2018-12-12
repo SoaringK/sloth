@@ -1,5 +1,5 @@
 <view class='container1'>
-<form bindsubmit="formSubmit" >
+<form bindsubmit="packageOrderSubmit" >
 <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
   <view class='notice'><image class='notice_icon' src='./notice.png'></image> 公告：请注意不要乱扔快递盒</view>
 

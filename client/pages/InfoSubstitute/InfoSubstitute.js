@@ -11,14 +11,12 @@ Page({
     take_order_user: {}
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     // 从缓存中得到订单信息
     wx.getStorage({
       key: 'userinfo',
-      success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
+      success: function(res) {
         that.setData({
           userId: res.data.openId
         })
@@ -33,21 +31,17 @@ Page({
       header: {
         "content-type": "application/json"
       },
-      success: function (res) {
-        console.log(options.order_id)
-        console.log(res)
+      success: function(res) {
         that.setData({
           orderInfoDetail: res.data.data,
-          status: res.data.data[0].order_state 
+          status: res.data.data[0].order_state
         });
       }
     })
     if (that.data.infotype == 0) {
       wx.request({
         url: config.service.getTakeorder_user_info + "?order_id=" + options.order_id,
-        success: function (res) {
-          console.log('user')
-          console.log(res)
+        success: function(res) {
           that.setData({
             take_order_user: res.data.data,
           })
@@ -56,21 +50,20 @@ Page({
       })
     }
   },
-  arrive_confirm: function (e) {
+  confirmOrder: function(e) {
     var that = this
     if (this.data.status == 1) {
       wx.showModal({
         title: '确认送达',
         content: '若已送达请点击确定',
-        success: function () {
+        success: function() {
           wx.request({
             url: config.service.state_changeUrl + '?order_id=' + that.data.orderInfoDetail[0].order_id + '&order_type=4',
             method: 'GET',
             header: {
               "content-type": "application/x-www-form-urlencoded"
             },
-            success: function (res) {
-              console.log(res)
+            success: function(res) {
               that.setData({
                 status: 2,
               })

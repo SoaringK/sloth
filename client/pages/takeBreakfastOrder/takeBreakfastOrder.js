@@ -5,9 +5,9 @@ var util = require('../../utils/util.js')
 
 Page({
   data: {
-    infoComfirmed:false,
-    logged:false,
-    userinfo:[],
+    infoComfirmed: false,
+    logged: false,
+    userinfo: [],
     typeID: 0,
     isLoading: true,
     loadOver: false,
@@ -81,7 +81,7 @@ Page({
       value: "全部"
     }],
     // 楼栋的映射
-    dormitory:[
+    dormitory: [
       "C1",
       "C2",
       "C3",
@@ -106,8 +106,8 @@ Page({
     scrollIntoView: 0,
     activeSortingIndex: -1,
     activeSortingName: "购买店铺",
-    district_all:false,
-    sorting_all:false
+    district_all: false,
+    sorting_all: false
   },
   onLoad: function (options) {
     var that = this;
@@ -118,14 +118,13 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        console.log(res)
         that.setData({
           order: res.data.data.data
-        });  
+        });
       }
     })
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     this.setData({
       productList: [],
@@ -140,8 +139,8 @@ Page({
       scrollIntoView: 0,
       activeSortingIndex: -1,
       activeSortingName: "购买店铺",
-      district_all:false,
-      sorting_all:false
+      district_all: false,
+      sorting_all: false
     })
     var that = this;
     wx.request({
@@ -151,27 +150,24 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        console.log(res)
         that.setData({
           order: res.data.data.data
-        });  
+        });
       }
     })
-    //this.getProductList();
     wx.stopPullDownRefresh()
   },
-  onReachBottom: function() {
+  onReachBottom: function () {
     if (!this.data.loadOver) {
       this.setData({
         pageIndex: this.data.pageIndex + 1,
         isLoading: true,
         loadOver: false
       })
-      //this.getProductList();
     }
   },
   //条件选择
-  choiceItem: function(e) {
+  choiceItem: function (e) {
     switch (e.currentTarget.dataset.item) {
       case "1":
         if (this.data.chioceDistrict) {
@@ -182,7 +178,6 @@ Page({
           });
         } else {
           this.setData({
-           
             chioceDistrict: true,
             chioceSorting: false,
             chioceFilter: false,
@@ -192,14 +187,14 @@ Page({
       case "2":
         if (this.data.chioceSorting) {
           this.setData({
-            
+
             chioceDistrict: false,
             chioceSorting: false,
             chioceFilter: false,
           });
         } else {
           this.setData({
-           
+
             chioceDistrict: false,
             chioceSorting: true,
             chioceFilter: false,
@@ -208,16 +203,16 @@ Page({
         break;
     }
   },
-  hideAllChioce: function() {
+  hideAllChioce: function () {
     this.setData({
-     
+
       chioceDistrict: false,
       chioceSorting: false,
       chioceFilter: false,
     });
   },
-  //区域位置
-  getDistrictList: function() {
+
+  getDistrictList: function () {
     var that = this;
     wx.request({
       url: app.globalData.hostUrl,
@@ -227,7 +222,7 @@ Page({
         token: md5.hex_md5(app.globalData.token),
         device_source: app.globalData.deviceSource
       },
-      success: function(resRequest) {
+      success: function (resRequest) {
         if (resRequest.data.error_code == 0) {
           that.setData({
             districtList: resRequest.data.district_list
@@ -238,36 +233,30 @@ Page({
   },
 
 
-  districtSorting: function(e) {
+  districtSorting: function (e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
-      
+
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
-      district_all:(this.data.districtList[index].value != '全部'),
+      district_all: (this.data.districtList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
       isLoading: true,
-      
+
     })
-    console.log( this.data.district_all);
-    console.log(this.data.activeDistrictName);
-    console.log(this.data.activeDistrictName != '全部');
-    console.log(this.data.order);
-    console.log(this.data.activeDistrictIndex);
-    console.log()
     //this.getProductList();
   },
   //综合排序
-  selectSorting: function(e) {
+  selectSorting: function (e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
-      sorting_all:( this.data.sortingList[index].value != '全部'),
+      sorting_all: (this.data.sortingList[index].value != '全部'),
       productList: [],
       pageIndex: 1,
       loadOver: false,
@@ -275,17 +264,15 @@ Page({
     })
     //this.getProductList();
   },
-  submit_take: function (e) {
+  confirmTakeOrder: function (e) {
     var that = this;
     wx.showModal({
       title: '确认订单',
       content: '点击确定接受订单',
       success: function (res) {
-        if (res.confirm) { 
+        if (res.confirm) {
           var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
           var data = that.data.order;
-          // console.log("item")
-          // console.log(item)
           that.setData({
             order: data
           }),
@@ -296,20 +283,17 @@ Page({
                 "content-type": "application/json"
               },
               success: function (res) {
-                console.log(res)
                 wx.navigateTo({
                   url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id
                 })
               }
             })
-
-        } else { //这里是点击了取消以后
-          console.log('用户点击取消')
-
+        } else {
         }
       }
     })
   },
+
   bindGetUserInfo: function () {
     var that = this
     if (this.data.logged) {
@@ -318,9 +302,7 @@ Page({
         return
       }
     }
-
     util.showBusy('正在登录')
-
     const session = qcloud.Session.get()
 
     if (session) {
@@ -361,12 +343,12 @@ Page({
       })
     }
   },
+
   checklogin: function () {
     var that = this;
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log(res.data)
         that.setData({
           userinfo: res.data,
           logged: true
@@ -374,12 +356,10 @@ Page({
         wx.getStorage({
           key: 'user_myinfo',
           success: function (res) {
-            console.log("从缓存读取信息： " + res.data)
             if (res.data.user_name != 0) {
               that.setData({
                 infoComfirmed: true
               })
-              console.log("已完善信息")
             } else {
               that.showinfowarning()
             }
@@ -392,7 +372,6 @@ Page({
               },
               method: "GET",
               success(res) {
-                console.log("从数据库读取: " + res.data.data.data)
                 if (res.data.data.data.user_name != 0) {
                   that.setData({
                     infoComfirmed: true
@@ -401,7 +380,6 @@ Page({
                     key: 'user_myinfo',
                     data: res.data.data.data,
                   })
-                  console.log("已完善信息")
                 } else {
                   that.showinfowarning()
                 }
@@ -411,14 +389,14 @@ Page({
         })
       }
     })
-    
+
   },
 
   onShow: function () {
     this.checklogin()
   },
 
-  showinfowarning:function(){
+  showinfowarning: function () {
     wx.showModal({
       title: '您的信息未完善!',
       content: '请先完善信息',

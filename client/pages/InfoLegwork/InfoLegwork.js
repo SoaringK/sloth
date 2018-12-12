@@ -16,8 +16,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
         that.setData({
           userId: res.data.openId
         })
@@ -33,8 +31,6 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        console.log(options.order_id)
-        console.log(res)
         that.setData({
           orderInfoDetail: res.data.data,
           status: res.data.data[0].order_state
@@ -53,7 +49,7 @@ Page({
       })
     }
   },
-  arrive_confirm: function (e) {
+  confirmOrder: function (e) {
     var that = this
     if (this.data.status == 1) {
       wx.showModal({
@@ -67,7 +63,6 @@ Page({
               "content-type": "application/x-www-form-urlencoded"
             },
             success: function (res) {
-              console.log("已完成")
               that.setData({
                 status: 2,
               })

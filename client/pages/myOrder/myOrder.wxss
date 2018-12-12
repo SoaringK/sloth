@@ -191,7 +191,7 @@ page {
 
 .last_row {
   display: flex;
-  width: 82%;
+  width: 75%;
 }
 
 .content_icon {

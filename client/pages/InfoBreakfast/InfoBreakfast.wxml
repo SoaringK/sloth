@@ -77,7 +77,7 @@
     <view class='order_finished' wx:if="{{status==2}}">
       <text>已完成</text>
     </view>
-    <view class='order_active' wx:else bindtap='arrive_confirm'>
+    <view class='order_active' wx:else bindtap='confirmOrder'>
       <text wx:if='{{status==1}}'>确认送达</text>
       <text wx:else>未接单</text>
     </view>

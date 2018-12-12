@@ -64,7 +64,6 @@ Page({
         that.setData({
           order: res.data.data.data
         });
-        console.log(res.data);
       }
     })
   },
@@ -97,7 +96,6 @@ Page({
         that.setData({
           order: res.data.data.data
         });
-        console.log(res.data);
       }
     })
     //this.getProductList();
@@ -206,27 +204,17 @@ Page({
       loadOver: false,
       isLoading: true
     })
-    console.log(this.data.sorting_all);
-    console.log(this.data.activeSortingName);
-    console.log(this.data.activeSortingName != '全部');
-    console.log(this.data.order);
-    console.log(this.data.activeSortingName);
-    console.log()
     //this.getProductList();
   },
-  submit_take: function (e) {
+  confirmTakeOrder: function (e) {
     var that = this;
     wx.showModal({
       title: '确认订单',
       content: '点击确定接受订单',
       success: function (res) {
-        if (res.confirm) { //这里是点击了确定以后
-          // console.log('用户点击确定')
-          // console.log(e.currentTarget.dataset.index)
+        if (res.confirm) {
           var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
           var data = that.data.order;
-          // console.log("item")
-          // console.log(item)
           that.setData({
             order: data
           }),
@@ -243,9 +231,7 @@ Page({
               }
             })
 
-        } else { //这里是点击了取消以后
-          console.log('用户点击取消')
-
+        } else {
         }
       }
     })
@@ -306,7 +292,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log(res.data)
         that.setData({
           userinfo: res.data,
           logged: true
@@ -314,12 +299,10 @@ Page({
         wx.getStorage({
           key: 'user_myinfo',
           success: function (res) {
-            console.log("从缓存读取信息： " + res.data)
             if (res.data.user_name != 0) {
               that.setData({
                 infoComfirmed: true
               })
-              console.log("已完善信息")
             } else {
               that.showinfowarning()
             }
@@ -332,7 +315,6 @@ Page({
               },
               method: "GET",
               success(res) {
-                console.log("从数据库读取: " + res.data.data.data)
                 if (res.data.data.data.user_name != 0) {
                   that.setData({
                     infoComfirmed: true
@@ -341,7 +323,6 @@ Page({
                     key: 'user_myinfo',
                     data: res.data.data.data,
                   })
-                  console.log("已完善信息")
                 } else {
                   that.showinfowarning()
                 }

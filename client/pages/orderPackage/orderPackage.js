@@ -38,7 +38,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log(res.data)
         that.setData({
           userinfo: res.data,
           logged: true
@@ -46,12 +45,10 @@ Page({
         wx.getStorage({
           key: 'user_myinfo',
           success: function (res) {
-            console.log("从缓存读取信息： " + res.data)
             if (res.data.user_name != 0) {
               that.setData({
                 infoComfirmed: true
               })
-              console.log("已完善信息")
             } else {
               wx.showModal({
                 title: '您的信息未完善!',
@@ -65,7 +62,6 @@ Page({
                   }
                 }
               })
-              // console.log("还未完善信息！")
             }
           },
           fail: function () {
@@ -76,7 +72,6 @@ Page({
               },
               method: "GET",
               success(res) {
-                console.log("从数据库读取: " + res.data.data.data)
                 if (res.data.data.data.user_name != 0) {
                   that.setData({
                     infoComfirmed: true
@@ -85,7 +80,6 @@ Page({
                     key: 'user_myinfo',
                     data: res.data.data.data,
                   })
-                  console.log("已完善信息")
                 } else {
                   wx.showModal({
                     title: '您的信息未完善!',
@@ -117,37 +111,31 @@ Page({
     this.checkLogin()
   },
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
   },
   bindPickerChange1: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index1: e.detail.value
     })
   },
   bindPickerChange2: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index2: e.detail.value
     })
   },
   bindPickerChange3: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index3: e.detail.value
     })
   },
   bindMultiPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
   bindMultiPickerColumnChange: function(e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
@@ -156,13 +144,11 @@ Page({
     this.setData(data);
   },
   bindMultiPickerChange1: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex1: e.detail.value
     })
   },
   bindMultiPickerColumnChange1: function(e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray1: this.data.multiArray1,
       multiIndex1: this.data.multiIndex1
@@ -243,9 +229,8 @@ Page({
     })
   },
 
-  formSubmit: function(e) {
+  packageOrderSubmit: function(e) {
     var that = this;
-    console.log('form发生了submit事件，携带数据为：', JSON.stringify(that.data.info))
     wx.request({
         url: config.service.order_packageUrl + "?order_info=" + JSON.stringify(e.detail.value) + "&user_id=" + that.data.userinfo.openId,
         method: "GET",
@@ -253,8 +238,6 @@ Page({
           "content-type": "application/x-www-form-urlencoded"
         },
         success: function(res) {
-          console.log(e.detail.value)
-          console.log(res)
         }
       }),
       wx.showToast({

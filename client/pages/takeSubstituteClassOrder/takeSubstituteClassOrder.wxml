@@ -52,7 +52,7 @@
           <view class='row_text_content3'>{{item.order_time}}</view>
         </view>
         <button class='take_order_btn' wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">接单</button>
-        <button class='take_order_btn' wx:else bind:tap="submit_take" data-index="{{index}}">接单</button>
+        <button class='take_order_btn' wx:else bind:tap="confirmTakeOrder" data-index="{{index}}">接单</button>
       </view>
     </view>
   </view>
