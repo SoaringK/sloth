@@ -37,8 +37,6 @@ Page({
         that.setData({
           userId: res.data.openId
         })
-        console.log("设置用户id")
-        console.log(res.data.openId)
       },
     });
   },
@@ -80,8 +78,6 @@ Page({
           "content-type": "application/x-wwww-form-urlencoded"
         },
         success: function (res) {
-          console.log(res)
-          // 因为路由部分修改成navigatorBack，为了地址页面实时更新，用getCurrentPages实现
           var address = {
             cust_id: that.data.userId,
             cust_name: e.detail.value.namearea,
@@ -113,16 +109,10 @@ Page({
             })
           }, 2000)
         }
-        /*data:{
-          cust_name:e.detail.value.namearea,
-          cust_phone:e.detail.value.phonearea,
-          cust_addr:e.detail.value.addressarea
-        }*/
       })
     }
   },
   dormitory_change: function(e){
-    // console.log(e.detail.value);
     var that = this;
     that.setData({
       dormitory_index:e.detail.value

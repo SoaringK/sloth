@@ -10,7 +10,7 @@ Page({
   data: {
     customer: [],
     shop: {},
-    selected: -1,
+    selected: 0,
     orders: [],
     cost: 0,
     cartArr: [],
@@ -37,7 +37,6 @@ Page({
       "c14",
       "c15",
     ],
-    // remark : "口味偏好等要求",
     ShowAddrList: false,
     i:0,
     j:0,
@@ -55,8 +54,6 @@ Page({
     wx.getStorage({
       key: 'shop',
       success: function (res) {
-        console.log("读入shop")
-        console.log(res)
         that.setData({
           shop: res.data
         })
@@ -93,9 +90,6 @@ Page({
             wx.setStorage({
               key: "selected_addr",
               data: that.data.selected,
-              success: function (res) {
-                console.log("selected_addr setStorage success");
-              }
             });
             that.setData({
               customer: res.data.data
@@ -126,8 +120,6 @@ Page({
     wx.getStorage({
       key: 'id',
       success: function (res) {
-        console.log("读入shopid")
-        console.log(res)
         that.setData({
           shop_id: res.data,
         })
@@ -137,14 +129,10 @@ Page({
   
 
   settleOrder: function (e) {
-    console.log("提交订单，向服务器上传订单")
     var that = this;
-    console.log(that.data.orders);
     wx.getStorage({
       key: 'selected_addr',
       success: function (res) {
-        console.log("读入addr_id")
-        console.log(res)
         that.setData({
           addr_id: res.data
         })
@@ -155,7 +143,6 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            console.log(res)
           }
         })
       },
@@ -165,19 +152,16 @@ Page({
       icon: 'success',
       duration: 2000
     })
-    setTimeout(function (e) {
-      // wx.navigateTo({
-      //   url: '../order_list/order_list'
-      // })
-    }, 2000)
   },
 
+  //地址选择浮窗的显示
   ShowAddrList: function (e) {
     this.setData({
       ShowAddrList: !this.data.ShowAddrList
     });
   },
-
+  
+  //地址选择浮窗的隐藏
   HideAddrList: function (e) {
     this.setData({
       ShowAddrList: false
@@ -205,7 +189,6 @@ Page({
           key: "selected_addr",
           data: this.data.selected,
           success: function (res) {
-            console.log("selected_addr setStorage success");
           }
         });
       }

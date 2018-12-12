@@ -21,11 +21,6 @@
   padding-bottom: 10rpx;
 }
 
-.text1 {
-  font-size: 80%;
-  color: #888;
-}
-
 .cust_addr {
   font-weight: bold;
 }
@@ -385,6 +380,3 @@
   text-align: center;
   font-style:100%;
 }
-/* .item_info{
-  display: flex;
-} */

@@ -34,14 +34,12 @@ Page({
     cust_addr_building:0
   },
   onLoad: function (options) {
-    console.log("The cust_id is: ", options);
     var that = this;
     var flag = false;
     flag = options.flag;
     that.cust_id = options.cust_id;
     that.setData({
       cust_id: options.cust_id,
-      // cust_addr: options.cust_addr_room,//这里后台要改下返回的属性名，原本是cust_addr，改成cust_addr_room
       cust_addr_room: options.cust_addr_room,
       cust_name: options.cust_name,
       cust_phone: options.cust_phone,
@@ -57,7 +55,7 @@ Page({
     var warn = "";
     var that = this;
     var flag = false
-
+    //判断各项输入是否为空
     if (e.detail.value.namearea == "") {
       warn = "请填写您的姓名！";
     }
@@ -89,19 +87,10 @@ Page({
         header: {
           "content-type": "application/x-www-form-urlencoded"
         },
-        method: "GET",/*
-        data: {
-            cust_name: e.detail.value.namearea,
-            cust_phone: e.detail.value.phonearea,
-            cust_addr: e.detail.value.addressarea
-        },*/
+        method: "GET",
         success(res) {
-          console.log("debug")
-          console.log(res)
-          // 因为路由部分修改成navigatorBack，为了地址页面实时更新，用getCurrentPages实现
           var pages = getCurrentPages();
           var prevPage = pages[pages.length-2];
-          // console.log(prevPage);
           var customer = prevPage.data.customer;
           customer[that.data.addr_index].cust_addr_building = that.data.dormitory_index;
           customer[that.data.addr_index].cust_Wechat = e.detail.value.wechatarea;
@@ -133,12 +122,12 @@ Page({
     }
   },
   dormitory_change: function (e) {
-    // console.log(e.detail.value);
     var that = this;
     that.setData({
       dormitory_index: e.detail.value
     });
   },
+  //删除地址
   delSubmit: function (e) {
     var that = this;
     wx.request({
@@ -151,19 +140,10 @@ Page({
         header: {
           "content-type": "application/x-www-form-urlencoded"
         },
-        method: "GET",/*
-        data: {
-            cust_name: e.detail.value.namearea,
-            cust_phone: e.detail.value.phonearea,
-            cust_addr: e.detail.value.addressarea
-        },*/
+        method: "GET",
         success(res) {
-          console.log("debug")
-          console.log(res)
-          // 因为路由部分修改成navigatorBack，为了地址页面实时更新，用getCurrentPages实现
           var pages = getCurrentPages();
           var prevPage = pages[pages.length-2];
-          // console.log(prevPage);
           var customer = prevPage.data.customer;
           customer.splice(that.data.addr_index,1);
           prevPage.setData({
@@ -175,7 +155,6 @@ Page({
             duration: 2000
           })
           setTimeout(function (e) {
-            console.log(getCurrentPages());
             wx.navigateBack({
               delta:1
             })
