@@ -6,6 +6,7 @@ module.exports = async ctx => {
   var str = "{\"data\":["
   var count = 0
   for (var i = 0; i < num; i++) {
+    var pt_id = res[i].pt_id
     var job_name = res[i].pt_name
     var work_time = res[i].work_time
     var work_address = res[i].work_address
@@ -18,6 +19,7 @@ module.exports = async ctx => {
       str += "{"
     else
       str += ",{"
+    str += "\"pt_id\":\"" + pt_id + "\","
     str += "\"job_name\":\"" + job_name + "\","
     str += "\"work_time\":\"" + work_time + "\","
     str += "\"work_address\": \"" + work_address + "\","

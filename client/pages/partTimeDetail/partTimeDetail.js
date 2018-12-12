@@ -6,20 +6,20 @@ Page({
   data: {
     info: {}
   },
-  // onLoad: function (options) {
-  //   var that = this;
-  //   wx.request({
-  //     url: ,//config.service.canteen_selectUrl,
-  //     method: "GET",
-  //     header: {
-  //       "content-type": "application/json"
-  //     },
-  //     success: function (res) {
-  //       that.setData({
-  //         info: res.data.data
-  //       });
-  //       console.log(res.data)
-  //     }
-  //   })
-  // },
+  onLoad: function (options) {
+    var that = this;
+    wx.request({
+      url: config.service.take_ptjob_detailUrl+"?pt_id=",
+      method: "GET",
+      header: {
+        "content-type": "application/json"
+      },
+      success: function (res) {
+        that.setData({
+          info: res.data.data
+        });
+        console.log(res.data)
+      }
+    })
+  },
 })

@@ -47,5 +47,6 @@ router.get('/order_info_substitute', controllers.order_info_substitute)
 router.get('/changeUserInfo',controllers.changeUserInfo)
 router.get('/getUserInfo',controllers.getUserInfo)
 router.get('/getTakeorder_user_info',controllers.getTakeorder_user_info)
+router.get('/take_ptjob_detail', controllers.take_ptjob_detail)
 
 module.exports = router

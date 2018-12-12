@@ -99,7 +99,10 @@ var config = {
     getUserInfoUrl:`${host}/weapp/getUserInfo`,
 
     //获取接单人信息
-    getTakeorder_user_info:`${host}/weapp/getTakeorder_user_info`
+    getTakeorder_user_info:`${host}/weapp/getTakeorder_user_info`,
+
+    //获取兼职详情
+    take_ptjob_detailUrl: `${host}/weapp/take_ptjob_detail`,
   }
 };
 
