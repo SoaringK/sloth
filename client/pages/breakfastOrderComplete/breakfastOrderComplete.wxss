@@ -2,76 +2,16 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: #f3f3f3;
-}
-
-.body {
-  width: 100%;
-}
-
-.state {
-  float: right;
-  padding-right: 10%;
-  color: #c0c0c0;
-  font-size: 70%;
-}
-
-.list {
-  width: 100%;
-  padding: 5%;
-  background-color: #fff;
-  margin-top: 3%;
-}
-
-.restaurant {
-  color: #c0c0c0;
-  font-size: 70%;
-}
-
-.goods {
-  margin-top: 3%;
-}
-
-.food {
-  color: #c0c0c0;
-  font-size: 70%;
-}
-
-.amount {
-  color: #c0c0c0;
-  font-size: 70%;
-  float: right;
-  padding-right: 15%;
-}
-
-.total {
-  padding-top: 3%;
-  width: 35%;
-  padding-left: 60%;
-  color: #c0c0c0;
-  font-size: 70%;
-}
-
-.text {
-  color: #000;
-}
-
-.last {
-  padding-top: 10%;
-  color: #d18b8b;
+  background-color: white;
 }
 
 .header_part {
   text-align: center;
-  background-color: white;
-  margin: 0 5rpx;
-  padding-top: 50rpx;
+  padding-top: 200rpx;
   padding-bottom: 60rpx;
-  width: 96%;
-  margin-left: 2%;
-  margin-right: 2%;
   border-bottom-left-radius: 5rpx;
   border-bottom-right-radius: 5rpx;
+  margin-top: 50rpx;
 }
 
 .title_row1{
@@ -79,27 +19,19 @@
   font-size: 45rpx;
 }
 
-.two_btn {
-  display: flex;
-  text-align: center;
-  justify-content: space-between; 
-  margin-left: 110rpx;
-  margin-right: 110rpx;
-  margin-top: 15px;
+.return_home{
+  margin-top: 100rpx;
 }
 
 .click_btn1 {
-  border: 1px solid #c0c0c0;
-  display: unset;
-  padding: 10rpx 30rpx;
-  
-}
-
-.click_btn2 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: #fd6460;
   border: 1px solid #fd6460;
   color: white;
-  display: unset;
-  padding: 10rpx 30rpx;
-
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
 }
+
+

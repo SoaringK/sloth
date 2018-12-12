@@ -39,7 +39,7 @@
     </view>
     <view class='right_part'>
       <view class='salary'>{{item.salary}}</view>
-      <navigator url='../partTimeDetail/partTimeDetail?pt_ID={{item.pt_id}}'>
+      <navigator url='../partTimeDetail/partTimeDetail?pt_id={{item.pt_id}}'>
         <view class='see_more'>详情</view>
       </navigator>
 

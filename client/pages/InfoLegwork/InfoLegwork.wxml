@@ -28,7 +28,7 @@
   </view>
   <view class='customer_info' wx:if='{{infotype==1}}'>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='profile.png'></image>
       <view class='text_title'>联系人:</view>
       <view class='text_content'>{{orderInfoDetail[0].contact_name}}</view>
     </view>
@@ -47,7 +47,7 @@
   </view>
   <view class='customer_info' wx:else>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='profile.png'></image>
       <view class='text_title'>接单人:</view>
       <view class='text_content'>{{take_order_user[0].user_name}}</view>
     </view>

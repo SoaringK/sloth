@@ -4,7 +4,6 @@
     "pages/homeOrder/homeOrder",
     "pages/homeTakeOrder/homeTakeOrder",
     "pages/homeMy/homeMy",
-
     "pages/breakfastCanteenSelect/breakfastCanteenSelect",
     "pages/breakfastMenu/breakfastMemu",
     "pages/breakfastOrderConfirm/breakfastOrderConfirm",
@@ -17,17 +16,14 @@
     "pages/otherOrder/otherOrder",
     "pages/partTimeList/partTimeList",
     "pages/partTimeDetail/partTimeDetail",
-
     "pages/takePackageOrder/takePackageOrder",
     "pages/takeLegsworkOrder/takeLegsworkOrder",
     "pages/takeSubstituteClassOrder/takeSubstituteClassOrder",
     "pages/takeBreakfastOrder/takeBreakfastOrder",
-
     "pages/InfoBreakfast/InfoBreakfast",
     "pages/InfoPackage/InfoPackage",
     "pages/InfoLegwork/InfoLegwork",
     "pages/InfoSubstitute/InfoSubstitute",
-
     "pages/myInfo/myInfo",
     "pages/myOrder/myOrder",
     "pages/myTakeOrder/myTakeOrder"

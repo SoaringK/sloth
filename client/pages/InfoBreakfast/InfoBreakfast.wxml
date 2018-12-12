@@ -1,7 +1,8 @@
-<!--pages/order_info/order_info.wxml-->
 <view class='container'>
-  <!-- 商品列表 -->
+
+  <!-- 订单商品列表 -->
   <view class='menu_info'>
+     <!-- 用户头像 -->
     <view class='customer_icon'>
       <image src="{{customer.img}}"></image>
     </view>
@@ -14,17 +15,16 @@
         </view>
         <view class='line'></view>
         <block wx:for="{{menu.order}}">
-        <view class='breakfast_item'>
-          
-          <view class='food_name'>{{item.name}}</view>
-          
-          <view class='food_numb'>X{{item.numb}}</view>
-        </view>
+          <view class='breakfast_item'>
+            <view class='food_name'>{{item.name}}</view>
+            <view class='food_numb'>X{{item.numb}}</view>
+          </view>
         </block>
       </scroll-view>
     </view>
   </view>
 
+  <!-- 下单人信息 -->
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='customer.png'></image>
@@ -33,17 +33,16 @@
         <view class='text_content'>{{customer.name}}</view>
       </view>
       <view wx:else class='tempp'>
-       <view class='text_title'>接单人:</view><view class='text_content'>{{take_order_user[0].user_name}}</view>
+        <view class='text_title'>接单人:</view>
+        <view class='text_content'>{{take_order_user[0].user_name}}</view>
       </view>
-     
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='phone.png'></image>
       <view class='text_title'>联系电话:</view>
       <view class='text_content' wx:if='{{infotype==1}}'> {{customer.phone}}</view>
       <view class='text_content' wx:else> {{take_order_user[0].user_tel}}</view>
-
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_address'>
@@ -65,8 +64,8 @@
     </view>
   </view>
 
- <!-- 按钮 -->
-  <view wx:if="{{infotype==1}}">
+  <!-- 按钮 -->
+  <view wx:if="{{infotype==1}}" class='red_btn'>
     <view class='order_finished' wx:if="{{status==2}}">
       <text>已完成</text>
     </view>

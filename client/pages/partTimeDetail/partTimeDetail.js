@@ -9,16 +9,16 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: config.service.take_ptjob_detailUrl+"?pt_id=",
+      url: config.service.take_ptjob_detailUrl + "?pt_id=" + options.pt_id,
       method: "GET",
       header: {
         "content-type": "application/json"
       },
       success: function (res) {
         that.setData({
-          info: res.data.data
+          info: res.data.data.data[0]
         });
-        console.log(res.data)
+        console.log(res.data.data.data[0])
       }
     })
   },
