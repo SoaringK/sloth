@@ -4,14 +4,11 @@ var config = require('../../config');
 Page({
   data: {
     userId:0,
-
     tabList: ['进行中', '已完成'],
     current: 0,//当前选中的Tab项
     currentorder:[],
     runningorder: [],
     finishedorder:[], 
-
-    typeID: 0,
     isLoading: true,
     loadOver: false,
     districtList: [{
@@ -68,39 +65,11 @@ Page({
       })
     }
   },
-  /*
-  arrive_confirm:function(e)
-  {
-    var index=e.currentTarget.dataset.index
-    //console.log(this.data.currentorder[index])
-    var order_id=this.data.currentorder[index].order_id
-    var order_type=this.data.currentorder[index].order_type+1
-    //console.log(order_id)
-    if(this.data.currentorder[index].order_state==1){
-      wx.request({
-        url: config.service.state_changeUrl+'?order_id='+order_id+'&order_type='+order_type,
-        method:'GET',
-        header: {
-          "content-type": "application/x-www-form-urlencoded"
-        },
-        success:function(res){
-          console.log("已完成")
-          this.onLoad()
-          
-        }
-      })
-    }
-
-  },*/
-
   onShow:function(){
     var that=this
-
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
         that.setData({
           userId: res.data.openId
         })
@@ -111,15 +80,12 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            console.log(res)
             that.setData({
               currentorder: res.data.data.data
             });
-            console.log("hi")
             var tmp_run = [], tmp_fis = []
             var item
             for (item in res.data.data.data) {
-              // console.log(item)
               if (that.data.currentorder[item].order_state == 2) {
                 tmp_fis.push(that.data.currentorder[item])
               } else {
@@ -153,12 +119,9 @@ Page({
       activeSortingName: "订单状态"
     })
     var that=this
-
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
         that.setData({
           userId: res.data.openId
         })
@@ -169,15 +132,12 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            console.log(res)
             that.setData({
               currentorder: res.data.data.data
             });
-            console.log("hi")
             var tmp_run = [], tmp_fis = []
             var item
             for (item in res.data.data.data) {
-              // console.log(item)
               if (that.data.currentorder[item].order_state == 2) {
                 tmp_fis.push(that.data.currentorder[item])
               } else {
@@ -193,7 +153,6 @@ Page({
         })
       }
     })
-    //this.getProductList();
     wx.stopPullDownRefresh()
   },
   onReachBottom: function () {
@@ -203,7 +162,6 @@ Page({
         isLoading: true,
         loadOver: false
       })
-      //this.getProductList();
     }
   },
   //条件选择
@@ -212,7 +170,6 @@ Page({
       case "1":
         if (this.data.chioceDistrict) {
           this.setData({
-
             chioceDistrict: false,
             chioceSorting: false,
             chioceFilter: false,
@@ -245,7 +202,6 @@ Page({
   },
   hideAllChioce: function () {
     this.setData({
-
       chioceDistrict: false,
       chioceSorting: false,
       chioceFilter: false,
@@ -271,12 +227,9 @@ Page({
       }
     })
   },
-
-
   districtSorting: function (e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
-
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
@@ -285,13 +238,11 @@ Page({
       loadOver: false,
       isLoading: true
     })
-    //this.getProductList();
   },
   //购买店铺
   selectSorting: function (e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
-
       chioceSorting: false,
       activeSortingIndex: index,
       activeSortingName: this.data.sortingList[index].value,
@@ -300,23 +251,11 @@ Page({
       loadOver: false,
       isLoading: true
     })
-    //this.getProductList();
   },
-   /*
-  checkinfo1: function (e) {
+  //查看订单详情
+  orderCheck: function(e){
     var that = this;
     var item = that.data.currentorder[e.currentTarget.dataset.index];
-    //console.log(order_id)
-    wx.navigateTo({
-      url: '../InfoPackage/InfoPackage?order_id=' + item.order_id + '&infotype=1',
-    })
-  },
- */
-  check_order: function(e){
-    // console.log(e);
-    var that = this;
-    var item = that.data.currentorder[e.currentTarget.dataset.index];
-
     var des
     if (item.order_type == 0) des = '../InfoBreakfast/InfoBreakfast?order_id='
     else{
@@ -330,7 +269,6 @@ Page({
       url: des + item.order_id + '&infotype=0',
     })
   }
-  
 })
 
 

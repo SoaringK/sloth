@@ -38,7 +38,7 @@
     1：快递
     2：跑腿
     3：代课 -->
-    <view class='order_recommand_each_item1' wx:for="{{currentorder}}" wx:key="order_id" data-index='{{index}}' bindtap='check_order'>
+    <view class='order_recommand_each_item1' wx:for="{{currentorder}}" wx:key="order_id" data-index='{{index}}' bindtap='orderCheck'>
       <block wx:if="{{item.order_type==0}}">
         <view class='order_recommand_each_item'>
           <view class='row_1' style="flex-direction:row;">

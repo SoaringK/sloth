@@ -40,8 +40,7 @@ Page({
     var warn = "";
     var that = this;
     var flag = false
-    console.log(e)
-
+    
     if (e.detail.value.namearea == "") {
       warn = "请填写您的姓名！";
     } else if (e.detail.value.phonearea == "") {
@@ -53,7 +52,6 @@ Page({
     }
 
       wx.request({
-        // 请后台修改下面config.service.changeAddressUrl这个位置变为changeUserInfoUrl
         url: config.service.changeUserInfoUrl + "?user_id=" + that.data.user_id + "&name=" + e.detail.value.namearea + "&phone=" + e.detail.value.phonearea + "&wechat=" + e.detail.value.wechatarea,
         header: {
           "content-type": "application/x-www-form-urlencoded"
@@ -72,8 +70,6 @@ Page({
             fail: function(res) {},
             complete: function(res) {},
           })
-          console.log("debug")
-          console.log(res)
           wx.showToast({
             title: '修改信息成功',
             icon: 'success',

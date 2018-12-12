@@ -10,8 +10,6 @@ Page({
     currentorder: [],
     runningorder: [],
     finishedorder: [],
-
-    typeID: 0,
     isLoading: true,
     loadOver: false,
     districtList: [{
@@ -75,8 +73,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
         that.setData({
           userId: res.data.openId
         })
@@ -87,7 +83,6 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            console.log(res)
             that.setData({
               currentorder: res.data.data.data
             });
@@ -95,7 +90,6 @@ Page({
             var tmp_run = [], tmp_fis = []
             var item
             for (item in res.data.data.data) {
-              // console.log(item)
               if (that.data.currentorder[item].order_state == 2) {
                 tmp_fis.push(that.data.currentorder[item])
               } else {
@@ -107,18 +101,12 @@ Page({
               finishedorder: tmp_fis,
               currentorder: tmp_run
             })
-
           }
         })
       }
     })
   },
 
-  onLoad: function (options) {
-    var that = this;
-    //读入USERID
-
-  },
   onPullDownRefresh: function () {
     this.setData({
       productList: [],
@@ -140,8 +128,6 @@ Page({
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {
-        console.log("读入userinfo")
-        console.log(res)
         that.setData({
           userId: res.data.openId
         })
@@ -152,7 +138,6 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            console.log(res)
             that.setData({
               currentorder: res.data.data.data
             });
@@ -160,7 +145,6 @@ Page({
             var tmp_run = [], tmp_fis = []
             var item
             for (item in res.data.data.data) {
-              // console.log(item)
               if (that.data.currentorder[item].order_state == 2) {
                 tmp_fis.push(that.data.currentorder[item])
               } else {
@@ -172,12 +156,10 @@ Page({
               finishedorder: tmp_fis,
               currentorder: tmp_run
             })
-
           }
         })
       }
     })
-    //this.getProductList();
     
     wx.stopPullDownRefresh()
   },
@@ -188,16 +170,15 @@ Page({
         isLoading: true,
         loadOver: false
       })
-      //this.getProductList();
     }
   },
+
   //条件选择
   choiceItem: function (e) {
     switch (e.currentTarget.dataset.item) {
       case "1":
         if (this.data.chioceDistrict) {
           this.setData({
-
             chioceDistrict: false,
             chioceSorting: false,
             chioceFilter: false,
@@ -213,7 +194,6 @@ Page({
       case "2":
         if (this.data.chioceSorting) {
           this.setData({
-
             chioceDistrict: false,
             chioceSorting: false,
             chioceFilter: false,
@@ -230,7 +210,6 @@ Page({
   },
   hideAllChioce: function () {
     this.setData({
-
       chioceDistrict: false,
       chioceSorting: false,
       chioceFilter: false,
@@ -261,7 +240,6 @@ Page({
   districtSorting: function (e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
-
       chioceDistrict: false,
       activeDistrictIndex: index,
       activeDistrictName: this.data.districtList[index].value,
@@ -270,7 +248,6 @@ Page({
       loadOver: false,
       isLoading: true
     })
-    //this.getProductList();
   },
   //综合排序
   selectSorting: function (e) {
@@ -285,13 +262,12 @@ Page({
       loadOver: false,
       isLoading: true
     })
-    //this.getProductList();
   },
-  check_order: function (e) {
-    // console.log(e);
+  //查看订单详情
+  //根据订单类型不同跳转到不同的详情页面
+  orderCheck: function (e) {
     var that = this;
     var item = that.data.currentorder[e.currentTarget.dataset.index];
-
     var des
     if (item.order_type == 0) des = '../InfoBreakfast/InfoBreakfast?order_id='
     else {
@@ -305,5 +281,4 @@ Page({
       url: des + item.order_id ,
     })
   }
-
 })

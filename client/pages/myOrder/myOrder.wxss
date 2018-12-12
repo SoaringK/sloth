@@ -3,7 +3,6 @@ page {
   flex-direction: column;
   height: 100%;
 }
-
 .tablist {
   display: flex;
   height: 70rpx;
@@ -14,18 +13,12 @@ page {
   text-align: center;
   margin-top: auto;
   margin-bottom: auto;
-}
-
-.tablist .item::after {
-  /* border: none; */
-}       
+}     
 
 .tablist .item.select {
   color: #fd6460;
   font-weight: 700;
 }
-
-
 
 .select-tab {
   display: flex;
@@ -64,8 +57,7 @@ page {
 }
 
 .district-list, .sorting-list {
-
-   text-align: center;
+  text-align: center;
   align-items: center;
   justify-content: center;
   margin-top: 2rpx;
@@ -90,7 +82,7 @@ page {
   }
 
   100% {
-    top: 155rpx;
+    top: 110155rpxrpx;
   }
 }
 
@@ -123,35 +115,11 @@ page {
 
 /*筛选*/
 
-.icon-selected {
-  height: 30rpx;
-  width: 30rpx;
-}
-
 .content {
   height: 100%;
   position: absolute;
   top: 155rpx;
   width: 100%;
-}
-
-.select_module_header {
-  display: flex;
-  margin-left: 9pt;
-  margin-bottom: 15rpx;
-}
-
-.select_module_header_icon {
-  background-color: #fd6460;
-  width: 7pt;
-  height: 18pt;
-}
-
-.select_module_header_text {
-  margin-left: 4pt;
-  margin-bottom: 2pt;
-  font-size: 14pt;
-  color: #fd6460;
 }
 
 .each_modules_block {
@@ -180,36 +148,6 @@ page {
   padding-bottom: 2%;
 }
 
-.order_recommand_header {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: 66%;
-  padding-top: 20rpx;
-  padding-bottom: 5rpx;
-}
-
-.divLine {
-  background: #272b33;
-  height: 1pt;
-  width: 140rpx;
-  margin-top: 28rpx;
-}
-
-.order_recommand_header_icon {
-  height: 14pt;
-  width: 14pt;
-  margin-left: 4pt;
-  margin-top: 10rpx;
-}
-
-.order_recommand_header_text {
-  font-size: 14pt;
-  margin-left: 5rpx;
-  margin-right: 3pt;
-  margin-bottom: 1%;
-}
 
 .order_recommand_each_item {
   border-bottom: 1px solid #d6d6d6;
@@ -295,14 +233,12 @@ page {
 
 .order-state1 {
   color: white;
-  width: 44pt;
   background-color: #fd6460;
-  font-size: 10pt;
-  padding: 4pt;
-  text-align: center;
-  margin-right: 5pt;
+  font-size: 32rpx;
+  padding: 3rpx 12rpx;
   margin-top: -15rpx;
   border-radius: 5rpx;
+  text-align: center;
 }
 
 .order-state2 {
@@ -317,6 +253,19 @@ page {
   text-align: center;
 }
 
+.default-content {
+   height: 100%;  
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+}
+
+.profit {
+  font-size: 40rpx;
+  color: #fd645f;
+  font-weight: 700;
+  padding-right: 10rpx;
+}
 
 .ifNoOrder{
    text-align: center;
@@ -325,11 +274,4 @@ page {
    margin-left: auto;
    margin-right: auto;
    margin-top: 50rpx;
-}
-
-.profit {
-  font-size: 40rpx;
-  color: #fd645f;
-  font-weight: 700;
-  padding-right: 10rpx;
 }
