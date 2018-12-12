@@ -18,32 +18,32 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     modules: [{
       "name": "代买早餐",
-      "src": "../../images/1.png",
+      "src": "../../images/modules/1.png",
       "url": "../takeBreakfastOrder/takeBreakfastOrder"
     },
     {
       "name": "代拿快递",
-      "src": "../../images/2.png",
+      "src": "../../images/modules/2.png",
       "url": "../takePackageOrder/takePackageOrder"
     },
     {
       "name": "跑腿",
-      "src": "../../images/3.png",
+      "src": "../../images/modules/3.png",
       "url": "../takeLegsworkOrder/takeLegsworkOrder"
     },
     {
       "name": "代课",
-      "src": "../../images/4.png",
+      "src": "../../images/modules/4.png",
       "url": "../takeSubstituteClassOrder/takeSubstituteClassOrder"
     },
     {
       "name": "兼职",
-      "src": "../../images/5.png",
+      "src": "../../images/modules/5.png",
       "url": "../partTimeList/partTimeList"
     },
     {
       "name": "其他下单",
-      "src": "../../images/6.png",
+      "src": "../../images/modules/6.png",
       "url": "../otherOrder/otherOrder"
     }
     ],
