@@ -11,6 +11,10 @@ module.exports = async ctx => {
   var job_tag1 = res[0].pt_type
   var job_tag2 = res[0].time_validity
   var salary = res[0].pt_salary
+  var job_description = res[0].job_description
+  var contact_name = res[0].contact_name
+  var cantact_tel = res[0].cantact_tel
+  var contact_email = res[0].contact_email
 
   str += "{"
   str += "\"pt_id\":\"" + pt_id + "\","
@@ -20,7 +24,11 @@ module.exports = async ctx => {
   str += "\"work_require\": \"" + work_require + "\","
   str += "\"job_tag1\": \"" + job_tag1 + "\","
   str += "\"job_tag2\": \"" + job_tag2 + "\","
-  str += "\"salary\": \"" + salary + "\""
+  str += "\"salary\": \"" + salary + "\","
+  str += "\"job_description\": \"" + job_description + "\","
+  str += "\"contact_name\": \"" + contact_name + "\","
+  str += "\"cantact_tel\": \"" + cantact_tel + "\","
+  str += "\"contact_email\": \"" + contact_email + "\""
   str += "}]}"
   ctx.state.data = JSON.parse(str)
 }
