@@ -66,6 +66,7 @@ Page({
         that.setData({
           order: res.data.data.data
         });
+        console.log(res.data.data.data)
       }
     })
   },
@@ -176,8 +177,6 @@ Page({
       }
     })
   },
-
-
   districtSorting: function(e) {
     var index = e.currentTarget.dataset.index;
     this.setData({
@@ -210,33 +209,43 @@ Page({
   },
   confirmTakeOrder: function (e) {
     var that = this;
-    wx.showModal({
-      title: '确认订单',
-      content: '点击确定接受订单',
-      success: function (res) {
-        if (res.confirm) {
-          var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
-          var data = that.data.order;
-          that.setData({
-            order: data
-          }),
-            wx.request({
-              url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userinfo.openId + "&order_type=2",
-              method: "GET",
-              header: {
-                "content-type": "application/json"
-              },
-              success: function (res) {
-                wx.navigateTo({
-                  url: "../InfoSubstitute/InfoSubstitute?order_id=" + item[0].order_id
+    if (!that.data.logged) {
+      that.showloginwarning()
+    } else {
+      if (!that.data.infoComfirmed) {
+        that.showinfowarning()
+      } else {
+        wx.showModal({
+          title: '确认订单',
+          content: '点击确定接受订单',
+          success: function (res) {
+            if (res.confirm) { //这里是点击了确定以后
+              var item = that.data.order.splice(e.currentTarget.dataset.index, 1);
+              var data = that.data.order;
+              that.setData({
+                order: data
+              }),
+                wx.request({
+                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userId + "&order_type=2",
+                  method: "GET",
+                  header: {
+                    "content-type": "application/json"
+                  },
+                  success: function (res) {
+                    wx.navigateTo({
+                      url: "../InfoLegwork/InfoLegwork?order_id=" + item[0].order_id
+                    })
+                  }
                 })
-              }
-            })
-        } else {
-        }
+            } else { //这里是点击了取消以后
+            }
+          }
+        })
+
       }
-    })
+    }
   },
+
   bindGetUserInfo: function () {
     var that = this
     if (this.data.logged) {

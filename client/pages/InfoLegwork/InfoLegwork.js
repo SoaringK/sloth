@@ -31,6 +31,7 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
+        console.log(res)
         that.setData({
           orderInfoDetail: res.data.data,
           status: res.data.data[0].order_state

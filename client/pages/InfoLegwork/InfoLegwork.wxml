@@ -68,7 +68,7 @@
     <view class='content_each_row' id='customer_name'>
       <image class='row_icon' src='run.png'></image>
       <view class='text_title'>跑腿类型:</view>
-      <view class='text_content'>{{orderInfoDetail[0].legorder_type}}</view>
+      <view class='text_content'>{{orderInfoDetail[0].legswork_type}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='deli_time'>
