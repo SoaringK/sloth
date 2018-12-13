@@ -77,7 +77,7 @@
             <view class='row_text_content'> {{item.shipping_address}}</view>
           </view>
           <view class='content_each_row' style="flex-direction:row;">
-            <image class='content_icon' src='../../images/icon/clock.png'></image>
+            <image class='content_icon' src='../../images/icon/time.png'></image>
             <view class='row_text_title'>完成时间：</view>
             <view class='row_text_content'> {{item.complete_time}}前</view>
           </view>
