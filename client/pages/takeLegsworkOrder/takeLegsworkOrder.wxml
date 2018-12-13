@@ -32,17 +32,17 @@
         <view class='profit'>￥{{item.profit}}</view>
       </view>
       <view class='content_each_row' style="flex-direction:row;">
-        <image class='content_icon' src='content.png'></image>
+        <image class='content_icon' src='../../images/icon/content.png'></image>
         <view class='row_text_title'>跑腿时间:</view>
         <view class='row_text_content'>{{item.complete_time}}</view>
       </view>
       <view class='content_each_row' style="flex-direction:row;">
-        <image class='content_icon' src='address.png'></image>
+        <image class='content_icon' src='../../images/icon/address.png'></image>
         <view class='row_text_title'>起点：</view>
         <view class='row_text_content'> {{item.start_point}}</view>
       </view>
       <view class='content_each_row' style="flex-direction:row;">
-        <image class='content_icon' src='time.png'></image>
+        <image class='content_icon' src='../../images/icon/time.png'></image>
         <view class='row_text_title'>目的地：</view>
         <view class='row_text_content'> {{item.destination}}</view>
       </view>

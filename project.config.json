@@ -34,13 +34,19 @@
 				{
 					"id": 0,
 					"name": "1",
-					"pathName": "pages/InfoLegwork/InfoLegwork",
+					"pathName": "pages/orderPackage/orderPackage",
 					"query": ""
 				},
 				{
 					"id": 1,
 					"name": "2",
 					"pathName": "pages/orderLegwork/orderLegwork",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "1",
+					"pathName": "pages/breakfastOrderConfirm/breakfastOrderConfirm",
 					"query": ""
 				}
 			]

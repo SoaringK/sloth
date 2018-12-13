@@ -2,7 +2,7 @@
   <form bindsubmit="legworkOrderSubmit">
     <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
       <view class='notice'>
-        <image class='notice_icon' src='./notice.png'></image> 公告：跑腿有风险注意别摔着了</view>
+        <image class='notice_icon' src='../../images/icon/notice.png'></image> 公告：跑腿有风险注意别摔着了</view>
 
       <view class='info_block1'>
 
@@ -15,7 +15,7 @@
               </view>
             </picker>
           </view>
-          <image class='arrow_icon' src='./right-arrow.png'></image>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
         </view>
 
         <view class='div_hr'></view>
@@ -29,7 +29,7 @@
               </view>
             </picker>
           </view>
-          <image class='arrow_icon' src='./right-arrow.png'></image>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
         </view>
 
         <view class='div_hr'></view>
@@ -43,7 +43,7 @@
               </view>
             </picker>
           </view>
-          <image class='arrow_icon' src='./right-arrow.png'></image>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
         </view>
         <view class='div_hr'></view>
         <view class='complete_time'>

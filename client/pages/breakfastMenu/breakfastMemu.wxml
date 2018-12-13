@@ -9,7 +9,7 @@
         <view class="shop_address">{{shop.addr}}</view>
         <view class="shop_sale">. </view>
         <view class="shop_notice" style='flex-direction:row;'>
-          <image src='./speaker.png' class='notice_icon'></image>
+          <image src='../../images/shopMenu/speaker.png' class='notice_icon'></image>
           <view class='notice_text'>【公告】{{shop.notice}}</view>
         </view>
       </view>
@@ -24,7 +24,7 @@
     <view class="mask" bindtap="hideCartDetail"></view>
     <view class='troli'>
       <view class='delete_all' bindtap='deleteAllFromCart'>
-        <image src='./delete.png' class='del_icon'></image> 清空购物车</view>
+        <image src='../../images/shopMenu/delete.png' class='del_icon'></image> 清空购物车</view>
       <scroll-view class="list" scroll-y="{{true}}">
         <view wx:for="{{menu}}" wx:for-item="one" wx:for-index="typeIndex">
           <block wx:for="{{one.menuContent}}" data-id="{{item.foodId}}">
@@ -32,9 +32,9 @@
               <view class="cart_item_name">{{item.name}}</view>
               <!-- 用total键是为了防止直接price*num出现浮点数运算小数点后很多位 -->
               <view class="cart_item_total">¥{{item.total||0}}</view>
-              <view class="reduce" bind:tap="tapReduceCart" data-class="{{typeIndex}}" data-index="{{index}}"><image src='reduce.png' class="reduce_icon"></image></view>
+              <view class="reduce" bind:tap="tapReduceCart" data-class="{{typeIndex}}" data-index="{{index}}"><image src='../../images/shopMenu/reduce.png' class="reduce_icon"></image></view>
               <text class="num">{{item.numb}}</text>
-              <view class="add" bind:tap="tapAddCart" data-class="{{typeIndex}}" data-index="{{index}}"><image src='add.png' class="add_icon"></image></view>
+              <view class="add" bind:tap="tapAddCart" data-class="{{typeIndex}}" data-index="{{index}}"><image src='../../images/shopMenu/add.png' class="add_icon"></image></view>
             </view>
           </block>
         </view>
@@ -47,7 +47,7 @@
   <view class="cart">
     <view class="data" bindtap="showCartDetail">
       <view class="icon">
-        <image src="1.png"></image>
+        <image src="../../images/shopMenu/1.png"></image>
         <view class="count" hidden="{{total_item_numb==0}}">{{total_item_numb}}</view>
       </view>
       <view class="total">￥{{cost}}</view>

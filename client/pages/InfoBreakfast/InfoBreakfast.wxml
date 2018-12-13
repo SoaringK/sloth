@@ -27,7 +27,7 @@
   <!-- 下单人信息 -->
   <view class='customer_info'>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='../../images/icon/customer.png'></image>
       <view wx:if='{{infotype==1}}' class='tempp'>
         <view class='text_title'>下单人:</view>
         <view class='text_content'>{{customer.name}}</view>
@@ -39,26 +39,26 @@
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
-      <image class='row_icon' src='phone.png'></image>
+      <image class='row_icon' src='../../images/icon/phone.png'></image>
       <view class='text_title'>联系电话:</view>
       <view class='text_content' wx:if='{{infotype==1}}'> {{customer.phone}}</view>
       <view class='text_content' wx:else> {{take_order_user[0].user_tel}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_address'>
-      <image class='row_icon' src='address.png'></image>
+      <image class='row_icon' src='../../images/icon/address.png'></image>
       <view class='text_title'>配送地址:</view>
       <view class='text_content'>{{customer.address}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='deli_time'>
-      <image class='row_icon' src='time.png'></image>
+      <image class='row_icon' src='../../images/icon/time.png'></image>
       <view class='text_title'>配送时间:</view>
       <view class='text_content'>明早7:30-8:00</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='deli_time'>
-      <image class='row_icon' src='content.png'></image>
+      <image class='row_icon' src='../../images/icon/content.png'></image>
       <view class='text_title'>备注:</view>
       <view class='text_content'>{{customer.remark}}</view>
     </view>

@@ -59,6 +59,7 @@ Page({
         })
       },
     });
+    
     wx.getStorage({
       key: 'userinfo',
       success: function (res) {

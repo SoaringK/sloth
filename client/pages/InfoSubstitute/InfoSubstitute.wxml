@@ -3,63 +3,63 @@
   <view class='customer_info1'>
 
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='placeholder.png'></image>
+      <image class='row_icon' src='../../images/icon/address.png'></image>
       <view class='text_title'>代课地点:</view>
       <view class='text_content'>{{orderInfoDetail[0].class_address}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='time.png'></image>
+      <image class='row_icon' src='../../images/icon/time.png'></image>
       <view class='text_title'>代课时间:</view>
       <view class='text_content'>{{orderInfoDetail[0].class_time}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='list.png'></image>
+      <image class='row_icon' src='../../images/icon/list.png'></image>
       <view class='text_title'>课程名称:</view>
       <view class='text_content'>{{orderInfoDetail[0].class_name}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_address'>
-      <image class='row_icon' src='list.png'></image>
+      <image class='row_icon' src='../../images/icon/list.png'></image>
       <view class='text_title'>其他要求:</view>
       <view class='text_content'>{{orderInfoDetail[0].other_require}}</view>
     </view>
   </view>
   <view class='customer_info' wx:if='{{infotype==1}}'>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='../../images/icon/customer.png'></image>
       <view class='text_title'>联系人:</view>
       <view class='text_content'>{{orderInfoDetail[0].contact_name}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='phone.png'></image>
+      <image class='row_icon' src='../../images/icon/phone.png'></image>
       <view class='text_title'>联系电话:</view>
       <view class='text_content'>{{orderInfoDetail[0].contact_tel}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
-      <image class='row_icon' src='wechat.png'></image>
+      <image class='row_icon' src='../../images/icon/wechat.png'></image>
       <view class='text_title'>微信号:</view>
       <view class='text_content'>{{orderInfoDetail[0].contact_wechat}}</view>
     </view>
   </view>
   <view class='customer_info' wx:else>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='customer.png'></image>
+      <image class='row_icon' src='../../images/icon/customer.png'></image>
       <view class='text_title'>接单人:</view>
       <view class='text_content'>{{take_order_user[0].user_name}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_name'>
-      <image class='row_icon' src='phone.png'></image>
+      <image class='row_icon' src='../../images/icon/phone.png'></image>
       <view class='text_title'>联系电话:</view>
       <view class='text_content'>{{take_order_user[0].user_tel}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='customer_phone'>
-      <image class='row_icon' src='wechat.png'></image>
+      <image class='row_icon' src='../../images/icon/wechat.png'></image>
       <view class='text_title'>微信号:</view>
       <view class='text_content'>{{take_order_user[0].user_wechat}}</view>
     </view>
@@ -67,13 +67,13 @@
 
   <view class='customer_info'>
     <view class='content_each_row' id='deli_time'>
-      <image class='row_icon' src='money.png'></image>
+      <image class='row_icon' src='../../images/icon/money.png'></image>
       <view class='text_title'>出价:</view>
       <view class='text_content'>¥{{orderInfoDetail[0].profit}}</view>
     </view>
     <view class='hrzon'></view>
     <view class='content_each_row' id='deli_time'>
-      <image class='row_icon' src='box.png'></image>
+      <image class='row_icon' src='../../images/icon/box.png'></image>
       <view class='text_title'>指定性别:</view>
       <view class='text_content'>{{orderInfoDetail[0].sex_require}}</view>
     </view>

@@ -2,7 +2,7 @@
   <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
     <view  class="customer">
       <view bindtap="ShowAddrList" class="default_address" style="flex-direction:row;">
-        <image class='addr_icon' src='./maps-and-flags.png'></image>
+        <image class='addr_icon' src='../../images/icon/location.png'></image>
         <view class='contact_info' style="flex-direction:column;">
           <view class="cust_addr">
             {{building[customer[selected].cust_addr_building]}}
@@ -12,10 +12,10 @@
             {{customer[selected].cust_name}}  {{customer[selected].cust_phone}}
           </view>
         </view>
-        <image class='arrow_icon' src='./right-arrow.png'></image>
+        <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
       </view>
       <view class="delever_time" style="flex-direction:row;">
-        <image class='time_icon' src='./clock.png'></image>
+        <image class='time_icon' src='../../images/icon/clock.png'></image>
         <view class='deliver_time_text1'>配送时间</view>
         <view class='deliver_time_text2'>7:30~8:00</view>
       </view>
@@ -80,8 +80,8 @@
                       </view>
                     </view>
                     <view>
-                      <navigator url='../addressAlter/addressAlter?cust_id={{item.cust_id}}&cust_Wechat={{item.cust_Wechat}}&cust_addr_room={{item.cust_addr_room}}&cust_addr_building={{item.cust_addr_building}}&cust_name={{item.cust_name}}&cust_phone={{item.cust_phone}}&addr_index={{index}}'>
-                        <image class='icon_change' src='./writing.png'></image>
+                      <navigator url='../breakfastAlterAddress/breakfastAlterAddress?cust_id={{item.cust_id}}&cust_Wechat={{item.cust_Wechat}}&cust_addr_room={{item.cust_addr_room}}&cust_addr_building={{item.cust_addr_building}}&cust_name={{item.cust_name}}&cust_phone={{item.cust_phone}}&addr_index={{index}}'>
+                        <image class='icon_change' src='../../images/icon/writing.png'></image>
                       </navigator>
                     </view>
                   </view>
@@ -89,11 +89,11 @@
               </view>
         </scroll-view>
         <view class="button_new_address">
-            <navigator url='../addressAdd/addressAdd?userId={{userId}}'>新增地址</navigator>
+            <navigator url='../breakfastAddAddress/breakfastAddAddress?userId={{userId}}'>新增地址</navigator>
         </view>
       </view>
   </view>
   <view class="non_new_addr" hidden="{{m}}">
-    <navigator  url='../addressAdd/addressAdd?userId={{userId}}' class="non_new_addr_btn">点击新增地址</navigator>
+    <navigator  url='../breakfastAddAddress/breakfastAddAddress?userId={{userId}}' class="non_new_addr_btn">点击新增地址</navigator>
   </view>
 </view>

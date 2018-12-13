@@ -3,7 +3,7 @@
 
   <view class="userinfo">
     <view>
-      <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : './user-unlogin2.png'}}" background-size="cover"></image>
+      <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : '../../images/icon/user-unlogin.png'}}" background-size="cover"></image>
     </view>
 
     <view>

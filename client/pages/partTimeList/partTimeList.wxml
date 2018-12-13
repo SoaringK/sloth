@@ -21,15 +21,15 @@
         <view class='job_name'>{{item.job_name}}</view>
       </view>
       <view class='work_time'>
-        <image class='icon_time' src='./time.png'></image>
+        <image class='icon_time' src='../../images/icon/time.png'></image>
         <view class='sub_text'>{{item.work_time}}</view>
       </view>
       <view class='work_address'>
-        <image class='icon_address' src='./address.png'></image>
+        <image class='icon_address' src='../../images/icon/address.png'></image>
         <view class='sub_text'>{{item.work_address}}</view>
       </view>
       <view class='work_require'>
-        <image class='icon_content' src='./content.png'></image>
+        <image class='icon_content' src='../../images/icon/content.png'></image>
         <view class='sub_text'>{{item.work_require}}</view>
       </view>
       <view class='job_tag'>
