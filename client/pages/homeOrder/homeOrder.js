@@ -16,11 +16,7 @@ Page({
       {
         "src": "../../images/swipers/sw3.jpg",
         "swiperId": "3"
-      },
-      {
-        "src": "../../images/swipers/sw4.jpg",
-        "swiperId": "4"
-      },
+      }
     ],
     modules: [{
         "name": "代买早餐",

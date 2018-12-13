@@ -15,7 +15,7 @@
         <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
       </view>
       <view class="delever_time" style="flex-direction:row;">
-        <image class='time_icon' src='../../images/icon/clock.png'></image>
+        <image class='time_icon' src='../../images/icon/time.png'></image>
         <view class='deliver_time_text1'>配送时间</view>
         <view class='deliver_time_text2'>7:30~8:00</view>
       </view>
