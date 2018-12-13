@@ -1,5 +1,4 @@
 <!--pages/breakfastMenu/breakfastMemu.wxml-->
-<import src="../template/orderPage.wxml" />
 <view class="container" disable-scroll="true">
   <view class="header">
     <view class='each_item'>
@@ -16,14 +15,40 @@
     </view>
   </view>
   <view class="menu_content">
-    <template is="orderPage" data="{{menu,selected,howMuch,cost}}" />
+    <scroll-view class="menu_sideBar" bind:scrolltolower="lower" scroll-y="true" >
+      <block wx:for="{{menu}}" wx:key="">
+        <view class="menu {{index==selected?'selected':''}}" data-index="{{index}}" catchtap="turnMenu">{{item.typeName}}
+        </view>
+      </block>
+    </scroll-view>
+
+    <!-- 食物列表 -->
+    <scroll-view class="item_list" scroll-y="true" style="height:100%;">
+      <block wx:for="{{menu[selected].menuContent}}">
+        <view class="item">
+          <image class="img" src="{{item.src}}"></image>
+          <view class="item_info">
+            <view class="item_name">{{item.name}}</view>
+            <view class="item_intr">{{item.intr}}</view>
+            <view class="item_gsale">月售：{{item.gsale}}</view>
+            <view class="item_price">￥{{item.price}}</view>
+          </view>
+          <!-- 选择数量 -->
+          <view class="item_numb">
+            <view class="remove" bind:tap="removeFromTrolley" hidden="{{item.numb==0}}" data-index="{{index}}">-</view>
+            <text class="items_num" hidden="{{item.numb==0}}">{{item.numb}}</text>
+            <view class="add" bind:tap="addToTrolley" data-index="{{index}}">+</view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
   </view>
 
   <!--购物车详情-->
   <view class="cart_detail" hidden="{{!tapCart||cost==0}}">
-    <view class="mask" bindtap="hideCartDetail"></view>
+    <view class="mask" bind:tap="hideCartDetail"></view>
     <view class='troli'>
-      <view class='delete_all' bindtap='deleteAllFromCart'>
+      <view class='delete_all' bind:tap='deleteAllFromCart'>
         <image src='../../images/shopMenu/delete.png' class='del_icon'></image> 清空购物车</view>
       <scroll-view class="list" scroll-y="{{true}}">
         <view wx:for="{{menu}}" wx:for-item="one" wx:for-index="typeIndex">
@@ -45,7 +70,7 @@
   </view>
   <!--底栏-->
   <view class="cart">
-    <view class="data" bindtap="showCartDetail">
+    <view class="data" bind:tap="showCartDetail">
       <view class="icon">
         <image src="../../images/shopMenu/1.png"></image>
         <view class="count" hidden="{{total_item_numb==0}}">{{total_item_numb}}</view>
@@ -53,9 +78,9 @@
       <view class="total">￥{{cost}}</view>
     </view>
     <view>
-      <button class='commit_btn' wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">去结算</button>
-      <button class='commit_btn' wx:elif="{{cost==0}}" bindtap="emptyOrder">去结算</button>
-      <navigator url="../breakfastOrderConfirm/breakfastOrderConfirm" wx:else bind:tap="submit">
+      <button class='commit_btn' wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="isGetUserInfo">去结算</button>
+      <button class='commit_btn' wx:elif="{{cost==0}}" bind:tap="isEmptyOrder">去结算</button>
+      <navigator url="../breakfastOrderConfirm/breakfastOrderConfirm" wx:else bind:tap="submitAll">
         <button class='commit_btn'>去结算</button>
       </navigator>
     </view>

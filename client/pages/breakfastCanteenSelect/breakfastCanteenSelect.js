@@ -18,7 +18,6 @@ Page({
         that.setData({
           modules:res.data.data
         });
-        console.log(res.data)
       }
     })
   },
