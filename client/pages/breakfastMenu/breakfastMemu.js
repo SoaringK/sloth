@@ -151,7 +151,6 @@ Page({
       success: function (res) {
       }
     });
-    // 设置cost,其实不传也可以的，看基基怎么要数据
     wx.setStorage({
       key: "cost",
       data: that.data.cost,
