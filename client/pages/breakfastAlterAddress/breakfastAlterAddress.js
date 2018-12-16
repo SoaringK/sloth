@@ -89,27 +89,40 @@ Page({
         },
         method: "GET",
         success(res) {
-          var pages = getCurrentPages();
-          var prevPage = pages[pages.length-2];
-          var customer = prevPage.data.customer;
-          customer[that.data.addr_index].cust_addr_building = that.data.dormitory_index;
-          customer[that.data.addr_index].cust_Wechat = e.detail.value.wechatarea;
-          customer[that.data.addr_index].cust_addr_room = e.detail.value.addressarea;
-          customer[that.data.addr_index].cust_name = e.detail.value.namearea;
-          customer[that.data.addr_index].cust_phone = e.detail.value.phonearea;
-          prevPage.setData({
-            customer:customer
-          });
-          wx.showToast({
-            title: '修改地址成功',
-            icon: 'success',
-            duration: 2000
-          })
-          setTimeout(function (e) {
-            wx.navigateBack({
-              delta:1
+          if(res.data.code==0){
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length-2];
+            var customer = prevPage.data.customer;
+            customer[that.data.addr_index].cust_addr_building = that.data.dormitory_index;
+            customer[that.data.addr_index].cust_Wechat = e.detail.value.wechatarea;
+            customer[that.data.addr_index].cust_addr_room = e.detail.value.addressarea;
+            customer[that.data.addr_index].cust_name = e.detail.value.namearea;
+            customer[that.data.addr_index].cust_phone = e.detail.value.phonearea;
+            prevPage.setData({
+              customer:customer
+            });
+            wx.showToast({
+              title: '修改地址成功',
+              icon: 'success',
+              duration: 2000
             })
-          }, 2000)
+            setTimeout(function (e) {
+              wx.navigateBack({
+                delta:1
+              })
+            }, 2000)
+          }
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
         }
       })
     }
@@ -142,6 +155,7 @@ Page({
         },
         method: "GET",
         success(res) {
+          if(res.data.code==0){
           var pages = getCurrentPages();
           var prevPage = pages[pages.length-2];
           var customer = prevPage.data.customer;
@@ -159,6 +173,18 @@ Page({
               delta:1
             })
           }, 2000)
+          }
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
         }
       })
     }

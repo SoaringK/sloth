@@ -106,9 +106,22 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        that.setData({
-          order: res.data.data.data
-        });
+        if(res.data.code==0){
+          that.setData({
+            order: res.data.data.data
+          });
+          }
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
       }
     })
   },
@@ -141,9 +154,22 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        that.setData({
-          order: res.data.data.data
-        });
+        if(res.data.code==0){
+          that.setData({
+            order: res.data.data.data
+          });
+          }
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
       }
     })
     //this.getProductList();
@@ -281,9 +307,22 @@ Page({
                 "content-type": "application/json"
               },
               success: function (res) {
-                wx.navigateTo({
-                  url: "../InfoPackage/InfoPackage?order_id=" + item[0].order_id
-                })
+                if(res.data.code==0){
+                  wx.navigateTo({
+                    url: "../InfoPackage/InfoPackage?order_id=" + item[0].order_id
+                  })
+                  }
+                  else{
+                    wx.showModal({
+                      title: '请求错误',
+                      content: '错误码：'+res.data.code,
+                      confirmText: '确定',
+                      success: function (res) {
+                        if (res.confirm) {
+                        }
+                      }
+                    })
+                  }
               }
             })
 
@@ -372,17 +411,30 @@ Page({
               },
               method: "GET",
               success(res) {
-                if (res.data.data.data.user_name != 0) {
-                  that.setData({
-                    infoComfirmed: true
-                  })
-                  wx.setStorage({
-                    key: 'user_myinfo',
-                    data: res.data.data.data,
-                  })
-                } else {
-                  that.showinfowarning()
-                }
+                if(res.data.code==0){
+                  if (res.data.data.data.user_name != 0) {
+                    that.setData({
+                      infoComfirmed: true
+                    })
+                    wx.setStorage({
+                      key: 'user_myinfo',
+                      data: res.data.data.data,
+                    })
+                  } else {
+                    that.showinfowarning()
+                  }
+                  }
+                  else{
+                    wx.showModal({
+                      title: '请求错误',
+                      content: '错误码：'+res.data.code,
+                      confirmText: '确定',
+                      success: function (res) {
+                        if (res.confirm) {
+                        }
+                      }
+                    })
+                  }
               },
             })
           }

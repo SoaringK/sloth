@@ -101,6 +101,18 @@ Page({
               finishedorder: tmp_fis,
               currentorder: tmp_run
             })
+              }
+              else{
+                wx.showModal({
+                  title: '请求错误',
+                  content: '错误码：'+res.data.code,
+                  confirmText: '确定',
+                  success: function (res) {
+                    if (res.confirm) {
+                    }
+                  }
+                })
+              }
           }
         })
       }
@@ -138,24 +150,37 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
-            that.setData({
-              currentorder: res.data.data.data
-            });
-            
-            var tmp_run = [], tmp_fis = []
-            var item
-            for (item in res.data.data.data) {
-              if (that.data.currentorder[item].order_state == 2) {
-                tmp_fis.push(that.data.currentorder[item])
-              } else {
-                tmp_run.push(that.data.currentorder[item])
+            if(res.data.code==0){
+              that.setData({
+                currentorder: res.data.data.data
+              });
+              
+              var tmp_run = [], tmp_fis = []
+              var item
+              for (item in res.data.data.data) {
+                if (that.data.currentorder[item].order_state == 2) {
+                  tmp_fis.push(that.data.currentorder[item])
+                } else {
+                  tmp_run.push(that.data.currentorder[item])
+                }
               }
-            }
-            that.setData({
-              runningorder: tmp_run,
-              finishedorder: tmp_fis,
-              currentorder: tmp_run
-            })
+              that.setData({
+                runningorder: tmp_run,
+                finishedorder: tmp_fis,
+                currentorder: tmp_run
+              })
+              }
+              else{
+                wx.showModal({
+                  title: '请求错误',
+                  content: '错误码：'+res.data.code,
+                  confirmText: '确定',
+                  success: function (res) {
+                    if (res.confirm) {
+                    }
+                  }
+                })
+              }
           }
         })
       }

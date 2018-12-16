@@ -74,6 +74,7 @@ Page({
           },
           // 读取用户信息
           success: function (res) {
+            if(res.data.code==0){
             for (var j = 0; j < res.data.data.length; j++) {
               if (res.data.data[j].default_id == 1) {
                 that.setData({
@@ -95,6 +96,18 @@ Page({
             that.setData({
               customer: res.data.data
             });
+            }
+            else{
+              wx.showModal({
+                title: '请求错误',
+                content: '错误码：'+res.data.code,
+                confirmText: '确定',
+                success: function (res) {
+                  if (res.confirm) {
+                  }
+                }
+              })
+            }
           }
         });
       },     
@@ -144,6 +157,17 @@ Page({
             "content-type": "application/x-www-form-urlencoded"
           },
           success: function (res) {
+            if(res.data.code==-1){
+              wx.showModal({
+                title: '请求错误',
+                content: '错误码：'+res.data.code,
+                confirmText: '确定',
+                success: function (res) {
+                  if (res.confirm) {
+                  }
+                }
+              })
+            }
           }
         })
       },

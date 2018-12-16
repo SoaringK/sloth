@@ -72,27 +72,40 @@ Page({
               },
               method: "GET",
               success(res) {
-                if (res.data.data.data.user_name != 0) {
-                  that.setData({
-                    infoComfirmed: true
-                  })
-                  wx.setStorage({
-                    key: 'user_myinfo',
-                    data: res.data.data.data,
-                  })
-                } else {
-                  wx.showModal({
-                    title: '您的信息未完善!',
-                    content: '请先完善信息',
-                    confirmText: '去完善',
-                    success: function(res) {
-                      if (res.confirm) {
-                        wx.navigateTo({
-                          url: '../myInfo/myInfo',
-                        })
+                if(res.data.code==0){
+                  if (res.data.data.data.user_name != 0) {
+                    that.setData({
+                      infoComfirmed: true
+                    })
+                    wx.setStorage({
+                      key: 'user_myinfo',
+                      data: res.data.data.data,
+                    })
+                  } else {
+                    wx.showModal({
+                      title: '您的信息未完善!',
+                      content: '请先完善信息',
+                      confirmText: '去完善',
+                      success: function(res) {
+                        if (res.confirm) {
+                          wx.navigateTo({
+                            url: '../myInfo/myInfo',
+                          })
+                        }
                       }
-                    }
-                  })
+                    })
+                  }
+                  else{
+                    wx.showModal({
+                      title: '请求错误',
+                      content: '错误码：'+res.data.code,
+                      confirmText: '确定',
+                      success: function (res) {
+                        if (res.confirm) {
+                        }
+                      }
+                    })
+                  }
                 }
               },
             })

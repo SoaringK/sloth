@@ -42,9 +42,22 @@ Page({
         userId: options.userId
       },
       success: function (res) {
-        that.setData({
-          pt_info: res.data.data.data
-        })
+        if(res.data.code==0){
+          that.setData({
+            pt_info: res.data.data.data
+          })
+          }
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
       }
     })
   },

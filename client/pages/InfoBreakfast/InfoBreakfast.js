@@ -35,21 +35,45 @@ Page({
         "content-type": "application/json"
       },
       success: function(res) {
-        that.setData({
-          menu: res.data.data.menu,
-          customer: res.data.data.customer,
-          status: res.data.data.status
-        });
+        if(res.data.code==0){
+          that.setData({
+            menu: res.data.data.menu,
+            customer: res.data.data.customer,
+            status: res.data.data.status
+          });
+        }
+        else{
+          wx.showModal({
+            title: '请求错误',
+            content: '错误码：'+res.data.code,
+            confirmText: '确定',
+            success: function (res) {
+              if (res.confirm) {
+              }
+            }
+          })
+        }
       }
     })
     if (that.data.infotype == 0) {
       wx.request({
         url: config.service.getTakeorder_user_info + "?order_id=" + options.order_id,
         success: function(res) {
-          that.setData({
-            take_order_user: res.data.data,
-          })
-
+          if(res.data.code==0){
+            that.setData({
+              take_order_user: res.data.data,
+            })  
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
         }
       })
     }
@@ -69,9 +93,22 @@ Page({
               "content-type": "application/x-www-form-urlencoded"
             },
             success: function(res) {
-              that.setData({
-                status: 2,
-              })
+              if(res.data.code==0){
+                that.setData({
+                  status: 2,
+                })
+                }
+              else{
+                wx.showModal({
+                  title: '请求错误',
+                  content: '错误码：'+res.data.code,
+                  confirmText: '确定',
+                  success: function (res) {
+                    if (res.confirm) {
+                    }
+                  }
+                })
+              }
             }
           })
         }

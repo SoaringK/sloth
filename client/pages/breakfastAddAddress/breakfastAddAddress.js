@@ -78,36 +78,49 @@ Page({
           "content-type": "application/x-wwww-form-urlencoded"
         },
         success: function (res) {
-          var address = {
-            cust_id: that.data.userId,
-            cust_name: e.detail.value.namearea,
-            cust_phone: e.detail.value.phonearea,
-            cust_addr_room: e.detail.value.addressarea,
-            cust_Wechat: e.detail.value.wechatarea,
-            cust_addr_building:that.data.dormitory_index,
-            default_id:0,
-            addr_id:0//稍后修改
-          };
-          var pages = getCurrentPages();
-          var prevPage = pages[pages.length-2];
-          address.addr_id = prevPage.data.customer.length;
-          var customer = prevPage.data.customer;
-          customer.push(address);
-          prevPage.setData({
-            customer:customer,
-            m: 1
-          });
-          wx.showToast({
-            title: '新增地址成功',
-            icon: 'success',
-            duration: 2000
-          })
-          setTimeout(function (e) {
-            // 成功后返回上一页
-            wx.navigateBack({
-              delta:1
+          if(res.data.code==0){
+            var address = {
+              cust_id: that.data.userId,
+              cust_name: e.detail.value.namearea,
+              cust_phone: e.detail.value.phonearea,
+              cust_addr_room: e.detail.value.addressarea,
+              cust_Wechat: e.detail.value.wechatarea,
+              cust_addr_building:that.data.dormitory_index,
+              default_id:0,
+              addr_id:0//稍后修改
+            };
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length-2];
+            address.addr_id = prevPage.data.customer.length;
+            var customer = prevPage.data.customer;
+            customer.push(address);
+            prevPage.setData({
+              customer:customer,
+              m: 1
+            });
+            wx.showToast({
+              title: '新增地址成功',
+              icon: 'success',
+              duration: 2000
             })
-          }, 2000)
+            setTimeout(function (e) {
+              // 成功后返回上一页
+              wx.navigateBack({
+                delta:1
+              })
+            }, 2000)
+          }
+          else{
+            wx.showModal({
+              title: '请求错误',
+              content: '错误码：'+res.data.code,
+              confirmText: '确定',
+              success: function (res) {
+                if (res.confirm) {
+                }
+              }
+            })
+          }
         }
       })
     }
