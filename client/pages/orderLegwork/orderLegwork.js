@@ -95,6 +95,7 @@ Page({
                       }
                     })
                   }
+                }
                   else{
                     wx.showModal({
                       title: '请求错误',
@@ -107,7 +108,6 @@ Page({
                     })
                   }
                 }
-              },
             })
           }
         })

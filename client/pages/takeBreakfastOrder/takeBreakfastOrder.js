@@ -303,16 +303,16 @@ Page({
             order: data
           }),
             wx.request({
-                if(res.data.code==0){
-                  url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userinfo.openId + "&order_type=0",
-                  method: "GET",
-                  header: {
-                    "content-type": "application/json"
-                  },
-                  success: function (res) {
-                    wx.navigateTo({
-                      url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id
-                    })
+              url: config.service.take_orderUrl + "?order_id=" + item[0].order_id + "&user_id=" + that.data.userinfo.openId + "&order_type=0",
+              method: "GET",
+              header: {
+                "content-type": "application/json"
+              },
+              success: function (res) {
+                if (res.data.code == 0) {
+                  wx.navigateTo({
+                    url: "../InfoBreakfast/InfoBreakfast?order_id=" + item[0].order_id
+                  })
                   }
                   else{
                     wx.showModal({

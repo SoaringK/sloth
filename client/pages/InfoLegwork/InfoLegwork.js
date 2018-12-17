@@ -93,6 +93,7 @@ Page({
               if(res.data.code==0){
                 that.setData({
                   status: 2,
+                })
                 }
                 else{
                   wx.showModal({
@@ -105,7 +106,6 @@ Page({
                     }
                   })
                 }
-              })
             }
           })
         }

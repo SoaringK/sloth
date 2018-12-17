@@ -62,7 +62,8 @@ Page({
           if(res.data.code==0){
             that.setData({
               take_order_user: res.data.data,
-            })  
+            })
+          }  
           else{
             wx.showModal({
               title: '请求错误',

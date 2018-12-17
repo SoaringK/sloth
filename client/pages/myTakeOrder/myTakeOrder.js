@@ -101,18 +101,6 @@ Page({
               finishedorder: tmp_fis,
               currentorder: tmp_run
             })
-              }
-              else{
-                wx.showModal({
-                  title: '请求错误',
-                  content: '错误码：'+res.data.code,
-                  confirmText: '确定',
-                  success: function (res) {
-                    if (res.confirm) {
-                    }
-                  }
-                })
-              }
           }
         })
       }
