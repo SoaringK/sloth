@@ -1,0 +1,104 @@
+<view class='container'>
+
+  <view class='customer_info1'>
+
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/start.png'></image>
+      <view class='text_title'>起点:</view>
+      <view class='text_content'>{{orderInfoDetail[0].start_point}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_address'>
+      <image class='row_icon' src='../../images/icon/address.png'></image>
+      <view class='text_title'>目的地:</view>
+      <view class='text_content'>{{orderInfoDetail[0].destination}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/time.png'></image>
+      <view class='text_title'>跑腿时间:</view>
+      <view class='text_content'>{{orderInfoDetail[0].complete_time}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/content.png'></image>
+      <view class='text_title'>其他要求:</view>
+      <view class='text_content'>{{orderInfoDetail[0].other_require}}</view>
+    </view>
+  </view>
+  <view class='customer_info' wx:if='{{infotype==1}}'>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/customer.png'></image>
+      <view class='text_title'>联系人:</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_name}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/phone.png'></image>
+      <view class='text_title'>联系电话:</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_tel}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_phone'>
+      <image class='row_icon' src='../../images/icon/wechat.png'></image>
+      <view class='text_title'>微信号:</view>
+      <view class='text_content'>{{orderInfoDetail[0].contact_wechat}}</view>
+    </view>
+  </view>
+  <view class='customer_info' wx:else>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/customer.png'></image>
+      <view class='text_title'>接单人:</view>
+      <view class='text_content'>{{take_order_user[0].user_name}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/phone.png'></image>
+      <view class='text_title'>联系电话:</view>
+      <view class='text_content'>{{take_order_user[0].user_tel}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='customer_phone'>
+      <image class='row_icon' src='../../images/icon/wechat.png'></image>
+      <view class='text_title'>微信号:</view>
+      <view class='text_content'>{{take_order_user[0].user_wechat}}</view>
+    </view>
+  </view>
+  <view class='customer_info'>
+    <view class='content_each_row' id='customer_name'>
+      <image class='row_icon' src='../../images/icon/run.png'></image>
+      <view class='text_title'>跑腿类型:</view>
+      <view class='text_content'>{{orderInfoDetail[0].legswork_type}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='../../images/icon/money.png'></image>
+      <view class='text_title'>跑腿费:</view>
+      <view class='text_content'>¥{{orderInfoDetail[0].profit}}</view>
+    </view>
+    <view class='hrzon'></view>
+    <view class='content_each_row' id='deli_time'>
+      <image class='row_icon' src='../../images/icon/box.png'></image>
+      <view class='text_title'>物品类型:</view>
+      <view class='text_content'>{{orderInfoDetail[0].good_type}}</view>
+    </view>
+  </view>
+  <!-- 按钮 -->
+  <view wx:if="{{infotype==1}}">
+    <view class='order_finished' wx:if="{{status==2}}">
+      <text>已完成</text>
+    </view>
+    <view class='order_finished' wx:else>
+      <text>进行中</text>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='order_finished' wx:if="{{status==2}}">
+      <text>已完成</text>
+    </view>
+    <view class='order_active' wx:else bindtap='confirmOrder'>
+      <text wx:if='{{status==1}}'>确认送达</text>
+      <text wx:else>未接单</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,81 @@
+page {
+  background-color: rgb(244, 244, 244);
+}
+
+.block1 {
+  background-color: white;
+  margin-bottom: 25rpx;
+  padding: 30rpx 40rpx;
+}
+
+.highlight {
+  flex-direction: row;
+  display: flex;
+  margin: 20rpx 0;
+}
+
+.div_string {
+  background-color: rgb(134, 134, 134);
+  width: 5rpx;
+  height: 35rpx;
+  margin-top: 13rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.salary {
+  color: #fd6460;
+  font-weight: 600;
+}
+
+.job_tag2 {
+  color: #fd6460;
+}
+
+.row_text {
+  flex-direction: row;
+  display: flex;
+  margin: 8rpx 0;
+  font-size: 30rpx;
+}
+
+.div_hr {
+  width: 100%;
+  background-color: #e5e5e5;
+  height: 2rpx;
+  margin-bottom: 20rpx;
+}
+
+.sub_title {
+  color: #888;
+  margin-right: 20rpx;
+  font-size: 30rpx;
+}
+
+.title2 {
+  margin-bottom: 20rpx;
+}
+
+.job_info_detail {
+  font-size: 30rpx;
+  color: rgb(121, 121, 121);
+}
+
+.submit_btn {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+}
+
+button {
+  background-color: #fd645f;
+  width: 100%;
+  color: white;
+  font-size: 40rpx;
+  height: 8%;
+}
+
+.title{
+  font-size: 35rpx;
+}

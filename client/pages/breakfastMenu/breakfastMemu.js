@@ -9,15 +9,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    logged:false,
-    userInfo:{},
-    shop: [],
-    menu: [],
-    selected: 0,
-    cost: 0,
-    total_item_numb: 0,
-    tapCart: false,
-    id: 0,
+    infoComfirmed:false,//是否
+    logged:false,//是否登录
+    userinfo:{},//用户信息
+    shop: [],//店铺信息
+    menu: [],//菜单
+    selected: 0,//选择的事物类别
+    cost: 0,//花费
+    total_item_numb: 0,//总共的商品数目，和购物车查看有关
+    tapCart: false,//是否出现购物车浮窗
+    // id: 0,
     shop_id: 0
   }, 
 
@@ -64,26 +65,13 @@ Page({
     })
   },
 
-  // addCart: function (id) {
-  //   var num = this.data.cart.list[id] || 0;
-  //   this.data.cart.list[id] = num + 1;
-  //   this.countCart();
-  // },
-  // reduceCart: function (id) {
-  //   var num = this.data.cart.list[id] || 0;
-  //   if (num <= 1) {
-  //     delete this.data.cart.list[id];
-  //   } else {
-  //     this.data.cart.list[id] = num - 1;
-  //   }
-  //   this.countCart();
-  // },
 // 隐藏浮窗
   hideCartDetail: function () {
     this.setData({
       tapCart: false
     });
   },
+  // 购物车减少商品数量
   tapReduceCart: function (e) {
     var that = this;
     var selected = e.currentTarget.dataset.class;
@@ -101,6 +89,7 @@ Page({
       });
     }
   },
+  // 购物车增加商品数量
   tapAddCart: function (e) {
     var that = this;
     var info = that.data.menu;
@@ -122,26 +111,7 @@ Page({
       tapCart:!this.data.tapCart
     })
   },
-  // 这个submit是确定订单页的submit？？？？为啥在这
-  // submit: function (e) {
-  //   server.sendTemplate(e.detail.formId, null, function (res) {
-  //     if (res.data.errorcode == 0) {
-  //       wx.showModal({
-  //         showCancel: false,
-  //         title: '恭喜',
-  //         content: '订单发送成功！下订单过程顺利完成，本例不再进行后续订单相关的功能。',
-  //         success: function (res) {
-  //           if (res.confirm) {
-  //             wx.navigateBack();
-  //           }
-  //         }
-  //       })
-  //     }
-  //   }, function (res) {
-  //     console.log(res)
-  //   });
-  // },
-
+// 删除购物车所有商品
   deleteAllFromCart: function(e){
     var that = this;
     var info = that.data.menu;
@@ -161,8 +131,8 @@ Page({
       tapCart: false
     })
   },
- 
-  submit: function(e){
+//  提交购物车内商品至订单确认页
+  submitAll: function(e){
     var that = this;
     var info = that.data.menu;
     var shop = that.data.shop;
@@ -179,91 +149,190 @@ Page({
       key: "list",
       data: cart,
       success: function (res) {
-        console.log("list setStorage success");
       }
     });
-    // 设置cost,其实不传也可以的，看基基怎么要数据
     wx.setStorage({
       key: "cost",
       data: that.data.cost,
       success: function (res) {
-        console.log("cost setStorage success");
       }
     });
     wx.setStorage({
       key: "shop",
       data: shop,
       success: function (res) {
-        console.log("shop setStorage success");
       }
     });
     wx.setStorage({
       key: "id",
       data: that.data.shop_id,
       success: function (res) {
-        console.log("id setStorage success");
       }
     });
   },
-
-  bindGetUserInfo: function () {
-    if (this.data.logged) return
-
-    util.showBusy('正在登录')
-
-    const session = qcloud.Session.get()
-
-    if (session) {
-      // 第二次登录
-      // 或者本地已经有登录态
-      // 可使用本函数更新登录态
-      qcloud.loginWithCode({
-        success: res => {
-          this.setData({ userInfo: res, logged: true })
-          util.showSuccess('登录成功')
-        },
-        fail: err => {
-          console.error(err)
-          util.showModel('登录错误', err.message)
-        }
+// 检查是否登录
+checkLogin: function () {
+  var that = this;
+  wx.getStorage({
+    key: 'userinfo',
+    success: function (res) {
+      that.setData({
+        userinfo: res.data,
+        logged: true
       })
-    } else {
-      // 首次登录
-      qcloud.login({
-        success: res => {
-          this.setData({ userInfo: res, logged: true })
-          util.showSuccess('登录成功')
+      wx.getStorage({
+        key: 'user_myinfo',
+        success: function (res) {
+          if (res.data.user_name != 0) {
+            that.setData({
+              infoComfirmed: true
+            })
+          } else {
+            wx.showModal({
+              title: '您的信息未完善!',
+              content: '请先完善信息',
+              confirmText: '去完善',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.navigateTo({
+                    url: '../myInfo/myInfo',
+                  })
+                }
+              }
+            })
+          }
         },
-        fail: err => {
-          console.error(err)
-          util.showModel('登录错误', err.message)
+        fail: function () {
+          wx.request({
+            url: config.service.getUserInfoUrl + '?user_id=' + that.data.userinfo.openId,
+            header: {
+              "content-type": "application/x-www-form-urlencoded"
+            },
+            method: "GET",
+            success(res) {
+              if(res.data.code==0){
+              if (res.data.data.data.user_name != 0) {
+                that.setData({
+                  infoComfirmed: true
+                })
+                wx.setStorage({
+                  key: 'user_myinfo',
+                  data: res.data.data.data,
+                })
+              } else {
+                wx.showModal({
+                  title: '您的信息未完善!',
+                  content: '请先完善信息',
+                  confirmText: '去完善',
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.navigateTo({
+                        url: '../myInfo/myInfo',
+                      })
+                    }
+                  }
+                })
+              }
+              }
+              else{
+                wx.showModal({
+                  title: '请求错误',
+                  content: '错误码：'+res.data.code,
+                  confirmText: '确定',
+                  success: function (res) {
+                    if (res.confirm) {
+                    }
+                  }
+                })
+              }
+            },
+          })
         }
       })
     }
-  },
+  })
+},
+ //是否完善了个人信息
+ isGetUserInfo: function () {
+  var that = this
+  if (this.data.logged) {
+    if (!this.data.infoComfirmed) {
+      wx.showModal({
+        title: '您的信息未完善!',
+        content: '请先完善信息',
+        confirmText: '去完善',
+        success: function (res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '../myInfo/myInfo',
+            })
+          }
+        }
+      })
+      return
+    }
+  }
 
+  util.showBusy('正在登录')
+
+  const session = qcloud.Session.get()
+
+  if (session) {
+    // 第二次登录
+    // 或者本地已经有登录态
+    // 可使用本函数更新登录态
+    qcloud.loginWithCode({
+      success: res => {
+        this.setData({
+          userinfo: res,
+          logged: true
+        }, function () {
+          that.onShow()
+        })
+        util.showSuccess('登录成功')
+      },
+      fail: err => {
+        util.showModel('登录错误', err.message)
+      }
+    })
+  } else {
+    // 首次登录
+    qcloud.login({
+      success: res => {
+        this.setData({
+          userinfo: res,
+          logged: true
+        }, function () {
+          that.onShow()
+        })
+        util.showSuccess('登录成功')
+      },
+      fail: err => {
+        util.showModel('登录错误', err.message)
+      }
+    })
+  }
+
+},
+//检查是否空单
+isEmptyOrder: function(){
+  wx.showModal({
+    title: '您还未购买任何商品!',
+    content: '请先选择您想购买的商品',
+    confirmText: '确定',
+    success: function (res) {
+      if (res.confirm) {
+      }
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    console.log(this.data.logged);
-
+    
     var that = this;
-    const session = qcloud.Session.get()
-    if (session) {
-      // 第二次登录
-      // 或者本地已经有登录态
-      // 可使用本函数更新登录态
-      qcloud.loginWithCode({
-        success: res => {
-          that.setData({ userInfo: res, logged: true })
-          console.log('是已经登录的');
-        }
-      })
-    }
 
-    // 试着用easy-mock测试
     // 用店铺id去get数据
     wx.request({
       url: config.service.breakfastMemuUrl + "?id=" + options.canId,
@@ -272,16 +341,33 @@ Page({
         "content-type": "application/json"
       },
       success: function (res) {
-        console.log(res)
-        that.setData({
-          menu: res.data.data.menu,
-          shop: res.data.data.shop,
-          shop_id: options.canId
-        });
-        // console.log(res.data)
+        if(res.data.code==0){
+          that.setData({
+            menu: res.data.data.menu,
+            shop: res.data.data.shop,
+            shop_id: options.canId
+          });
+        }
+        else{
+          wx.showModal({
+            title: '请求错误',
+            content: '错误码：'+res.data.code,
+            confirmText: '确定',
+            success: function (res) {
+              if (res.confirm) {
+              }
+            }
+          })
+        }
       }
     })
   },
+
+
+  onShow: function () {
+    this.checkLogin()
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -293,9 +379,6 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏

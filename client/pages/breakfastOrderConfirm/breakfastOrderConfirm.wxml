@@ -1,0 +1,99 @@
+<view class="container">
+  <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
+    <view  class="customer">
+      <view bindtap="ShowAddrList" class="default_address" style="flex-direction:row;">
+        <image class='addr_icon' src='../../images/icon/location.png'></image>
+        <view class='contact_info' style="flex-direction:column;">
+          <view class="cust_addr">
+            {{building[customer[selected].cust_addr_building]}}
+            {{customer[selected].cust_addr_room}}
+          </view>
+          <view class="cust_name_tel">
+            {{customer[selected].cust_name}}  {{customer[selected].cust_phone}}
+          </view>
+        </view>
+        <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+      </view>
+      <view class="delever_time" style="flex-direction:row;">
+        <image class='time_icon' src='../../images/icon/time.png'></image>
+        <view class='deliver_time_text1'>配送时间</view>
+        <view class='deliver_time_text2'>7:30~8:00</view>
+      </view>
+    </view>
+    <view class="body">
+      <view class="shop">
+        <view class='each_item' style="flex-direction:row;">
+            <view class="shop_name">华南理工大学第二食堂{{shop.name}}</view>
+        </view>
+      </view>
+      <!-- <block wx:for="{{orders}}"> -->
+        <view class="foods_info">
+          <block wx:for="{{orders}}" wx:for-index="foodID" wx:for-item="food_item">
+            <view class="order_info">
+              <view class="shop_items" style="flex-direction:row;">
+                <image class='item_img' src="{{food_item.src}}"></image>
+                <!-- <view class="item_info"> -->
+                <view class='item_text' style="flex-direction:column;">
+                  <view class="item_name">{{food_item.name}}</view>
+                  <!-- <view class="item_intro">{{food_item.intr}}</view> -->
+                  <view class="item.num">X{{food_item.numb}}</view>
+                </view>
+                <view class="item_price">¥{{food_item.price}}</view>
+                <!-- </view> -->
+              </view>
+            </view>
+          </block>
+        </view>
+      <!-- </block> -->
+      <view class="sum_up" style="flex-direction:column;">
+        <view class="row_text" style="flex-direction:row;">
+          <view class='text_left'>包装费</view>
+          <view class='text_right'>¥0</view>
+        </view>
+        <view class="row_text">
+          <view class='text_left'>配送费</view>
+          <view class='text_right'>¥{{shop.delifee}}</view>
+        </view>
+        <view class="row_text">
+          <view class='text_right1'>小计 ¥{{cost+shop.delifee}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view> 
+  <view class="bottom">
+    <view class="bottom_sum">合计 ¥{{cost+shop.delifee}}</view>
+    <navigator class="bottom_submit" bindtap='settleOrder' url='../breakfastOrderComplete/breakfastOrderComplete'>提交订单</navigator>
+  </view>
+  <view class="addr" hidden="{{!ShowAddrList}}">
+      <view class="mask" bindtap="HideAddrList"></view>
+      <view class="addr_list">
+        <view class="addr_head">选择送达地址</view>
+        <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="addr_scroll">
+            <view class="radio-group">
+                <view wx:for="{{customer}}" wx:key="addr_id">
+                  <view class='each_row' style="flex-direction:row;">
+                    <view  bindtap="addrchange" data-id="{{item.addr_id}}"  class="label" style="flex-direction:column;">
+                      <view class="decom">{{building[item.cust_addr_building]}}  {{item.cust_addr_room}}</view>
+                      <view class="personal_info" style="flex-direction:row;">
+                        <view class="name">{{item.cust_name}} </view>
+                        <view class="phone"> {{item.cust_phone}}</view>
+                      </view>
+                    </view>
+                    <view>
+                      <navigator url='../breakfastAlterAddress/breakfastAlterAddress?cust_id={{item.cust_id}}&cust_Wechat={{item.cust_Wechat}}&cust_addr_room={{item.cust_addr_room}}&cust_addr_building={{item.cust_addr_building}}&cust_name={{item.cust_name}}&cust_phone={{item.cust_phone}}&addr_index={{index}}'>
+                        <image class='icon_change' src='../../images/icon/writing.png'></image>
+                      </navigator>
+                    </view>
+                  </view>
+                </view>
+              </view>
+        </scroll-view>
+        <view class="button_new_address">
+            <navigator url='../breakfastAddAddress/breakfastAddAddress?userId={{userId}}'>新增地址</navigator>
+        </view>
+      </view>
+  </view>
+  <view class="non_new_addr" hidden="{{m}}">
+    <navigator  url='../breakfastAddAddress/breakfastAddAddress?userId={{userId}}' class="non_new_addr_btn">点击新增地址</navigator>
+  </view>
+</view>

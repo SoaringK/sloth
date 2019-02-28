@@ -1,0 +1,161 @@
+<view class='container1'>
+
+  <view class='select_module'>
+    <view class='select_module_header' style="flex-direction:row;">
+      <view class='select_module_header_icon'></view>
+      <view class='select_module_header_text'>去接单</view>
+    </view>
+    <view class="each_modules_block">
+      <navigator class="row_each_item" wx:for="{{modules}}" url="{{item.url}}">
+        <image class='row_each_item_img' src='{{item.src}}'></image>
+        <view class='row_each_item_text'>{{item.name}}</view>
+      </navigator>
+    </view>
+  </view>
+
+  <view class='order_recommand'>
+    <view class='order_recommand_header' style="flex-direction:row;">
+      <view class="divLine"></view>
+      <image class='order_recommand_header_icon' src='../../images/icon/task.png'></image>
+      <view class='order_recommand_header_text'>任务精选</view>
+      <view class="divLine"></view>
+    </view>
+
+    <!-- 详情，条件渲染 -->
+    <!-- order_type_: 0:早餐 1：快递 2：跑腿 3：代课 --> 
+    <view class='order_recommand_each_item1' wx:for="{{order}}" wx:key="order_id">
+      <block wx:if="{{item.order_type==0}}">
+        <view class='order_recommand_each_item'>
+          <view class='row_1' style="flex-direction:row;">
+            <view class='order_type'>早餐</view>
+            <view class='shop_address'>{{item.order_shop_address}}</view>
+            <view class='profit'>￥{{item.order_deli_fee}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/content.png'></image>
+            <view class='row_text_title'>配送内容:</view>
+            <view class='row_text_content'>共{{item.order_total_item}}项-</view>
+            <view class='row_text_content'>{{item.order_good_name}}</view>
+            <view class='row_text_content'>X{{item.order_good_num}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/address.png'></image>
+            <view class='row_text_title'>配送至：</view>
+            <view class='row_text_content'> {{dormitory[item.order_address_building]}} {{item.order_address_room}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/time.png'></image>
+            <view class='row_text_title'>配送时间：</view>
+            <view class='row_text_content'> {{item.order_deli_time}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <view class='last_row' style='flex-direction:row'>
+              <view class='row_text_content2'>发布时间:</view>
+              <view class='row_text_content3'>{{item.order_time}}</view>
+              <view class='row_text_content4'>订单金额:</view>
+              <view class='row_text_content3'>￥{{item.order_sum}}</view>
+            </view>
+            <view class='take_order_btn' bind:tap="confirmTakeBreakfastOrder" data-index="{{index}}">接单</view>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{item.order_type==1}}">
+        <view class='order_recommand_each_item'>
+          <view class='row_1' style="flex-direction:row;">
+            <view class='order_type'>快递</view>
+            <view class='shop_address'>{{item.get_pack_addr}}</view>
+            <view class='profit'>￥{{item.profit}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/content.png'></image>
+            <view class='row_text_title'>指定性别:</view>
+            <view class='row_text_content'>{{item.sex_require}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/address.png'></image>
+            <view class='row_text_title'>配送至：</view>
+            <view class='row_text_content'> {{item.shipping_address}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/time.png'></image>
+            <view class='row_text_title'>完成时间：</view>
+            <view class='row_text_content'> {{item.complete_time}}前</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <view class='last_row' style='flex-direction:row'>
+              <view class='row_text_content2'>发布时间:</view>
+              <view class='row_text_content3'>{{item.order_time}}</view>
+            </view>
+            <view class='take_order_btn' bind:tap="confirmTakePackageOrder" data-index="{{index}}">接单</view>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{item.order_type==2}}">
+        <view class='order_recommand_each_item'>
+          <view class='row_1' style="flex-direction:row;">
+            <view class='order_type'>跑腿</view>
+            <view class='shop_address'>{{item.legorder_type}}</view>
+            <view class='profit'>￥{{item.profit}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/content.png'></image>
+            <view class='row_text_title'>跑腿时间:</view>
+            <view class='row_text_content'>{{item.complete_time}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/address.png'></image>
+            <view class='row_text_title'>起点：</view>
+            <view class='row_text_content'> {{item.start_point}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/time.png'></image>
+            <view class='row_text_title'>目的地：</view>
+            <view class='row_text_content'> {{item.destination}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <view class='last_row' style='flex-direction:row'>
+              <view class='row_text_content2'>发布时间:</view>
+              <view class='row_text_content3'>{{item.order_time}}</view>
+            </view>
+            <view class='take_order_btn' bind:tap="confirmTakeLegworkOrder" data-index="{{index}}">接单</view>
+          </view>
+        </view>
+      </block>
+      <block wx:elif="{{item.order_type==3}}">
+        <view class='order_recommand_each_item'>
+          <view class='row_1' style="flex-direction:row;">
+            <view class='order_type'>代课</view>
+            <view class='shop_address'>{{item.class_time}}节课</view>
+            <view class='profit'>￥{{item.profit}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/content.png'></image>
+            <view class='row_text_title'>指定性别:</view>
+            <view class='row_text_content'>{{item.sex_require}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/address.png'></image>
+            <view class='row_text_title'>代课地点：</view>
+            <view class='row_text_content'> {{item.class_address}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <image class='content_icon' src='../../images/icon/time.png'></image>
+            <view class='row_text_title'>课程名称：</view>
+            <view class='row_text_content'> {{item.class_name}}</view>
+          </view>
+          <view class='content_each_row' style="flex-direction:row;">
+            <view class='last_row' style='flex-direction:row'>
+              <view class='row_text_content2'>发布时间:</view>
+              <view class='row_text_content3'>{{item.order_time}}</view>
+            </view>
+            <view class='take_order_btn' bind:tap="confirmTakeSubOrder" data-index="{{index}}">接单</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+
+
+</view>

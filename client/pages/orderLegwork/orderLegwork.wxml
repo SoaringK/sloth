@@ -1,0 +1,111 @@
+<view class='container1'>
+  <form bindsubmit="legworkOrderSubmit">
+    <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
+      <view class='notice'>
+        <image class='notice_icon' src='../../images/icon/notice.png'></image> 公告：跑腿有风险注意别摔着了</view>
+
+      <view class='info_block1'>
+
+        <view class='get_pack_location'>
+          <view class='sub_title'>跑腿类型</view>
+          <view class='content1'>
+            <picker name="legorder_type" bindchange="bindPickerChange1" value="{{index1}}" range="{{type1}}">
+              <view class="picker">
+                {{type1[index1]}}
+              </view>
+            </picker>
+          </view>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+        </view>
+
+        <view class='div_hr'></view>
+
+        <view class='package_num'>
+          <view class='sub_title'>跑腿时间</view>
+          <view class='content1'>
+            <picker name="complete_time" mode="date" value="{{date}}" start="2018-11-20" end="2019-09-01" bindchange="bindDateChange">
+              <view class="picker">
+                 {{date}}
+              </view>
+            </picker>
+          </view>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+        </view>
+
+        <view class='div_hr'></view>
+
+        <view class='complete_time'>
+          <view class='sub_title'>物品类型</view>
+          <view class='content1'>
+            <picker name="good_type" bindchange="bindPickerChange2" value="{{index2}}" range="{{type2}}">
+              <view class="picker">
+                {{type2[index2]}}
+              </view>
+            </picker>
+          </view>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+        </view>
+        <view class='div_hr'></view>
+        <view class='complete_time'>
+          <view class='sub_title'>起点</view>
+          <input name="start_point" class='input_area' placeholder="点击输入起点" bindinput="startPoint"/>
+        </view>
+        <view class='div_hr'></view>
+        <view class='complete_time'>
+          <view class='sub_title'>目的地</view>
+          <input name="destination" class='input_area' placeholder="点击输入目的地" bindinput="endPoint"/>
+        </view>
+      </view>
+
+
+      <view class='info_block2'>
+        <view class='sex_require'>
+          <view class='sub_title3'>跑腿费</view>
+          <view class='content1'>
+            <input name="profit" class="input_area" type="number" placeholder="￥30" bindinput="Profit"/>
+          </view>
+        </view>
+
+        <view class='div_hr2'></view>
+        <view class='shipping_address'>
+          <view class='sub_title3'>其他要求</view>
+          <input name="other_require" class='input_area' placeholder="如: 五点前一定要送到！" bindinput="otherRequire"/>
+        </view>
+      </view>
+
+
+      <view class='contact_info'>
+        <view class='name'>
+          <view class='sub_title'>联系人</view>
+          <input name="contact_name" class='input_area' placeholder="点击输入姓名" bindinput="contactName"/>
+        </view>
+        <view class='div_hr'></view>
+        <view class='tel'>
+          <view class='sub_title'>联系电话</view>
+          <input name="contact_tel" class="input_area" type="number" placeholder="点击输入电话" bindinput="contactTel"/>
+        </view>
+        <view class='div_hr'></view>
+        <view class='wechat_id'>
+          <view class='sub_title'>微信号</view>
+          <input name="contact_wechat" class='input_area' placeholder="点击输入微信号" bindinput="contactWechat"/>
+        </view>
+      </view>
+
+      <view class='agreement'></view>
+    </scroll-view>
+
+    <view class='submit_btn'>
+      <button wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击下单</button>
+      <button wx:elif="{{!startpoint}}" bindtap="emptystartPoint">点击下单</button>
+      <button wx:elif="{{!endpoint}}" bindtap="emptyendPoint">点击下单</button>
+      <button wx:elif="{{!profit}}" bindtap="emptyProfit">点击下单</button>
+      <button wx:elif="{{!otherrequire}}" bindtap="emptyotherRequire">点击下单</button>
+      <button wx:elif="{{!contactname}}" bindtap="emptycontactName">点击下单</button>
+      <button wx:elif="{{!contacttel}}" bindtap="emptycontactTel">点击下单</button>
+      <button wx:elif="{{!contactwechat}}" bindtap="emptycontactWechat">点击下单</button>
+      <button formType="submit" wx:else>点击下单</button>
+    </view>
+
+  </form>
+
+</view>

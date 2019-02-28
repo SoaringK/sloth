@@ -17,12 +17,6 @@ var config = {
     // 测试的请求地址，用于测试会话
     requestUrl: `${host}/weapp/user`,
 
-    // 测试的信道服务地址
-    tunnelUrl: `${host}/weapp/tunnel`,
-
-    // 上传图片接口
-    uploadUrl: `${host}/weapp/upload`,
-
     //选择店铺地址
     canteen_selectUrl: `${host}/weapp/canteen_select`,
 
@@ -36,7 +30,79 @@ var config = {
     address_selectUrl: `${host}/weapp/address_select`,
 
     //提交订单
-    settleOrderUrl: `${host}/weapp/settleOrder`
+    settleOrderUrl: `${host}/weapp/settleOrder`,
+
+    //修改地址信息
+    changeAddressUrl: `${host}/weapp/changeAddress`,
+
+    //删除地址信息
+    delAddressUrl: `${host}/weapp/delAddress`,
+
+    //接受订单
+    take_order_homeUrl: `${host}/weapp/take_order_home`,
+
+    //我的下单
+    my_orderUrl: `${host}/weapp/my_order`,
+
+    //我的接单
+    my_take_orderUrl: `${host}/weapp/my_take_order`,
+
+    //接单
+    take_orderUrl: `${host}/weapp/take_order`,
+
+    //更改订单状态
+    state_changeUrl: `${host}/weapp/state_change`,
+
+    //代拿快递下单
+    order_packageUrl: `${host}/weapp/order_package`,
+
+    //跑腿下单
+    legsworkOrderUrl: `${host}/weapp/legsworkOrder`,
+
+    //代课下单
+    substituteOrderUrl: `${host}/weapp/substituteOrder`,
+
+    //早餐接单列表
+    take_order_home_breakfastUrl: `${host}/weapp/take_order_home_breakfast`,
+
+    //接单
+    take_orderUrl: `${host}/weapp/take_order`,
+
+    //快递接单列表
+    take_order_home_packageUrl: `${host}/weapp/take_order_home_package`,
+
+    //跑腿接单列表
+    take_order_home_legsworkUrl: `${host}/weapp/take_order_home_legswork`,
+
+    //代课接单列表
+    take_order_home_substitueteUrl: `${host}/weapp/take_order_home_substituete`,
+
+    //获取兼职列表
+    take_ptjobUrl: `${host}/weapp/take_ptjob`,
+
+    //早餐订单详情
+    order_info_breakfastUrl: `${host}/weapp/order_info_breakfast`,
+
+    //快递订单详情
+    order_info_packageUrl: `${host}/weapp/order_info_package`,
+
+    //跑腿订单详情
+    order_info_legworkUrl: `${host}/weapp/order_info_legwork`,
+
+    //代课订单详情
+    order_info_substituteUrl: `${host}/weapp/order_info_substitute`,
+
+    //更改用户信息
+    changeUserInfoUrl:`${host}/weapp/changeUserInfo`,
+
+    //获取用户信息
+    getUserInfoUrl:`${host}/weapp/getUserInfo`,
+
+    //获取接单人信息
+    getTakeorder_user_info:`${host}/weapp/getTakeorder_user_info`,
+
+    //获取兼职详情
+    take_ptjob_detailUrl: `${host}/weapp/take_ptjob_detail`,
   }
 };
 

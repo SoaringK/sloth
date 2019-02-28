@@ -1,17 +1,32 @@
 {
   "pages": [
-    "pages/home/home",
+
+    "pages/homeOrder/homeOrder",
+    "pages/homeTakeOrder/homeTakeOrder",
+    "pages/homeMy/homeMy",
+    "pages/breakfastCanteenSelect/breakfastCanteenSelect",
     "pages/breakfastMenu/breakfastMemu",
-    "pages/order_confirm/order_confirm",
-    "pages/address_select/address_select",
-    "pages/address_add/address_add",
-    "pages/order_remark/order_remark",
-    "pages/order_list/order_list",
-    "pages/breakfastTrolley/breakfastTrolley",
-    "pages/canteen_select/canteen_select",
-    "pages/address_modify/address_modify",
-    "pages/address_alter/address_alter",
-    "pages/My/My"
+    "pages/breakfastOrderConfirm/breakfastOrderConfirm",
+    "pages/breakfastOrderComplete/breakfastOrderComplete",
+    "pages/breakfastAddAddress/breakfastAddAddress",
+    "pages/breakfastAlterAddress/breakfastAlterAddress",
+    "pages/orderPackage/orderPackage",
+    "pages/orderLegwork/orderLegwork",
+    "pages/orderSubstitute/orderSubstitute",
+    "pages/otherOrder/otherOrder",
+    "pages/partTimeList/partTimeList",
+    "pages/partTimeDetail/partTimeDetail",
+    "pages/takePackageOrder/takePackageOrder",
+    "pages/takeLegsworkOrder/takeLegsworkOrder",
+    "pages/takeSubstituteClassOrder/takeSubstituteClassOrder",
+    "pages/takeBreakfastOrder/takeBreakfastOrder",
+    "pages/InfoBreakfast/InfoBreakfast",
+    "pages/InfoPackage/InfoPackage",
+    "pages/InfoLegwork/InfoLegwork",
+    "pages/InfoSubstitute/InfoSubstitute",
+    "pages/myInfo/myInfo",
+    "pages/myOrder/myOrder",
+    "pages/myTakeOrder/myTakeOrder"
   ],
   "window": {
     "backgroundColor": "#FD6460",
@@ -22,21 +37,25 @@
   },
   "tabBar": {
     "selectedColor": "#FD6460",
-    "list": [{
-      "pagePath": "pages/home/home",
-      "text": "下单",
-      "iconPath": "./images/tabBar/set.png",
-      "selectedIconPath": "./images/tabBar/set_selected.png"
-    },{
-      "pagePath": "pages/home/home",
-      "text": "接单",
-      "iconPath": "./images/tabBar/get.png",
-      "selectedIconPath": "./images/tabBar/set_selected.png"
-    },{
-      "pagePath": "pages/My/My",
-      "text": "我的",
-      "iconPath": "./images/tabBar/profile.png",
-      "selectedIconPath": "./images/tabBar/profile_selected.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/homeOrder/homeOrder",
+        "text": "下单",
+        "iconPath": "./images/tabBar/set.png",
+        "selectedIconPath": "./images/tabBar/set_selected.png"
+      },
+      {
+        "pagePath": "pages/homeTakeOrder/homeTakeOrder",
+        "text": "接单",
+        "iconPath": "./images/tabBar/get.png",
+        "selectedIconPath": "./images/tabBar/set_selected.png"
+      },
+      {
+        "pagePath": "pages/homeMy/homeMy",
+        "text": "我的",
+        "iconPath": "./images/tabBar/profile.png",
+        "selectedIconPath": "./images/tabBar/profile_selected.png"
+      }
+    ]
   }
 }

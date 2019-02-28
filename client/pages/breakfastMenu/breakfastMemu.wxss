@@ -95,6 +95,11 @@
   background: white;
 }
 
+.item{
+  width:100%;
+  height:21%;
+}
+
 .item_list {
   background: white;
   width: 340%;
@@ -224,7 +229,7 @@
   position: fixed;
   right: 0;
   background-color: #fd6460;
-  padding: 29rpx 45rpx;
+  padding-top:10rpx;
   color: #404040;
   font-size: 30rpx;
   font-weight: 600;
@@ -258,7 +263,7 @@
   /* max-height: 30%; */
   background: #f7f7f7;
   padding: 15rpx 0 0 0;
-  height: 100%;
+  height: 82%;
 }
 
 .cart_detail .list .cart_item {
@@ -405,4 +410,14 @@
   font-size: 120%;
   font-weight: 600;
   margin-top: 6rpx;
+}
+
+.add_icon{
+  width:100%;
+  height:100%;
+}
+
+.reduce_icon{
+  width:100%;
+  height:100%;
 }

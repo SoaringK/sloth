@@ -1,0 +1,277 @@
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.tablist {
+  display: flex;
+  height: 70rpx;
+}
+
+.tablist view {
+  width: 50%;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}     
+
+.tablist .item.select {
+  color: #fd6460;
+  font-weight: 700;
+}
+
+.select-tab {
+  display: flex;
+  height: 20pt;
+  font-size: 10pt;
+  background-color: #fff;
+}
+
+.chioce-item {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 0 20rpx;
+  width: 50%;
+  height: 80rpx;
+  border-top: 1rpx solid #ddd;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.icon {
+  margin-top: 5pt;
+  margin-left: 3pt;
+  border: 4px solid transparent;
+  border-top: 4px solid #9b9b9b;
+}
+
+.icon.active {
+  margin-top: 5pt;
+  margin-left: 3pt;
+  border-bottom: 4px solid #61beff;
+  border-top: 0;
+}
+
+.district-list, .sorting-list {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rpx;
+  position: absolute;
+  top: 110rpx;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 2;
+  font-size: 10px;
+  border-bottom: 1rpx solid #ddd;
+}
+
+.chioce-list-show {
+  top: 155rpx;
+  animation: slide 1000ms;
+}
+
+@keyframes slide {
+  0% {
+    top: 155rpx;
+  }
+
+  100% {
+    top: 110155rpxrpx;
+  }
+}
+
+.chioce-list-hide {
+  display: none !important;
+}
+
+/*区域位置*/
+
+.district-left {
+  flex-grow: 1;
+}
+
+.district-right {
+  flex-grow: 4;
+}
+
+.scroll-district {
+  height: 500rpx;
+}
+
+/*综合排序*/
+
+.sorting-item {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 40rpx;
+  border-bottom: 1rpx solid #ddd;
+}
+
+/*筛选*/
+
+.content {
+  height: 100%;
+  position: absolute;
+  top: 155rpx;
+  width: 100%;
+}
+
+.each_modules_block {
+  text-align: center;
+}
+
+.row_each_item {
+  margin-bottom: 10pt;
+  width: 30%;
+  display: inline-block;
+}
+
+.row_each_item_img {
+  height: 33pt;
+  width: 33pt;
+}
+
+.row_each_item_text {
+  font-size: 12pt;
+}
+
+.order_recommand {
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 1px 3px #888;
+  padding-bottom: 2%;
+}
+
+
+.order_recommand_each_item {
+  border-bottom: 1px solid #d6d6d6;
+  padding-bottom: 20rpx;
+  padding-top: 20rpx;
+  padding-left: 10rpx;
+}
+
+.row_1 {
+  display: flex;
+  margin-left: 4%;
+  margin-bottom: 15rpx;
+}
+
+.order_type {
+  color: #ffb203;
+  border: 1px solid #ffb203;
+  border-radius: 5rpx;
+  font-size: 32rpx;
+  padding: 0 5rpx;
+}
+
+.shop_address {
+  font-size: 37rpx;
+  margin-left: 20rpx;
+  width: 68%;
+  font-weight: 600;
+}
+
+.deli_fee {
+  font-size: 37rpx;
+  color: #fd645f;
+  font-weight: 700;
+}
+
+.content_each_row {
+  display: flex;
+  margin-left: 5%;
+  margin-bottom: 5rpx;
+}
+
+.last_row {
+  display: flex;
+  width: 82%;
+}
+
+.content_icon {
+  width: 13pt;
+  height: 13.5pt;
+  margin-top: 5rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  padding: 0 5rpx;
+}
+
+.row_text_title {
+  font-size: 28rpx;
+  color: #888;
+  margin-left: 10rpx;
+}
+
+.row_text_content {
+  font-size: 28rpx;
+  color: #272a33;
+}
+
+.row_text_content2 {
+  font-size: 25rpx;
+  color: #888;
+  margin-left: 25rpx;
+}
+
+.row_text_content3 {
+  font-size: 25rpx;
+  color: #888;
+}
+
+.row_text_content4 {
+  font-size: 25rpx;
+  color: #888;
+  margin-left: 25rpx;
+}
+
+.order-state1 {
+  color: white;
+  background-color: #fd6460;
+  font-size: 32rpx;
+  padding: 3rpx 12rpx;
+  margin-top: -15rpx;
+  border-radius: 5rpx;
+  text-align: center;
+}
+
+.order-state2 {
+  color: white;
+  width: 44pt;
+  background-color:gray;
+  font-size: 10pt;
+  padding: 4pt;
+  margin-right: 5pt;
+  margin-top: -15rpx;
+  border-radius: 5rpx;
+  text-align: center;
+}
+
+.default-content {
+   height: 100%;  
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+}
+
+.profit {
+  font-size: 40rpx;
+  color: #fd645f;
+  font-weight: 700;
+  padding-right: 10rpx;
+}
+
+.ifNoOrder{
+   text-align: center;
+   align-items: center;
+   justify-content: center;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 50rpx;
+}

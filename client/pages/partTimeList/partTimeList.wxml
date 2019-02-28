@@ -1,0 +1,50 @@
+<view class="tab_menu">
+  <!--条件选择-->
+  <view class="choice-bar">
+    <!-- 兼职类型选择 -->
+    <view bindtap="choiceItem" data-item="1" class="chioce-item chioce-item-first" hover-class="click-once-opaque">{{activeDistrictName}}
+      <view class="icon {{chioceDistrict==true?'active' : ''}}"></view>
+    </view>
+    <!-- 兼职类型下拉框 -->
+    <view class="district-list{{!chioceDistrict?' chioce-list-hide':' chioce-list-show'}}">
+      <view wx:for="{{districtList}}" catchtap="districtSorting" data-index="{{index}}" class="sorting-item" hover-class="click-once">{{item.value}}</view>
+    </view>
+  </view>
+  <!-- 遮罩层 -->
+  <view bindtap="hideAllChioce" class="mask" hidden="{{!chioceDistrict}}">
+  </view>
+</view>
+<view class='content'>
+  <view class="each_item" wx:for="{{pt_info}}" hidden="{{(district_all) && item.job_tag1 != activeDistrictName }}">
+    <view class='left_part'>
+      <view class='title'>
+        <view class='job_name'>{{item.job_name}}</view>
+      </view>
+      <view class='work_time'>
+        <image class='icon_time' src='../../images/icon/time.png'></image>
+        <view class='sub_text'>{{item.work_time}}</view>
+      </view>
+      <view class='work_address'>
+        <image class='icon_address' src='../../images/icon/address.png'></image>
+        <view class='sub_text'>{{item.work_address}}</view>
+      </view>
+      <view class='work_require'>
+        <image class='icon_content' src='../../images/icon/content.png'></image>
+        <view class='sub_text'>{{item.work_require}}</view>
+      </view>
+      <view class='job_tag'>
+        <view class='job_type'>{{item.job_tag1}}</view>
+        <view class='job_type'>{{item.job_tag2}}</view>
+      </view>
+    </view>
+    <view class='right_part'>
+      <view class='salary'>{{item.salary}}</view>
+      <navigator url='../partTimeDetail/partTimeDetail?pt_id={{item.pt_id}}'>
+        <view class='see_more'>详情</view>
+      </navigator>
+
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,8 @@
+.title{
+  text-align: center;
+  font-size: 40rpx;
+  margin: 80rpx 0;
+}
+button{
+  width: 60%;
+}

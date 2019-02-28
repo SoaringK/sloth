@@ -1,0 +1,59 @@
+<view class="product-list">
+  <!--条件选择-->
+  <view class="choice-bar">
+    <!-- 配送地址选择 -->
+    <view bindtap="choiceItem" data-item="1" class="chioce-item chioce-item-first" hover-class="click-once-opaque">{{activeDistrictName}}
+      <view class="icon {{chioceDistrict==true?'active' : ''}}"></view>
+    </view>
+    <!-- 排序方式选择 -->
+    <view bindtap="choiceItem" data-item="2" class="chioce-item" hover-class="click-once-opaque">{{activeSortingName}}
+      <view class="icon {{chioceSorting==true?'active' : ''}}"></view>
+    </view>
+
+    <!-- 配送地址下拉框 -->
+    <view class="district-list{{!chioceDistrict?' chioce-list-hide':' chioce-list-show'}}">
+      <view wx:for="{{districtList}}" catchtap="districtSorting" data-index="{{index}}" class="sorting-item" hover-class="click-once">{{item.value}}</view>
+    </view>
+
+    <!-- 排序方式下拉框 -->
+    <view class="sorting-list{{!chioceSorting?' chioce-list-hide':' chioce-list-show'}}">
+      <view wx:for="{{sortingList}}" catchtap="selectSorting" data-index="{{index}}" class="sorting-item" hover-class="click-once">{{item.value}}</view>
+    </view>
+
+    <!-- 菜单列表 -->
+  </view>
+  <view bindtap="hideAllChioce" class="mask" hidden="{{!chioceDistrict&&!chioceSorting}}">
+  </view>
+  <view class='order_recommand'>
+    <view class='order_recommand_each_item' wx:for="{{order}}" wx:key="order_id"  hidden="{{district_all && item.legorder_type != activeDistrictName ||sorting_all}}">
+      <view class='row_1' style="flex-direction:row;">
+        <view class='order_type'>{{item.order_type}}</view>
+        <view class='legorder_type'>{{item.legorder_type}}</view>
+        <view class='profit'>￥{{item.profit}}</view>
+      </view>
+      <view class='content_each_row' style="flex-direction:row;">
+        <image class='content_icon' src='../../images/icon/content.png'></image>
+        <view class='row_text_title'>跑腿时间:</view>
+        <view class='row_text_content'>{{item.complete_time}}</view>
+      </view>
+      <view class='content_each_row' style="flex-direction:row;">
+        <image class='content_icon' src='../../images/icon/address.png'></image>
+        <view class='row_text_title'>起点：</view>
+        <view class='row_text_content'> {{item.start_point}}</view>
+      </view>
+      <view class='content_each_row' style="flex-direction:row;">
+        <image class='content_icon' src='../../images/icon/time.png'></image>
+        <view class='row_text_title'>目的地：</view>
+        <view class='row_text_content'> {{item.destination}}</view>
+      </view>
+      <view class='content_each_row' style="flex-direction:row;">
+        <view class='last_row' style='flex-direction:row'>
+          <view class='row_text_content2'>发布时间:</view>
+          <view class='row_text_content3'>{{item.order_time}}</view>
+        </view>
+        <button class='take_order_btn' wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">接单</button>
+        <button wx:else class='take_order_btn' bind:tap="confirmTakeOrder" data-index="{{index}}">接单</button>
+      </view>
+    </view>
+  </view>
+</view>

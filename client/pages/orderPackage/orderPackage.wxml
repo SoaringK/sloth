@@ -1,0 +1,116 @@
+<view class='container1'>
+<form bindsubmit="packageOrderSubmit" >
+<scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
+  <view class='notice'><image class='notice_icon' src='../../images/icon/notice.png'></image> 公告：请注意不要乱扔快递盒</view>
+
+  <view class='info_block1'>
+    <view class='get_pack_location'>
+      <view class='sub_title'>取货地点</view>
+      <view class='content1'>
+        <picker name="get_pack_addr" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            {{array[index]}}
+          </view>
+        </picker>
+      </view>
+
+      <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+      <view class='arrow_icon'></view>
+    </view>
+    <view class='div_hr'></view>
+    <view class='package_num'>
+      <view class='sub_title'>取货码</view>
+      <input name="package_num" class='input_area' placeholder="点击输入取货码" bindinput="packageNum"/>
+    </view>
+    <view class='div_hr'></view>
+    <view class='complete_time'>
+      <view class='sub_title'>完成时间</view>
+      <view class='content1'>
+        <picker name="complete_time" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <view class="picker">
+            {{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} : {{multiArray[2][multiIndex[2]]}} 前
+          </view>
+        </picker>
+      </view>
+      <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+    </view>
+  </view>
+
+
+  <view class='info_block2'>
+    <view class='half_row'>
+      <view class='profit'>
+        <view class='sub_title2'>出价</view>
+        <picker name="profit" bindchange="bindPickerChange1" value="{{index1}}" range="{{money}}">
+          <view class="picker">
+            ￥{{money[index1]}}
+          </view>
+        </picker>
+        <image class='arrow_icon2' src='../../images/icon/right-arrow.png'></image>
+      </view>
+      <view class='weight'>
+        <view class='sub_title4'>重量</view>
+        <picker name="weight" bindchange="bindPickerChange2" value="{{index2}}" range="{{order_weight}}">
+          <view class="picker">
+            {{order_weight[index2]}}
+          </view>
+        </picker>
+        <image class='arrow_icon3' src='../../images/icon/right-arrow.png'></image>
+      </view>
+    </view>
+    <view class='div_hr2'></view>
+    <view class='sex_require'>
+      <view class='sub_title3'>指定性别</view>
+      <view class='content1'>
+        <picker name="sex_require" bindchange="bindPickerChange3" value="{{index3}}" range="{{sex}}">
+          <view class="picker">
+            {{sex[index3]}}
+          </view>
+        </picker>
+      </view>
+      <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+    </view>
+    <view class='div_hr2'></view>
+    <view class='shipping_address'>
+      <view class='sub_title3'>送达地址</view>
+      <view class='content1'>
+        <picker name="shipping_address" mode="multiSelector" bindchange="bindMultiPickerChange1" bindcolumnchange="bindMultiPickerColumnChange1" value="{{multiIndex1}}" range="{{multiArray1}}">
+          <view class="picker">
+            {{multiArray1[0][multiIndex1[0]]}} {{multiArray1[1][multiIndex1[1]]}}
+          </view>
+        </picker>
+      </view>
+      <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+    </view>
+  </view>
+
+
+  <view class='contact_info'>
+    <view class='name'>
+      <view class='sub_title'>联系人</view>
+      <input name="contact_name" class='input_area' placeholder="点击输入联系人姓名" bindinput="contactName"/>
+    </view>
+    <view class='div_hr'></view>
+    <view class='tel'>
+      <view class='sub_title'>联系电话</view>
+      <input name="contact_tel" class="input_area" type="number" placeholder="点击输入联系人电话" bindinput="contactTel"/>
+    </view>
+    <view class='div_hr'></view>
+    <view class='wechat_id'>
+      <view class='sub_title'>微信号</view>
+      <input name="contact_wechat" class='input_area' placeholder="点击输入联系人微信号" bindinput="contactWechat"/>
+    </view>
+  </view>
+
+  <view class='agreement'></view>
+</scroll-view>
+  <view class='submit_btn'>
+    <button wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击下单</button>
+    <button wx:elif="{{!packagenum}}" bindtap="emptypackageNum">点击下单</button>
+    <button wx:elif="{{!contactname}}" bindtap="emptycontactName">点击下单</button>
+    <button wx:elif="{{!contacttel}}" bindtap="emptycontactTel">点击下单</button>
+    <button wx:elif="{{!contactwechat}}" bindtap="emptycontactWechat">点击下单</button>
+    <button formType="submit" wx:else>点击下单</button>
+  </view>
+</form>
+</view>

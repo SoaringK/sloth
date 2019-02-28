@@ -1,0 +1,98 @@
+<view class='container1'>
+  <form bindsubmit="substituteOrderSubmit">
+    <scroll-view bind:scrolltolower="lower" scroll-y="{{true}}" class="scroll">
+      <view class='notice'><image class='notice_icon' src='../../images/icon/notice.png'></image> 公告：请努力演戏像演员一样去代课</view>
+
+      <view class='info_block1'>
+
+        <view class='get_pack_location'>
+          <view class='sub_title'>代课地点</view>
+          <input name="class_address" class='input_area' placeholder="如: A4-203" bindinput="classAddress"/>
+        </view>
+
+        <view class='div_hr'></view>
+
+        <view class='package_num'>
+          <view class='sub_title'>代课时间</view>
+          <view class='content1'>
+            <picker name="class_time" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+              <view class="picker">
+                {{multiArray[0][multiIndex[0]]}} 第{{multiArray[1][multiIndex[1]]}}-{{multiArray[2][multiIndex[2]]}}节 课
+              </view>
+            </picker>
+          </view>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+        </view>
+
+        <view class='div_hr'></view>
+
+        <view class='complete_time'>
+          <view class='sub_title'>课程名称</view>
+          <input name="class_name" class='input_area' placeholder="点击输入课程名称" bindinput="className"/>
+        </view>
+
+      </view>
+
+
+      <view class='info_block2'>
+        <view class='sex_require'>
+          <view class='sub_title3'>出价</view>
+          <view class='content1'>
+            <input name="profit" class="input_area" type="number" placeholder="￥30"  bindinput="Profit"/>
+          </view>
+        </view>
+        <view class='div_hr2'></view>
+        <view class='sex_require'>
+          <view class='sub_title3'>指定性别</view>
+          <view class='content1'>
+            <picker name="sex_require" bindchange="bindPickerChange3" value="{{index3}}" range="{{sex}}">
+              <view class="picker">
+                {{sex[index3]}}
+              </view>
+            </picker>
+          </view>
+          <image class='arrow_icon' src='../../images/icon/right-arrow.png'></image>
+        </view>
+        <view class='div_hr2'></view>
+        <view class='shipping_address'>
+          <view class='sub_title3'>其他要求</view>
+          <input name="other_require" class='input_area' placeholder="如: 需签到，可玩手机" bindinput="otherRequire"/>
+        </view>
+      </view>
+
+
+      <view class='contact_info'>
+        <view class='name'>
+          <view class='sub_title'>联系人</view>
+          <input name="contact_name" class='input_area' placeholder="点击输入联系人姓名" bindinput="contactName"/>
+        </view>
+        <view class='div_hr'></view>
+        <view class='tel'>
+          <view class='sub_title'>联系电话</view>
+          <input name="contact_tel" class="input_area" type="number" placeholder="点击输入联系人电话" bindinput="contactTel"/>
+        </view>
+        <view class='div_hr'></view>
+        <view class='wechat_id'>
+          <view class='sub_title'>微信号</view>
+          <input name="contact_wechat" class='input_area' placeholder="点击输入联系人微信号" bindinput="contactWechat"/>
+        </view>
+      </view>
+
+      <view class='agreement'></view>
+    </scroll-view>
+
+    <view class='submit_btn'>
+      <button wx:if="{{!logged || !infoComfirmed}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">点击下单</button>
+      <button wx:elif="{{!classaddress}}" bindtap="emptyclassAddress">点击下单</button>
+      <button wx:elif="{{!classname}}" bindtap="emptyclassName">点击下单</button>
+      <button wx:elif="{{!profit}}" bindtap="emptyProfit">点击下单</button>
+      <button wx:elif="{{!otherrequire}}" bindtap="emptyotherRequire">点击下单</button>
+      <button wx:elif="{{!contactname}}" bindtap="emptycontactName">点击下单</button>
+      <button wx:elif="{{!contacttel}}" bindtap="emptycontactTel">点击下单</button>
+      <button wx:elif="{{!contactwechat}}" bindtap="emptycontactWechat">点击下单</button>
+      <button formType="submit" wx:else>点击下单</button>
+    </view>
+
+  </form>
+
+</view>
